@@ -4,15 +4,21 @@
  */
 package main;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import koneksi.koneksiobat;
 
 /**
  *
  * @author LENOVO
  */
 public class login extends javax.swing.JFrame {
+     private Connection conn = new koneksiobat().connect();
 
     /**
      * Creates new form login
@@ -102,17 +108,23 @@ public class login extends javax.swing.JFrame {
         // TODO add your handling code here:
         String user = uname.getText();
         String pass = upw.getText();
+        
+        String sql = "SELECT * FROM users WHERE username=? AND password=?";
+        try {
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setString(1, user);
+            pst.setString(2, pass);
+            ResultSet rs = pst.executeQuery();
 
-        if (user.equals("kelompok1") && pass.equals("unindra")) {
-            JOptionPane.showMessageDialog(null, "Login Berhasil");
-            utama home = new utama();
-            home.setVisible(true);
-            this.dispose();
-        }else {
-            JOptionPane.showMessageDialog(null, "Login Gagal");
-            uname.setText("");
-            upw.setText("");
-            uname.requestFocus(true);
+            if (rs.next()) {
+                JOptionPane.showMessageDialog(this, "Login Berhasil!", "berhasil", JOptionPane.INFORMATION_MESSAGE);
+                this.dispose();
+                new utama().setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(this, "Username dan Password tidak ada", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Database error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
