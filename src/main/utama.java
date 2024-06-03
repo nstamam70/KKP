@@ -1,10 +1,5 @@
 package main;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,10 +10,6 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import koneksi.koneksiobat;
 
-/**
- *
- * @author DA
- */
 public class utama extends javax.swing.JFrame {
 
     private Connection conn = new koneksiobat().connect();
@@ -232,7 +223,7 @@ public class utama extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Impact", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Klinik pancen Oye");
+        jLabel2.setText("Klinik Fatiyah");
 
         javax.swing.GroupLayout pn_kananLayout = new javax.swing.GroupLayout(pn_kanan);
         pn_kanan.setLayout(pn_kananLayout);
@@ -243,7 +234,7 @@ public class utama extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addContainerGap(790, Short.MAX_VALUE))
+                .addContainerGap(836, Short.MAX_VALUE))
         );
         pn_kananLayout.setVerticalGroup(
             pn_kananLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -870,7 +861,7 @@ public class utama extends javax.swing.JFrame {
             .addGroup(jpisiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jpisiLayout.createSequentialGroup()
                     .addComponent(jdata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 1113, Short.MAX_VALUE)))
+                    .addGap(0, 577, Short.MAX_VALUE)))
             .addGroup(jpisiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(obat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -882,7 +873,7 @@ public class utama extends javax.swing.JFrame {
             .addGroup(jpisiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jpisiLayout.createSequentialGroup()
                     .addComponent(jdata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 551, Short.MAX_VALUE)))
+                    .addGap(0, 181, Short.MAX_VALUE)))
             .addGroup(jpisiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jpisiLayout.createSequentialGroup()
                     .addComponent(obat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1156,9 +1147,6 @@ public class utama extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ittlActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
