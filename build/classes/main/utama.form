@@ -70,7 +70,7 @@
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/gambar/hospital-29-64.png"/>
+              <Image iconType="3" name="/assets/hospital-29-64.png"/>
             </Property>
           </Properties>
         </Component>
@@ -146,7 +146,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/gambar/pasien.png"/>
+              <Image iconType="3" name="/assets/pasien.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Data Pasien"/>
           </Properties>
@@ -163,7 +163,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/gambar/data-34-16.png"/>
+              <Image iconType="3" name="/assets/data-34-16.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Pemeriksaan"/>
           </Properties>
@@ -177,7 +177,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/gambar/drug-inspection-16.png"/>
+              <Image iconType="3" name="/assets/drug-inspection-16.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="form Obat"/>
           </Properties>
@@ -194,7 +194,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/gambar/doctor-40-16.png"/>
+              <Image iconType="3" name="/assets/doctor-40-16.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Dokter "/>
           </Properties>
@@ -208,7 +208,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/gambar/cash-38-16.png"/>
+              <Image iconType="3" name="/assets/cash-38-16.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Pembayaran"/>
           </Properties>
@@ -218,7 +218,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="jpisi">
+    <Container class="javax.swing.JPanel" name="pn_dasar">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -235,20 +235,20 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <EmptySpace min="0" pref="1582" max="32767" attributes="0"/>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                  <Component id="jpembayaran" alignment="1" max="32767" attributes="0"/>
+                  <Component id="pn_pembayaran" alignment="1" max="32767" attributes="0"/>
               </Group>
               <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jdata" min="-2" max="-2" attributes="0"/>
+                      <Component id="pn_datapasien" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="583" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <Group type="103" rootIndex="3" groupAlignment="0" attributes="0">
-                  <Component id="obat" alignment="0" max="32767" attributes="0"/>
+                  <Component id="pn_formobat" alignment="0" max="32767" attributes="0"/>
               </Group>
               <Group type="103" rootIndex="4" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jpdokter" min="-2" max="-2" attributes="0"/>
+                      <Component id="pn_dokter" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="687" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -258,23 +258,23 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <EmptySpace min="0" pref="921" max="32767" attributes="0"/>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                  <Component id="jpembayaran" alignment="1" max="32767" attributes="0"/>
+                  <Component id="pn_pembayaran" alignment="1" max="32767" attributes="0"/>
               </Group>
               <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jdata" min="-2" max="-2" attributes="0"/>
+                      <Component id="pn_datapasien" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="181" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <Group type="103" rootIndex="3" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="obat" min="-2" max="-2" attributes="0"/>
+                      <Component id="pn_formobat" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <Group type="103" rootIndex="4" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jpdokter" min="-2" max="-2" attributes="0"/>
+                      <Component id="pn_dokter" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="393" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -282,7 +282,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="jpembayaran">
+        <Container class="javax.swing.JPanel" name="pn_pembayaran">
 
           <Layout>
             <DimensionLayout dim="0">
@@ -463,7 +463,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="jdata">
+        <Container class="javax.swing.JPanel" name="pn_datapasien">
 
           <Layout>
             <DimensionLayout dim="0">
@@ -822,7 +822,7 @@
             </Container>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="obat">
+        <Container class="javax.swing.JPanel" name="pn_formobat">
 
           <Layout>
             <DimensionLayout dim="0">
@@ -1087,48 +1087,49 @@
             </Container>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="jpdokter">
+        <Container class="javax.swing.JPanel" name="pn_dokter">
 
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jButton3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="jLabel39" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel42" alignment="1" min="-2" pref="79" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
-                              <Component id="id1" max="32767" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jButton3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel43" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                                      <Component id="nama" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel40" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel41" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel40" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel41" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jButton2" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="0" pref="419" max="32767" attributes="0"/>
+                                          <Component id="jpol" alignment="1" pref="529" max="32767" attributes="0"/>
+                                          <Component id="waktu" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel42" min="-2" pref="79" max="-2" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace min="19" pref="19" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jLabel43" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLabel39" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
                                           </Group>
-                                          <Component id="waktu" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jpol" alignment="0" pref="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="iddok" pref="529" max="32767" attributes="0"/>
+                                          <Component id="namadok" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -1148,13 +1149,13 @@
                       <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel39" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="id1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="iddok" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="tcari" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel43" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="nama" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="namadok" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -1192,12 +1193,12 @@
                 <Property name="text" type="java.lang.String" value="Jenis Poli"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="id1">
+            <Component class="javax.swing.JTextField" name="iddok">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="id1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="iddokActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="nama">
+            <Component class="javax.swing.JTextField" name="namadok">
             </Component>
             <Component class="javax.swing.JTextField" name="waktu">
             </Component>

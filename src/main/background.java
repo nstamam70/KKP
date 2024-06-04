@@ -17,7 +17,7 @@ public class background extends JPanel{
     private final Image image;
     
     public background(){
-        image = new ImageIcon(getClass().getResource("/gambar/bgr.jpg")).getImage();
+        image = new ImageIcon(getClass().getResource("/assets/Logo-klinik.jpg")).getImage();
     }
     
     @Override
