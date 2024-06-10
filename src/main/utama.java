@@ -384,7 +384,7 @@ public class utama extends javax.swing.JFrame {
         pn_pembayaranLayout.setHorizontalGroup(
             pn_pembayaranLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pn_pembayaranLayout.createSequentialGroup()
-                .addGap(118, 118, 118)
+                .addGap(111, 111, 111)
                 .addGroup(pn_pembayaranLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pn_pembayaranLayout.createSequentialGroup()
                         .addGroup(pn_pembayaranLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -792,7 +792,7 @@ public class utama extends javax.swing.JFrame {
                                     .addComponent(jnamaobat)
                                     .addComponent(cbsatuanobat, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jstokobat, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1013, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1006, Short.MAX_VALUE)
                 .addGroup(pn_formobatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(bedit)
                     .addComponent(bsimpan)
@@ -976,19 +976,19 @@ public class utama extends javax.swing.JFrame {
         pn_dasar.setLayout(pn_dasarLayout);
         pn_dasarLayout.setHorizontalGroup(
             pn_dasarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1582, Short.MAX_VALUE)
+            .addGap(0, 1575, Short.MAX_VALUE)
             .addGroup(pn_dasarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(pn_pembayaran, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(pn_dasarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pn_dasarLayout.createSequentialGroup()
                     .addComponent(pn_datapasien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 583, Short.MAX_VALUE)))
+                    .addGap(0, 576, Short.MAX_VALUE)))
             .addGroup(pn_dasarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(pn_formobat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(pn_dasarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pn_dasarLayout.createSequentialGroup()
                     .addComponent(pn_dokter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 687, Short.MAX_VALUE)))
+                    .addGap(0, 680, Short.MAX_VALUE)))
         );
         pn_dasarLayout.setVerticalGroup(
             pn_dasarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

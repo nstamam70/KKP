@@ -233,14 +233,14 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="1582" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="1575" max="32767" attributes="0"/>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Component id="pn_pembayaran" alignment="1" max="32767" attributes="0"/>
               </Group>
               <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="pn_datapasien" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="583" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="576" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <Group type="103" rootIndex="3" groupAlignment="0" attributes="0">
@@ -249,7 +249,7 @@
               <Group type="103" rootIndex="4" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="pn_dokter" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="687" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="680" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -288,7 +288,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="118" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="111" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -869,7 +869,7 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="1013" max="32767" attributes="0"/>
+                      <EmptySpace pref="1006" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="bedit" min="-2" max="-2" attributes="0"/>
                           <Component id="bsimpan" min="-2" max="-2" attributes="0"/>
