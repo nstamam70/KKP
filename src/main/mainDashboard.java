@@ -4,6 +4,8 @@
  */
 package main;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -12,12 +14,12 @@ import javax.swing.JFrame;
  *
  * @author Asus
  */
-public class dashboard extends javax.swing.JFrame {
+public class mainDashboard extends javax.swing.JFrame {
 
     /**
      * Creates new form dashboard
      */
-    public dashboard() {
+    public mainDashboard() {
         initComponents();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
@@ -34,6 +36,7 @@ public class dashboard extends javax.swing.JFrame {
     private void initComponents() {
 
         pn_navbar = new javax.swing.JPanel();
+        Logo = new javax.swing.JLabel();
         pn_sidebar = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         pn_menu = new javax.swing.JPanel();
@@ -41,19 +44,38 @@ public class dashboard extends javax.swing.JFrame {
         pn_utama = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         pn_navbar.setBackground(new java.awt.Color(0, 102, 102));
         pn_navbar.setPreferredSize(new java.awt.Dimension(827, 70));
+
+        Logo.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        Logo.setForeground(new java.awt.Color(255, 255, 255));
+        Logo.setText("Klinik Abu-Fatiyah");
 
         javax.swing.GroupLayout pn_navbarLayout = new javax.swing.GroupLayout(pn_navbar);
         pn_navbar.setLayout(pn_navbarLayout);
         pn_navbarLayout.setHorizontalGroup(
             pn_navbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 827, Short.MAX_VALUE)
+            .addGroup(pn_navbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pn_navbarLayout.createSequentialGroup()
+                    .addGap(258, 258, 258)
+                    .addComponent(Logo)
+                    .addContainerGap(258, Short.MAX_VALUE)))
         );
         pn_navbarLayout.setVerticalGroup(
             pn_navbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 70, Short.MAX_VALUE)
+            .addGroup(pn_navbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pn_navbarLayout.createSequentialGroup()
+                    .addGap(11, 11, 11)
+                    .addComponent(Logo)
+                    .addContainerGap(11, Short.MAX_VALUE)))
         );
 
         getContentPane().add(pn_navbar, java.awt.BorderLayout.PAGE_START);
@@ -102,6 +124,12 @@ public class dashboard extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        pn_utama.add(new content_bg());
+        pn_utama.repaint();
+        pn_utama.revalidate();
+    }//GEN-LAST:event_formWindowOpened
+
     /**
      * @param args the command line arguments
      */
@@ -119,25 +147,27 @@ public class dashboard extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mainDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mainDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mainDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mainDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new dashboard().setVisible(true);
+                new mainDashboard().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Logo;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel pn_content;
     private javax.swing.JPanel pn_menu;
@@ -147,23 +177,83 @@ public class dashboard extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void execute() {
+        //Icon Menu
         ImageIcon iconMaster = new ImageIcon(getClass().getResource("/assets/Data.png"));
         ImageIcon iconObat = new ImageIcon(getClass().getResource("/assets/Pill.png"));
         ImageIcon iconPembayaran = new ImageIcon(getClass().getResource("/assets/cc.png"));
         ImageIcon iconPemeriksaan = new ImageIcon(getClass().getResource("/assets/pemeriksaan.png"));
-        
         ImageIcon iconPasien = new ImageIcon(getClass().getResource("/assets/pasienn.png"));
         ImageIcon iconDokter = new ImageIcon(getClass().getResource("/assets/dokter.png"));
 
-        MenuItem Data1 = new MenuItem(null, true, iconPasien, "Pasien", null);
-        MenuItem Data2 = new MenuItem(null, true, iconDokter, "Dokter", null);
+        //Sub Menu
+        MenuItem Data1 = new MenuItem(null, true, iconPasien, "Pasien", new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                pn_utama.removeAll();
+                pn_utama.add(new FormPasien());
+                pn_utama.repaint();
+                pn_utama.revalidate();
+            }
+        });
+        MenuItem Data2 = new MenuItem(null, true, iconDokter, "Dokter", new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                pn_utama.removeAll();
+                pn_utama.add(new FormDokter());
+                pn_utama.repaint();
+                pn_utama.revalidate();
+            }
+        });
 
+        //Menu Utama
+        MenuItem menuDashboard = new MenuItem(iconPemeriksaan, false, null, "Dashboard", new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                pn_utama.removeAll();
+                pn_utama.add(new ViewDashboard());
+                pn_utama.repaint();
+                pn_utama.revalidate();
+            }
+        });
         MenuItem menuData = new MenuItem(iconMaster, false, null, "Data", null, Data1, Data2);
-        MenuItem menuPemeriksaan = new MenuItem(iconPemeriksaan, false, null, "Pemeriksaan", null);
-        MenuItem menuObat = new MenuItem(iconObat, false, null, "Obat", null);
-        MenuItem menuPembayaran = new MenuItem(iconPembayaran, false, null, "Pembayaran", null);
+        MenuItem menuPemeriksaan = new MenuItem(iconPemeriksaan, false, null, "Pemeriksaan", new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                pn_utama.removeAll();
+                pn_utama.add(new FormPemeriksaan());
+                pn_utama.repaint();
+                pn_utama.revalidate();
+            }
+        });
+        MenuItem menuObat = new MenuItem(iconObat, false, null, "Obat", new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                pn_utama.removeAll();
+                pn_utama.add(new FormObat());
+                pn_utama.repaint();
+                pn_utama.revalidate();
+            }
+        });
+        MenuItem menuKhitan = new MenuItem(iconObat, false, null, "Khitan", new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                pn_utama.removeAll();
+                pn_utama.add(new FormKhitan());
+                pn_utama.repaint();
+                pn_utama.revalidate();
+            }
+        });
+        MenuItem menuPembayaran = new MenuItem(iconPembayaran, false, null, "Pembayaran", new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                pn_utama.removeAll();
+                pn_utama.add(new FormPembayaran());
+                pn_utama.repaint();
+                pn_utama.revalidate();
+            }
+        });
 
-        addMenu(menuData, menuPemeriksaan, menuObat, menuPembayaran);
+        addMenu(menuDashboard, menuData, menuPemeriksaan, menuObat, menuKhitan, menuPembayaran);
     }
 
     private void addMenu(MenuItem... menu) {
