@@ -4,11 +4,16 @@
  */
 package main;
 
+import tablesearch.cariPasienCheck;
+import tablesearch.cariPasien;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import connection.connect;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import tablesearch.cariDokterCheck;
+import tablesearch.cariObatCheck;
 
 /**
  *
@@ -18,17 +23,75 @@ public class FormPemeriksaan extends javax.swing.JPanel {
 
     private Connection conn = new connect().connect();
     private DefaultTableModel tabmode;
+    public String tidpas, tnama, tumur, tjk, tndok, tspc, tiddok, tidobat, tnamaobat;
 
-    /**
-     * Creates new form FormDokter
-     */
+    public String getIdPas() {
+        return tidpas;
+    }
+
+    public String getIdOb() {
+        return tidobat;
+    }
+
+    public String getIdNamaOb() {
+        return tnamaobat;
+    }
+
+    public String getIdDok() {
+        return tiddok;
+    }
+
+    public String getNamaPas() {
+        return tnama;
+    }
+
+    public String getUmurPas() {
+        return tumur;
+    }
+
+    public String getJkPas() {
+        return tjk;
+    }
+
+    public String getNamaDok() {
+        return tndok;
+    }
+
+    public String getSpcDok() {
+        return tspc;
+    }
+
+    public void obatTerpilih() {
+        cariObatCheck co = new cariObatCheck();
+        co.check = this;
+        idobat.setText(tidobat);
+        resep.setText(tnamaobat);
+    }
+
+    public void dokterTerpilih() {
+        cariDokterCheck cd = new cariDokterCheck();
+        cd.check = this;
+        iddok.setText(tiddok);
+        nmdokter.setText(tndok);
+        spcl.setText(tspc);
+    }
+
+    public void pasienTerpilih() {
+        cariPasien cp = new cariPasien();
+        cp.check = this;
+        nama.setText(tidpas);
+        idpas.setText(tnama);
+        usia.setText(tumur);
+        jk.setText(tjk);
+    }
+
     public FormPemeriksaan() {
         initComponents();
         datatable();
     }
 
     private void aktif() {
-        nama.setEnabled(true);
+        idpas.setEnabled(true);
         tgl.setEnabled(true);
         usia.setEnabled(true);
         jk.setEnabled(true);
@@ -40,14 +103,14 @@ public class FormPemeriksaan extends javax.swing.JPanel {
         keluhan.setEnabled(true);
         diagnosa.setEnabled(true);
         resep.setEnabled(true);
-        nama.requestFocus();
+        idpas.requestFocus();
     }
 
     private void clear() {
-        nama.setText("");
+        idpas.setText("");
         tgl.setDate(null);
         usia.setText("");
-        jk.setSelectedItem("");
+        jk.setText("");
         nmdokter.setText("");
         spcl.setText("");
         bb.setText("");
@@ -115,21 +178,24 @@ public class FormPemeriksaan extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         keluhan = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
-        nama = new javax.swing.JTextField();
+        idpas = new javax.swing.JTextField();
         cari1 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         diagnosa = new javax.swing.JTextArea();
         jLabel5 = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        resep = new javax.swing.JTextArea();
         usia = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         simpan = new javax.swing.JButton();
-        jk = new javax.swing.JComboBox<>();
         kembali = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         tgl = new com.toedter.calendar.JDateChooser();
         nmdokter = new javax.swing.JTextField();
+        jk = new javax.swing.JTextField();
+        nama = new javax.swing.JTextField();
+        iddok = new javax.swing.JTextField();
+        resep = new javax.swing.JTextField();
+        cari3 = new javax.swing.JButton();
+        idobat = new javax.swing.JTextField();
 
         setLayout(new java.awt.CardLayout());
 
@@ -146,6 +212,11 @@ public class FormPemeriksaan extends javax.swing.JPanel {
         });
 
         bt_hapus.setText("Hapus");
+        bt_hapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_hapusActionPerformed(evt);
+            }
+        });
 
         bt_kembali.setText("Kembali");
         bt_kembali.addActionListener(new java.awt.event.ActionListener() {
@@ -165,6 +236,11 @@ public class FormPemeriksaan extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tpemeriksaan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tpemeriksaanMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tpemeriksaan);
 
         javax.swing.GroupLayout pn_dataPemeriksaanLayout = new javax.swing.GroupLayout(pn_dataPemeriksaan);
@@ -173,7 +249,7 @@ public class FormPemeriksaan extends javax.swing.JPanel {
             pn_dataPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pn_dataPemeriksaanLayout.createSequentialGroup()
                 .addGroup(pn_dataPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 950, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1027, Short.MAX_VALUE)
                     .addGroup(pn_dataPemeriksaanLayout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addGroup(pn_dataPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,7 +275,7 @@ public class FormPemeriksaan extends javax.swing.JPanel {
                     .addComponent(bt_kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
 
         mainPanel.add(pn_dataPemeriksaan, "card2");
@@ -253,9 +329,9 @@ public class FormPemeriksaan extends javax.swing.JPanel {
 
         jLabel4.setText("Nama Pasien");
 
-        nama.addActionListener(new java.awt.event.ActionListener() {
+        idpas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                namaActionPerformed(evt);
+                idpasActionPerformed(evt);
             }
         });
 
@@ -272,10 +348,6 @@ public class FormPemeriksaan extends javax.swing.JPanel {
 
         jLabel5.setText("Usia");
 
-        resep.setColumns(20);
-        resep.setRows(5);
-        jScrollPane4.setViewportView(resep);
-
         jLabel6.setText("Jenis Kelamin");
 
         simpan.setText("Simpan");
@@ -284,8 +356,6 @@ public class FormPemeriksaan extends javax.swing.JPanel {
                 simpanActionPerformed(evt);
             }
         });
-
-        jk.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Laki_Laki", "Perempuan" }));
 
         kembali.setText("Kembali");
         kembali.addActionListener(new java.awt.event.ActionListener() {
@@ -296,59 +366,69 @@ public class FormPemeriksaan extends javax.swing.JPanel {
 
         jLabel7.setText("Nama Dokter");
 
+        nama.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                namaActionPerformed(evt);
+            }
+        });
+
+        cari3.setText("Cari");
+        cari3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cari3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pn_formPemeriksaanLayout = new javax.swing.GroupLayout(pn_formPemeriksaan);
         pn_formPemeriksaan.setLayout(pn_formPemeriksaanLayout);
         pn_formPemeriksaanLayout.setHorizontalGroup(
             pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pn_formPemeriksaanLayout.createSequentialGroup()
+                .addGap(39, 39, 39)
                 .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pn_formPemeriksaanLayout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jLabel2))
+                        .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel7)
+                            .addGroup(pn_formPemeriksaanLayout.createSequentialGroup()
+                                .addGap(523, 523, 523)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(pn_formPemeriksaanLayout.createSequentialGroup()
+                                    .addComponent(nmdokter, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(iddok, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cari2))
+                                .addGroup(pn_formPemeriksaanLayout.createSequentialGroup()
+                                    .addComponent(nama)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(idpas, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(cari1))
+                                .addGroup(pn_formPemeriksaanLayout.createSequentialGroup()
+                                    .addComponent(jLabel5)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(usia, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jLabel6)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jk, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(pn_formPemeriksaanLayout.createSequentialGroup()
-                        .addGap(39, 39, 39)
                         .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pn_formPemeriksaanLayout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(pn_formPemeriksaanLayout.createSequentialGroup()
-                                        .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel4)
-                                            .addComponent(jLabel7)
-                                            .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addGroup(pn_formPemeriksaanLayout.createSequentialGroup()
-                                                    .addComponent(nama, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(cari1)
-                                                    .addGap(25, 25, 25))
-                                                .addGroup(pn_formPemeriksaanLayout.createSequentialGroup()
-                                                    .addComponent(nmdokter, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                    .addComponent(cari2))))
-                                        .addGap(0, 0, 0)
-                                        .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel3)
-                                            .addComponent(tgl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(pn_formPemeriksaanLayout.createSequentialGroup()
-                                        .addComponent(jLabel5)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(usia, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jLabel6)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(pn_formPemeriksaanLayout.createSequentialGroup()
-                                .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel12))
-                                .addGap(7, 7, 7)
-                                .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel13)
-                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(523, 523, 523)
+                                        .addComponent(tgl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_formPemeriksaanLayout.createSequentialGroup()
+                                        .addComponent(jLabel12)
+                                        .addGap(287, 287, 287)
+                                        .addComponent(jLabel13)
+                                        .addGap(267, 267, 267)))
                                 .addGap(14, 14, 14)
-                                .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel14)
-                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jLabel14))
                             .addGroup(pn_formPemeriksaanLayout.createSequentialGroup()
                                 .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(pn_formPemeriksaanLayout.createSequentialGroup()
@@ -362,39 +442,50 @@ public class FormPemeriksaan extends javax.swing.JPanel {
                                     .addComponent(jLabel10))
                                 .addGap(18, 18, 18)
                                 .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(pn_formPemeriksaanLayout.createSequentialGroup()
-                                        .addComponent(jLabel9)
-                                        .addGap(73, 73, 73)
-                                        .addComponent(jLabel11))
-                                    .addGroup(pn_formPemeriksaanLayout.createSequentialGroup()
-                                        .addComponent(tb, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(16, 16, 16)
-                                        .addComponent(td, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                    .addGroup(pn_formPemeriksaanLayout.createSequentialGroup()
-                        .addGap(166, 166, 166)
-                        .addComponent(simpan)
-                        .addGap(107, 107, 107)
-                        .addComponent(kembali)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(tb, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel9))
+                                .addGap(16, 16, 16)
+                                .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel11)
+                                    .addComponent(td, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(pn_formPemeriksaanLayout.createSequentialGroup()
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(7, 7, 7)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addComponent(resep, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(idobat, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cari3))
+                            .addGroup(pn_formPemeriksaanLayout.createSequentialGroup()
+                                .addComponent(simpan, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(kembali)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(pn_formPemeriksaanLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jLabel2)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         pn_formPemeriksaanLayout.setVerticalGroup(
             pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pn_formPemeriksaanLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jLabel2)
-                .addGap(26, 26, 26)
-                .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel3))
-                .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(14, 14, 14)
+                .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pn_formPemeriksaanLayout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel4))
+                    .addGroup(pn_formPemeriksaanLayout.createSequentialGroup()
+                        .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(nama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cari1)))
-                    .addGroup(pn_formPemeriksaanLayout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(tgl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(tgl, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(idpas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cari1)
+                    .addComponent(nama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -404,39 +495,40 @@ public class FormPemeriksaan extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(pn_formPemeriksaanLayout.createSequentialGroup()
-                        .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(nmdokter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cari2))
-                        .addGap(18, 18, 18)
-                        .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel8))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(spcl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(td, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(pn_formPemeriksaanLayout.createSequentialGroup()
-                        .addComponent(jLabel11)
-                        .addGap(28, 28, 28)))
+                .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nmdokter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cari2)
+                    .addComponent(iddok, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel11))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(spcl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(td, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(jLabel14)
                     .addComponent(jLabel13))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2)
-                    .addComponent(jScrollPane3)
-                    .addComponent(jScrollPane4))
+                .addGap(0, 0, 0)
+                .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(resep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cari3)
+                        .addComponent(idobat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jScrollPane2)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(simpan)
-                    .addComponent(kembali))
-                .addContainerGap(36, Short.MAX_VALUE))
+                    .addComponent(simpan, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         mainPanel.add(pn_formPemeriksaan, "card2");
@@ -455,22 +547,13 @@ public class FormPemeriksaan extends javax.swing.JPanel {
     }//GEN-LAST:event_tambahActionPerformed
 
     private void cari2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cari2ActionPerformed
-        // TODO add your handling code here:
-        String sql = "select * from dokter where DokterId = '" + nmdokter.getText() + "'";
-        try {
-            java.sql.Statement stat = conn.createStatement();
-            ResultSet hasil = stat.executeQuery(sql);
-            while (hasil.next()) {
-                String a = hasil.getString("DokterId");
-                String b = hasil.getString("Spesialis");
-
-                nmdokter.setText(a);
-                spcl.setText(b);
-                nmdokter.setEnabled(false);
-                spcl.setEnabled(false);
-            }
-        } catch (Exception ex) {
-        }
+        cariDokterCheck cd = new cariDokterCheck();
+        cd.check = this;
+        cd.setVisible(true);
+        cd.setResizable(false);
+        iddok.setEnabled(false);
+        nmdokter.setEnabled(false);
+        spcl.setEnabled(false);
     }//GEN-LAST:event_cari2ActionPerformed
 
     private void spclActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spclActionPerformed
@@ -485,68 +568,59 @@ public class FormPemeriksaan extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_tbActionPerformed
 
-    private void namaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namaActionPerformed
+    private void idpasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idpasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_namaActionPerformed
+    }//GEN-LAST:event_idpasActionPerformed
 
     private void cari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cari1ActionPerformed
-        // TODO add your handling code here:
-        String sql = "select * from pasien where PasienId = '" + nama.getText() + "'";
-        try {
-            java.sql.Statement stat = conn.createStatement();
-            ResultSet hasil = stat.executeQuery(sql);
-            while (hasil.next()) {
-                String a = hasil.getString("PasienId");
-                String b = hasil.getString("Usia");
-                String c = hasil.getString("Jenkel");
-
-                nama.setText(a);
-                usia.setText(b);
-                jk.setSelectedItem(c);
-                nama.setEnabled(false);
-                usia.setEnabled(false);
-                jk.setEnabled(false);
-            }
-        } catch (Exception ex) {
-        }
+        cariPasienCheck cp = new cariPasienCheck();
+        cp.check = this;
+        cp.setVisible(true);
+        cp.setResizable(false);
+        nama.setEnabled(false);
+        idpas.setEnabled(false);
+        usia.setEnabled(false);
+        jk.setEnabled(false);
     }//GEN-LAST:event_cari1ActionPerformed
 
     private void simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanActionPerformed
         // TODO add your handling code here:
+        String idpass = idpas.getText();
         String napes = nama.getText();
         java.util.Date date = tgl.getDate();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String umur = usia.getText();
-        String jenkel = jk.getSelectedItem().toString();
+        String jenkel = jk.getText();
         String tgl_periksa = sdf.format(date);
-        String nadok = nmdokter.getText();
+        String iddokk = iddok.getText();
         String special = spcl.getText();
         String berat = bb.getText();
         String tinggi = tb.getText();
         String tekanan = td.getText();
         String ngeluh = keluhan.getText();
         String diag = diagnosa.getText();
-        String obat = resep.getText();
+        String obat = idobat.getText();
 
-        String sql = "INSERT INTO pemeriksaan (PasienId,Tanggal, Tb, Bb, Diagnosa, ObatId, IdDokter, TekananDarah) VALUES (?, ?, ?, ?, ?, ?, ?,?)";
+        String sql = "INSERT INTO pemeriksaan (PasienId,Tanggal, Tb, Bb, Diagnosa, ObatId, IdDokter, TekananDarah,keluhan) VALUES (?, ?, ?, ?, ?, ?, ?,?,?)";
 
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
 
-            pst.setString(1, napes);
+            pst.setString(1, idpass);
             pst.setString(2, tgl_periksa);
-            pst.setString(7, nadok);
+            pst.setString(7, iddokk);
             pst.setString(4, berat);
             pst.setString(3, tinggi);
             pst.setString(8, tekanan);
             pst.setString(5, diag);
             pst.setString(6, obat);
+            pst.setString(9, ngeluh);
 
             pst.executeUpdate();
 
-            JOptionPane.showMessageDialog(this, "Data Dokter berhasil disimpan", "Berhasil", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Data Pemeriksaan berhasil disimpan", "Berhasil", JOptionPane.INFORMATION_MESSAGE);
             clear();
-            nama.requestFocus();
+            idpas.requestFocus();
             datatable();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, "Kesalahan database: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -567,6 +641,77 @@ public class FormPemeriksaan extends javax.swing.JPanel {
         mainPanel.revalidate();
     }//GEN-LAST:event_bt_kembaliActionPerformed
 
+    private void namaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_namaActionPerformed
+
+    private void cari3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cari3ActionPerformed
+        cariObatCheck co = new cariObatCheck();
+        co.check = this;
+        co.setVisible(true);
+        co.setResizable(false);
+        resep.setEnabled(false);
+        idobat.setEnabled(false);
+    }//GEN-LAST:event_cari3ActionPerformed
+
+    private void bt_hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_hapusActionPerformed
+        int ok = JOptionPane.showConfirmDialog(null, "hapus", "Konfirmasi Dialog", JOptionPane.YES_NO_CANCEL_OPTION);
+        if (ok == 0) {
+            String sql = "delete from pemeriksaan where PemeriksaanId ='" + idpas.getText() + "'";
+            try {
+                PreparedStatement stat = conn.prepareStatement(sql);
+                stat.executeUpdate();
+                JOptionPane.showMessageDialog(null, "data berhasi dihapus");;
+                clear();
+                idpas.requestFocus();
+                datatable();
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Data gagal dihapus" + e);
+            }
+        }
+    }//GEN-LAST:event_bt_hapusActionPerformed
+
+    private void tpemeriksaanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tpemeriksaanMouseClicked
+      int clc = tpemeriksaan.getSelectedRow();
+    
+    if (clc != -1) { // Pastikan ada baris yang dipilih
+        String a = tabmode.getValueAt(clc, 0).toString();
+        String b = tabmode.getValueAt(clc, 1).toString();
+        String c = tabmode.getValueAt(clc, 2).toString();
+        String d = tabmode.getValueAt(clc, 3).toString();
+        String e = tabmode.getValueAt(clc, 4).toString();
+        String f = tabmode.getValueAt(clc, 5).toString();
+        String g = tabmode.getValueAt(clc, 6).toString();
+        String h = tabmode.getValueAt(clc, 7).toString();
+        String i = tabmode.getValueAt(clc, 8).toString();
+        String j = tabmode.getValueAt(clc, 9).toString();
+        String k = tabmode.getValueAt(clc, 10).toString();
+        String l = tabmode.getValueAt(clc, 11).toString();
+
+        idpas.setText(a);
+        
+        // Mengatur nilai pada JDateChooser, misalnya tgl
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            java.util.Date date = sdf.parse(b);
+            tgl.setDate(date);
+        } catch (ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        usia.setText(c);
+        jk.setText(d);
+        nmdokter.setText(e);
+        spcl.setText(f);
+        bb.setText(g);
+        tb.setText(h);
+        td.setText(i);
+        keluhan.setText(j);
+        diagnosa.setText(k);
+        resep.setText(l);
+    }
+    }//GEN-LAST:event_tpemeriksaanMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField bb;
@@ -574,7 +719,11 @@ public class FormPemeriksaan extends javax.swing.JPanel {
     private javax.swing.JButton bt_kembali;
     private javax.swing.JButton cari1;
     private javax.swing.JButton cari2;
+    private javax.swing.JButton cari3;
     private javax.swing.JTextArea diagnosa;
+    private javax.swing.JTextField iddok;
+    private javax.swing.JTextField idobat;
+    private javax.swing.JTextField idpas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -592,8 +741,7 @@ public class FormPemeriksaan extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JComboBox<String> jk;
+    private javax.swing.JTextField jk;
     private javax.swing.JTextArea keluhan;
     private javax.swing.JButton kembali;
     private javax.swing.JPanel mainPanel;
@@ -601,7 +749,7 @@ public class FormPemeriksaan extends javax.swing.JPanel {
     private javax.swing.JTextField nmdokter;
     private javax.swing.JPanel pn_dataPemeriksaan;
     private javax.swing.JPanel pn_formPemeriksaan;
-    private javax.swing.JTextArea resep;
+    private javax.swing.JTextField resep;
     private javax.swing.JButton simpan;
     private javax.swing.JTextField spcl;
     private javax.swing.JButton tambah;

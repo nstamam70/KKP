@@ -4,6 +4,10 @@
  */
 package main;
 
+import tablesearch.cariResep;
+import tablesearch.cariPasien;
+import tablesearch.cariObat;
+
 /**
  *
  * @author LENOVO
