@@ -4,6 +4,14 @@
  */
 package main;
 
+import connection.connect;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import javax.swing.JOptionPane;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import tablesearch.cariResep;
 import tablesearch.cariPasien;
 import tablesearch.cariObat;
@@ -13,27 +21,79 @@ import tablesearch.cariObat;
  * @author LENOVO
  */
 public class FormPembayaran extends javax.swing.JPanel {
+    private Connection conn = new connect().connect();
 
     /**
      * Creates new form FormDokter
      */
     public FormPembayaran() {
         initComponents();
+        tuangbayar.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                hitungUangKembali();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                hitungUangKembali();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                hitungUangKembali();
+            }
+        });
     }
-    public String tnama;
-    public String tresepobat;
-    public String tobat;
-    
+    public String tnama, tresepobat, tobat, thargaobat;
+
     public String getNamaPas() {
         return tnama;
     }
-    
+
     public String getObat() {
         return tnama;
     }
-    
+
     public String getResep() {
         return tresepobat;
+    }
+
+    public String getHargaobat() {
+        return thargaobat;
+    }
+    
+    private void updateTotalHarga() {
+        try {
+            int totalBeli = Integer.parseInt(ttotalbeli.getText());
+            int hargaPerUnit = Integer.parseInt(ttotalharga.getText());
+            int totalHarga = totalBeli * hargaPerUnit;
+            ttotalharga.setText(String.valueOf(totalHarga));
+
+           
+            hitungUangKembali();
+        } catch (NumberFormatException ex) {
+            ttotalharga.setText("Input tidak valid");
+            tuangkembali.setText("");
+        }
+    }
+
+
+    private void hitungUangKembali() {
+        try {
+            
+            int totalHarga = Integer.parseInt(ttotalharga.getText());
+            int uangPembayaran = Integer.parseInt(tuangbayar.getText());
+
+            if (uangPembayaran >= totalHarga) {
+                int uangKembali = uangPembayaran - totalHarga;
+                tuangkembali.setText(String.valueOf(uangKembali));
+            } else {
+                tuangkembali.setText("Uang tidak cukup");
+            }
+        } catch (NumberFormatException ex) {
+            tuangkembali.setText("Input tidak valid");
+        }
     }
 
     public void pasienTerpilih() {
@@ -41,17 +101,18 @@ public class FormPembayaran extends javax.swing.JPanel {
         cp.payment = this;
         tnamapasien.setText(tnama);
     }
-    
+
     public void resepTerpilih() {
         cariResep cr = new cariResep();
         cr.payment = this;
         tresep.setText(tresepobat);
     }
-    
+
     public void obatTerpilih() {
         cariObat co = new cariObat();
         co.payment = this;
         tpilihobat.setText(tobat);
+        ttotalharga.setText(thargaobat);
     }
 
     /**
@@ -94,6 +155,8 @@ public class FormPembayaran extends javax.swing.JPanel {
         bt_simpan = new javax.swing.JButton();
         btn_pasien = new javax.swing.JButton();
         btn_resep = new javax.swing.JButton();
+        tanggal = new com.toedter.calendar.JDateChooser();
+        jLabel11 = new javax.swing.JLabel();
 
         setLayout(new java.awt.CardLayout());
 
@@ -167,7 +230,7 @@ public class FormPembayaran extends javax.swing.JPanel {
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(53, 53, 53)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(171, Short.MAX_VALUE))
+                .addContainerGap(178, Short.MAX_VALUE))
         );
 
         mainPanel.add(pn_dataPembayaran, "card2");
@@ -243,6 +306,8 @@ public class FormPembayaran extends javax.swing.JPanel {
             }
         });
 
+        jLabel11.setText("Tanggal");
+
         javax.swing.GroupLayout pn_formPembayaranLayout = new javax.swing.GroupLayout(pn_formPembayaran);
         pn_formPembayaran.setLayout(pn_formPembayaranLayout);
         pn_formPembayaranLayout.setHorizontalGroup(
@@ -250,51 +315,69 @@ public class FormPembayaran extends javax.swing.JPanel {
             .addGroup(pn_formPembayaranLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(pn_formPembayaranLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tuangbayar, javax.swing.GroupLayout.PREFERRED_SIZE, 668, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pn_formPembayaranLayout.createSequentialGroup()
-                        .addComponent(bt_simpan, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bt_back, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pn_formPembayaranLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel2)
-                        .addComponent(jLabel4)
-                        .addComponent(jLabel5)
-                        .addComponent(jLabel6)
-                        .addComponent(jLabel7)
-                        .addComponent(tuangkembali, javax.swing.GroupLayout.PREFERRED_SIZE, 668, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel8)
-                        .addGroup(pn_formPembayaranLayout.createSequentialGroup()
-                            .addGroup(pn_formPembayaranLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(ttotalbeli, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel9))
-                            .addGap(18, 18, 18)
-                            .addGroup(pn_formPembayaranLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel10)
-                                .addComponent(ttotalharga)))
-                        .addGroup(pn_formPembayaranLayout.createSequentialGroup()
-                            .addGroup(pn_formPembayaranLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(tnamaadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(tpilihobat, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(btn_obat, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_formPembayaranLayout.createSequentialGroup()
-                            .addGroup(pn_formPembayaranLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(tresep, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(tnamapasien, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE))
-                            .addGap(18, 18, 18)
-                            .addGroup(pn_formPembayaranLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(btn_resep, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btn_pasien, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(266, Short.MAX_VALUE))
+                        .addGroup(pn_formPembayaranLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tuangbayar, javax.swing.GroupLayout.PREFERRED_SIZE, 668, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pn_formPembayaranLayout.createSequentialGroup()
+                                .addComponent(bt_simpan, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(bt_back, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pn_formPembayaranLayout.createSequentialGroup()
+                        .addGroup(pn_formPembayaranLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7)
+                            .addComponent(tuangkembali, javax.swing.GroupLayout.PREFERRED_SIZE, 668, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8)
+                            .addGroup(pn_formPembayaranLayout.createSequentialGroup()
+                                .addGroup(pn_formPembayaranLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pn_formPembayaranLayout.createSequentialGroup()
+                                        .addComponent(jLabel9)
+                                        .addGap(47, 47, 47))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_formPembayaranLayout.createSequentialGroup()
+                                        .addComponent(ttotalbeli, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)))
+                                .addGroup(pn_formPembayaranLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel10)
+                                    .addComponent(ttotalharga)))
+                            .addGroup(pn_formPembayaranLayout.createSequentialGroup()
+                                .addGroup(pn_formPembayaranLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(tnamaadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tpilihobat, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn_obat, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_formPembayaranLayout.createSequentialGroup()
+                                .addGroup(pn_formPembayaranLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(tresep, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tnamapasien, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addGroup(pn_formPembayaranLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btn_resep, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btn_pasien, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(pn_formPembayaranLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11))
+                        .addGap(87, 87, 87))))
         );
         pn_formPembayaranLayout.setVerticalGroup(
             pn_formPembayaranLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pn_formPembayaranLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addGap(37, 37, 37)
-                .addComponent(jLabel3)
+                .addGroup(pn_formPembayaranLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pn_formPembayaranLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2)
+                        .addGap(37, 37, 37)
+                        .addComponent(jLabel3))
+                    .addGroup(pn_formPembayaranLayout.createSequentialGroup()
+                        .addGap(53, 53, 53)
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pn_formPembayaranLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(tnamapasien, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -320,11 +403,12 @@ public class FormPembayaran extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ttotalbeli, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(pn_formPembayaranLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ttotalbeli, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ttotalharga, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(pn_formPembayaranLayout.createSequentialGroup()
                         .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ttotalharga, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(51, 51, 51)))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -337,7 +421,7 @@ public class FormPembayaran extends javax.swing.JPanel {
                 .addGroup(pn_formPembayaranLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bt_simpan, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bt_back, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         mainPanel.add(pn_formPembayaran, "card2");
@@ -373,7 +457,42 @@ public class FormPembayaran extends javax.swing.JPanel {
     }//GEN-LAST:event_bt_backActionPerformed
 
     private void bt_simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_simpanActionPerformed
-        // TODO add your handling code here:
+//        String nama = tnamapasien.getText();
+//        String resep = tresep.getText();
+//        java.util.Date date = tanggal.getDate();
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//        String obat = tpilihobat.getText();
+//        String admin = tnamaadmin.getText();
+//        String tanggal = sdf.format(date);
+//        String beli = ttotalbeli.getText();
+//        String harga = ttotalharga.getText();
+//        String bayar = tuangbayar.getText();
+//        String kembali = tuangkembali.getText();
+//
+//        String sql = "INSERT INTO pembayaran (PasienId,ObatId, NamaAdmin, Tanggal, TotalBeli, TotalHarga, Bayar, Kembali,keluhan) VALUES (?, ?, ?, ?, ?, ?, ?,?,?)";
+//
+//        try {
+//            PreparedStatement pst = conn.prepareStatement(sql);
+//
+//            pst.setString(1, nama);
+//            pst.setString(2, obat);
+//            pst.setString(3, admin);
+//            pst.setString(4, tanggal);
+//            pst.setString(5, beli);
+//            pst.setString(6, harga);
+//            pst.setString(7, bayar);
+//            pst.setString(8, kembali);
+//            pst.setString(9, ngeluh);
+//
+//            pst.executeUpdate();
+//
+//            JOptionPane.showMessageDialog(this, "Data Pemeriksaan berhasil disimpan", "Berhasil", JOptionPane.INFORMATION_MESSAGE);
+//            clear();
+//            idpas.requestFocus();
+//            datatable();
+//        } catch (SQLException ex) {
+//            JOptionPane.showMessageDialog(this, "Kesalahan database: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+//        }
     }//GEN-LAST:event_bt_simpanActionPerformed
 
     private void tuangbayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tuangbayarActionPerformed
@@ -405,6 +524,7 @@ public class FormPembayaran extends javax.swing.JPanel {
         co.setVisible(true);
         co.setResizable(false);
         tpilihobat.setEnabled(false);
+        ttotalharga.setEnabled(false);
     }//GEN-LAST:event_btn_obatActionPerformed
 
 
@@ -419,6 +539,7 @@ public class FormPembayaran extends javax.swing.JPanel {
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -432,6 +553,7 @@ public class FormPembayaran extends javax.swing.JPanel {
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPanel pn_dataPembayaran;
     private javax.swing.JPanel pn_formPembayaran;
+    private com.toedter.calendar.JDateChooser tanggal;
     private javax.swing.JTextField tnamaadmin;
     private javax.swing.JTextField tnamapasien;
     private javax.swing.JTextField tpilihobat;

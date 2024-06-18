@@ -28,7 +28,7 @@ public class cariObat extends javax.swing.JFrame {
     }
     
     protected void datatable() {
-        Object[] clcis = {"Nama", "Kode", "Satuan", "Harga"};
+        Object[] clcis = {"Nama", "Harga", "Satuan", "Kode"};
         tabmode = new DefaultTableModel(null, clcis);
         tableobat.setModel(tabmode);
         String sql = "select * from obat";
@@ -37,9 +37,9 @@ public class cariObat extends javax.swing.JFrame {
             ResultSet hasil = stat.executeQuery(sql);
             while (hasil.next()) {
                 String a = hasil.getString("Nama");
-                String b = hasil.getString("Kode");
+                String b = hasil.getString("Harga");
                 String c = hasil.getString("Satuan");
-                String d = hasil.getString("Harga");
+                String d = hasil.getString("Kode");
 
                 String[] data = {a, b, c, d};
                 tabmode.addRow(data);
@@ -98,6 +98,7 @@ public class cariObat extends javax.swing.JFrame {
         // TODO add your handling code here:
          int tabmode = tableobat.getSelectedRow();
         payment.tobat = tableobat.getValueAt(tabmode, 0).toString();
+        payment.thargaobat = tableobat.getValueAt(tabmode, 1).toString();
         payment.obatTerpilih();
         this.dispose();
     }//GEN-LAST:event_tableobatMouseClicked
