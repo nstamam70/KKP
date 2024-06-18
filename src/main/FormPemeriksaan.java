@@ -657,7 +657,7 @@ public class FormPemeriksaan extends javax.swing.JPanel {
     private void bt_hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_hapusActionPerformed
         int ok = JOptionPane.showConfirmDialog(null, "hapus", "Konfirmasi Dialog", JOptionPane.YES_NO_CANCEL_OPTION);
         if (ok == 0) {
-            String sql = "delete from pemeriksaan where PemeriksaanId ='" + idpas.getText() + "'";
+            String sql = "delete from pemeriksaan where PasienId ='" + idpas.getText() + "'";
             try {
                 PreparedStatement stat = conn.prepareStatement(sql);
                 stat.executeUpdate();
@@ -672,44 +672,18 @@ public class FormPemeriksaan extends javax.swing.JPanel {
     }//GEN-LAST:event_bt_hapusActionPerformed
 
     private void tpemeriksaanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tpemeriksaanMouseClicked
-      int clc = tpemeriksaan.getSelectedRow();
-    
-    if (clc != -1) { // Pastikan ada baris yang dipilih
-        String a = tabmode.getValueAt(clc, 0).toString();
-        String b = tabmode.getValueAt(clc, 1).toString();
-        String c = tabmode.getValueAt(clc, 2).toString();
-        String d = tabmode.getValueAt(clc, 3).toString();
-        String e = tabmode.getValueAt(clc, 4).toString();
-        String f = tabmode.getValueAt(clc, 5).toString();
-        String g = tabmode.getValueAt(clc, 6).toString();
-        String h = tabmode.getValueAt(clc, 7).toString();
-        String i = tabmode.getValueAt(clc, 8).toString();
-        String j = tabmode.getValueAt(clc, 9).toString();
-        String k = tabmode.getValueAt(clc, 10).toString();
-        String l = tabmode.getValueAt(clc, 11).toString();
+        int row = tpemeriksaan.getSelectedRow();
 
-        idpas.setText(a);
-        
-        // Mengatur nilai pada JDateChooser, misalnya tgl
-        try {
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            java.util.Date date = sdf.parse(b);
-            tgl.setDate(date);
-        } catch (ParseException ex) {
-            ex.printStackTrace();
+        if (row >= 0 && row < tpemeriksaan.getRowCount()) {
+            String id = tpemeriksaan.getValueAt(row, 0).toString();
+//            String nama = tpemeriksaan.getValueAt(row, 1).toString();
+
+            idpas.setText(id);
+//            nama.setText(nama);
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Pilihan tidak valid", "Error", JOptionPane.ERROR_MESSAGE);
         }
-
-        usia.setText(c);
-        jk.setText(d);
-        nmdokter.setText(e);
-        spcl.setText(f);
-        bb.setText(g);
-        tb.setText(h);
-        td.setText(i);
-        keluhan.setText(j);
-        diagnosa.setText(k);
-        resep.setText(l);
-    }
     }//GEN-LAST:event_tpemeriksaanMouseClicked
 
 
