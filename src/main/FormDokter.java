@@ -4,17 +4,69 @@
  */
 package main;
 
+import connection.connect;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author LENOVO
  */
 public class FormDokter extends javax.swing.JPanel {
+    private Connection conn = new connect().connect();
+    private DefaultTableModel tabmode;
 
     /**
      * Creates new form FormDokter
      */
     public FormDokter() {
         initComponents();
+        datatable();
+        
+    }
+    
+     private void aktif() {
+        tdokter.setEnabled(true);
+        tspesialis.setEnabled(true);
+        tnotelp.setEnabled(true);
+        talamat.setEnabled(true);
+        
+    }
+
+    private void clear() {
+        tdokter.setText("");
+        tspesialis.setText("");
+        tnotelp.setText("");
+        talamat.setText("");
+        
+      
+    }
+
+    protected void datatable() {
+        Object[] clcis = { "Nama Dokter", "spesialis", "No telpon", "Alamat"};
+        tabmode = new DefaultTableModel(null, clcis);
+        tabeldokter.setModel(tabmode);
+        String sql = "select * from dokter";
+        try {
+            java.sql.Statement stat = conn.createStatement();
+            ResultSet hasil = stat.executeQuery(sql);
+            while (hasil.next()) {
+                String a = hasil.getString("Nama");
+                String b = hasil.getString("Spesialis");
+                String c = hasil.getString("NoTelp");
+                String d = hasil.getString("Alamat");
+                
+
+                String[] data = {a, b, c, d};
+                tabmode.addRow(data);
+            }
+        } catch (Exception e) {
+        }
     }
 
     /**
@@ -40,14 +92,14 @@ public class FormDokter extends javax.swing.JPanel {
         bt_simpan = new javax.swing.JButton();
         bt_kembali2 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        tdokter = new javax.swing.JTextField();
+        tnotelp = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        tspesialis = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        talamat = new javax.swing.JTextArea();
 
         jCheckBoxMenuItem1.setSelected(true);
         jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
@@ -67,6 +119,11 @@ public class FormDokter extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tabeldokter.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabeldokterMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabeldokter);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
@@ -123,8 +180,8 @@ public class FormDokter extends javax.swing.JPanel {
                     .addComponent(bhapus, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btambah, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bkembali, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+                .addGap(89, 89, 89)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
                 .addGap(257, 257, 257))
         );
 
@@ -150,9 +207,9 @@ public class FormDokter extends javax.swing.JPanel {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel4.setText("Nama Dokter");
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        tnotelp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                tnotelpActionPerformed(evt);
             }
         });
 
@@ -165,9 +222,9 @@ public class FormDokter extends javax.swing.JPanel {
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel8.setText("Alamat");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane3.setViewportView(jTextArea1);
+        talamat.setColumns(20);
+        talamat.setRows(5);
+        jScrollPane3.setViewportView(talamat);
 
         javax.swing.GroupLayout pn_formDokterLayout = new javax.swing.GroupLayout(pn_formDokter);
         pn_formDokter.setLayout(pn_formDokterLayout);
@@ -175,23 +232,23 @@ public class FormDokter extends javax.swing.JPanel {
             pn_formDokterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pn_formDokterLayout.createSequentialGroup()
                 .addGroup(pn_formDokterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pn_formDokterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(pn_formDokterLayout.createSequentialGroup()
-                            .addGap(49, 49, 49)
+                    .addGroup(pn_formDokterLayout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addGroup(pn_formDokterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(tnotelp, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tspesialis, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(pn_formDokterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(pn_formDokterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pn_formDokterLayout.createSequentialGroup()
-                                .addComponent(bt_simpan)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(bt_kembali2))
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(tdokter, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pn_formDokterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(pn_formDokterLayout.createSequentialGroup()
+                                    .addComponent(bt_simpan)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(bt_kembali2))
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(pn_formDokterLayout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addComponent(jLabel3)))
@@ -205,15 +262,15 @@ public class FormDokter extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tdokter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tspesialis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tnotelp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -243,15 +300,52 @@ public class FormDokter extends javax.swing.JPanel {
 
     private void bhapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bhapusActionPerformed
         // TODO add your handling code here:
+        int ok = JOptionPane.showConfirmDialog(null, "hapus", "Konfirmasi Dialog", JOptionPane.YES_NO_CANCEL_OPTION);
+        if (ok == 0) {
+            String sql = "delete from dokter where Nama='" + tdokter.getText() + "'";
+            try {
+                PreparedStatement stat = conn.prepareStatement(sql);
+                stat.executeUpdate();
+                JOptionPane.showMessageDialog(null, "data berhasi dihapus");;
+                clear();
+                tdokter.requestFocus();
+                datatable();
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Data gagal dihapus" + e);
+            }
+        }
     }//GEN-LAST:event_bhapusActionPerformed
 
     private void bt_simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_simpanActionPerformed
         // TODO add your handling code here:
+        String nama = tdokter.getText();
+        String spesialis = tspesialis.getText();
+        String telp = tnotelp.getText();
+        String alamat = talamat.getText();
+        
+
+        String sql = "INSERT INTO dokter (Nama,Spesialis,NoTelp,Alamat ) VALUES (?,?,?,?)";
+        try {
+            PreparedStatement stat = conn.prepareStatement(sql);
+            stat.setString(1, nama);
+            stat.setString(2, spesialis);
+            stat.setString(3, telp);
+            stat.setString(4, alamat);
+          
+
+            stat.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Data Berhasil Disimpan");
+            clear();
+            tdokter.requestFocus();
+            datatable();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Data Gagal Disimpan " + e);
+        }
     }//GEN-LAST:event_bt_simpanActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void tnotelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tnotelpActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_tnotelpActionPerformed
 
     private void bkembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bkembaliActionPerformed
         mainPanel.removeAll();
@@ -267,6 +361,21 @@ public class FormDokter extends javax.swing.JPanel {
         mainPanel.repaint();
         mainPanel.revalidate();
     }//GEN-LAST:event_bt_kembali2ActionPerformed
+
+    private void tabeldokterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabeldokterMouseClicked
+        // TODO add your handling code here:
+        int clc = tabeldokter.getSelectedRow();
+        String a = tabmode.getValueAt(clc, 0).toString();
+        String b = tabmode.getValueAt(clc, 1).toString();
+        String c = tabmode.getValueAt(clc, 2).toString();
+        String d = tabmode.getValueAt(clc, 3).toString();
+        
+
+        tdokter.setText(a);
+        tspesialis.setText(b);
+        tnotelp.setText(c);
+        talamat.setText(d);
+    }//GEN-LAST:event_tabeldokterMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -284,13 +393,13 @@ public class FormDokter extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPanel pn_dataDokter;
     private javax.swing.JPanel pn_formDokter;
     private javax.swing.JTable tabeldokter;
+    private javax.swing.JTextArea talamat;
+    private javax.swing.JTextField tdokter;
+    private javax.swing.JTextField tnotelp;
+    private javax.swing.JTextField tspesialis;
     // End of variables declaration//GEN-END:variables
 }
