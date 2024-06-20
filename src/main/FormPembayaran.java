@@ -7,11 +7,13 @@ package main;
 import connection.connect;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import javax.swing.table.DefaultTableModel;
 import tablesearch.cariResep;
 import tablesearch.cariPasien;
 import tablesearch.cariObat;
@@ -21,13 +23,16 @@ import tablesearch.cariObat;
  * @author LENOVO
  */
 public class FormPembayaran extends javax.swing.JPanel {
+
     private Connection conn = new connect().connect();
+    private DefaultTableModel tabmode;
 
     /**
      * Creates new form FormDokter
      */
     public FormPembayaran() {
         initComponents();
+        datatable();
         tuangbayar.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
@@ -44,7 +49,65 @@ public class FormPembayaran extends javax.swing.JPanel {
                 hitungUangKembali();
             }
         });
+
+        ttotalbeli.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                updateTotalHarga();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                updateTotalHarga();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                updateTotalHarga();
+            }
+        });
     }
+
+    private void clear() {
+        tnamapasien.setText("");
+        tanggal.setDate(null);
+        tresep.setText("");
+        tpilihobat.setText("");
+        tnamaadmin.setText("");
+        ttotalbeli.setText("");
+        ttotalharga.setText("");
+        tuangbayar.setText("");
+        tuangkembali.setText("");
+    }
+
+    protected void datatable() {
+        Object[] clcis = {"Nama Pasien", "Obat", "Total Beli", "Total Harga"};
+        tabmode = new DefaultTableModel(null, clcis);
+        tablepembayaran.setModel(tabmode);
+
+        // SQL query untuk mengambil data yang diperlukan dari tabel pembayaran, pasien, dan obat
+        String sql = "SELECT p.Nama AS NamaPasien, o.Nama AS NamaObat, pm.TotalBeli, pm.TotalHarga "
+                + "FROM pembayaran pm "
+                + "JOIN pasien p ON pm.PasienId = p.PasienId "
+                + "JOIN obat o ON pm.ObatId = o.ObatId";
+
+        try {
+            java.sql.Statement stat = conn.createStatement();
+            ResultSet hasil = stat.executeQuery(sql);
+            while (hasil.next()) {
+                String namaPasien = hasil.getString("NamaPasien");
+                String namaObat = hasil.getString("NamaObat");
+                String totalBeli = hasil.getString("TotalBeli");
+                String totalHarga = hasil.getString("TotalHarga");
+
+                String[] data = {namaPasien, namaObat, totalBeli, totalHarga};
+                tabmode.addRow(data);
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Kesalahan database: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
     public String tnama, tresepobat, tobat, thargaobat;
 
     public String getNamaPas() {
@@ -62,37 +125,33 @@ public class FormPembayaran extends javax.swing.JPanel {
     public String getHargaobat() {
         return thargaobat;
     }
-    
+
     private void updateTotalHarga() {
         try {
-            int totalBeli = Integer.parseInt(ttotalbeli.getText());
-            int hargaPerUnit = Integer.parseInt(ttotalharga.getText());
-            int totalHarga = totalBeli * hargaPerUnit;
-            ttotalharga.setText(String.valueOf(totalHarga));
-
-           
+            int totalbeli = Integer.parseInt(ttotalbeli.getText());
+            int hargaunit = Integer.parseInt(thargaobat);
+            int totalharga = totalbeli * hargaunit;
+            ttotalharga.setText(String.valueOf(totalharga));
             hitungUangKembali();
-        } catch (NumberFormatException ex) {
-            ttotalharga.setText("Input tidak valid");
+        } catch (NumberFormatException e) {
+            ttotalharga.setText("");
             tuangkembali.setText("");
         }
     }
 
-
     private void hitungUangKembali() {
         try {
-            
-            int totalHarga = Integer.parseInt(ttotalharga.getText());
-            int uangPembayaran = Integer.parseInt(tuangbayar.getText());
+            int totalharga = Integer.parseInt(ttotalharga.getText());
+            int uangpembayaran = Integer.parseInt(tuangbayar.getText());
 
-            if (uangPembayaran >= totalHarga) {
-                int uangKembali = uangPembayaran - totalHarga;
+            if (uangpembayaran >= totalharga) {
+                int uangKembali = uangpembayaran - totalharga;
                 tuangkembali.setText(String.valueOf(uangKembali));
             } else {
                 tuangkembali.setText("Uang tidak cukup");
             }
         } catch (NumberFormatException ex) {
-            tuangkembali.setText("Input tidak valid");
+            tuangkembali.setText("");
         }
     }
 
@@ -113,6 +172,7 @@ public class FormPembayaran extends javax.swing.JPanel {
         co.payment = this;
         tpilihobat.setText(tobat);
         ttotalharga.setText(thargaobat);
+        updateTotalHarga();
     }
 
     /**
@@ -131,7 +191,7 @@ public class FormPembayaran extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablepembayaran = new javax.swing.JTable();
         pn_formPembayaran = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -184,7 +244,7 @@ public class FormPembayaran extends javax.swing.JPanel {
         jButton3.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         jButton3.setText("Hapus");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablepembayaran.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -195,7 +255,12 @@ public class FormPembayaran extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tablepembayaran.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablepembayaranMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tablepembayaran);
 
         javax.swing.GroupLayout pn_dataPembayaranLayout = new javax.swing.GroupLayout(pn_dataPembayaran);
         pn_dataPembayaran.setLayout(pn_dataPembayaranLayout);
@@ -466,42 +531,75 @@ public class FormPembayaran extends javax.swing.JPanel {
     }//GEN-LAST:event_bt_backActionPerformed
 
     private void bt_simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_simpanActionPerformed
-//        String nama = tnamapasien.getText();
-//        String resep = tresep.getText();
-//        java.util.Date date = tanggal.getDate();
-//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//        String obat = tpilihobat.getText();
-//        String admin = tnamaadmin.getText();
-//        String tanggal = sdf.format(date);
-//        String beli = ttotalbeli.getText();
-//        String harga = ttotalharga.getText();
-//        String bayar = tuangbayar.getText();
-//        String kembali = tuangkembali.getText();
-//
-//        String sql = "INSERT INTO pembayaran (PasienId,ObatId, NamaAdmin, Tanggal, TotalBeli, TotalHarga, Bayar, Kembali,keluhan) VALUES (?, ?, ?, ?, ?, ?, ?,?,?)";
-//
-//        try {
-//            PreparedStatement pst = conn.prepareStatement(sql);
-//
-//            pst.setString(1, nama);
-//            pst.setString(2, obat);
-//            pst.setString(3, admin);
-//            pst.setString(4, tanggal);
-//            pst.setString(5, beli);
-//            pst.setString(6, harga);
-//            pst.setString(7, bayar);
-//            pst.setString(8, kembali);
-//            pst.setString(9, ngeluh);
-//
-//            pst.executeUpdate();
-//
-//            JOptionPane.showMessageDialog(this, "Data Pemeriksaan berhasil disimpan", "Berhasil", JOptionPane.INFORMATION_MESSAGE);
-//            clear();
-//            idpas.requestFocus();
-//            datatable();
-//        } catch (SQLException ex) {
-//            JOptionPane.showMessageDialog(this, "Kesalahan database: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-//        }
+        String nama = tnamapasien.getText();
+        String resep = tresep.getText();
+        java.util.Date date = tanggal.getDate();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String obat = tpilihobat.getText();
+        String admin = tnamaadmin.getText();
+        String tanggalPembayaran = sdf.format(date);
+        String beli = ttotalbeli.getText();
+        String harga = ttotalharga.getText();
+        String bayar = tuangbayar.getText();
+        String kembali = tuangkembali.getText();
+
+        String queryPasienId = "SELECT PasienId FROM pasien WHERE Nama = ?";
+        int pasienId = -1;
+        try {
+            PreparedStatement pstpasien = conn.prepareStatement(queryPasienId);
+            pstpasien.setString(1, nama);
+            ResultSet rspasien = pstpasien.executeQuery();
+
+            if (rspasien.next()) {
+                pasienId = rspasien.getInt("PasienId");
+            } else {
+                JOptionPane.showMessageDialog(this, "Nama pasien tidak ditemukan.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Kesalahan database: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        String queryObatId = "SELECT ObatId FROM obat WHERE Nama= ?";
+        int obatId = -1;
+        try {
+            PreparedStatement pstobat = conn.prepareStatement(queryObatId);
+            pstobat.setString(1, obat);
+            ResultSet rsobat = pstobat.executeQuery();
+
+            if (rsobat.next()) {
+                obatId = rsobat.getInt("ObatId");
+            } else {
+                JOptionPane.showMessageDialog(this, "Nama obat tidak ditemukan.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Kesalahan database: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        String sql = "INSERT INTO pembayaran (PasienId, ObatId, NamaAdmin, Tanggal, TotalBeli, TotalHarga, Bayar, Kembalian) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        try {
+            PreparedStatement pst = conn.prepareStatement(sql);
+
+            pst.setInt(1, pasienId);
+            pst.setInt(2, obatId);
+            pst.setString(3, admin);
+            pst.setString(4, tanggalPembayaran);
+            pst.setString(5, beli);
+            pst.setString(6, harga);
+            pst.setString(7, bayar);
+            pst.setString(8, kembali);
+
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(this, "Data Pembayaran berhasil disimpan", "Berhasil", JOptionPane.INFORMATION_MESSAGE);
+            clear();
+            tnamapasien.requestFocus();
+            datatable();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Kesalahan database: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_bt_simpanActionPerformed
 
     private void tuangbayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tuangbayarActionPerformed
@@ -536,6 +634,20 @@ public class FormPembayaran extends javax.swing.JPanel {
         ttotalharga.setEnabled(false);
     }//GEN-LAST:event_btn_obatActionPerformed
 
+    private void tablepembayaranMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablepembayaranMouseClicked
+        // TODO add your handling code here:
+        int row = tablepembayaran.getSelectedRow();
+        String namaPasien = tabmode.getValueAt(row, 0).toString();
+        String namaObat = tabmode.getValueAt(row, 1).toString();
+        String totalBeli = tabmode.getValueAt(row, 2).toString();
+        String totalHarga = tabmode.getValueAt(row, 3).toString();
+
+        tnamapasien.setText(namaPasien);
+        tpilihobat.setText(namaObat);
+        ttotalbeli.setText(totalBeli);
+        ttotalharga.setText(totalHarga);
+    }//GEN-LAST:event_tablepembayaranMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_back;
@@ -558,10 +670,10 @@ public class FormPembayaran extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPanel pn_dataPembayaran;
     private javax.swing.JPanel pn_formPembayaran;
+    private javax.swing.JTable tablepembayaran;
     private com.toedter.calendar.JDateChooser tanggal;
     private javax.swing.JTextField tnamaadmin;
     private javax.swing.JTextField tnamapasien;

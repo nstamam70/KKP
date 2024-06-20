@@ -26,7 +26,7 @@ public class cariPasienCheck extends javax.swing.JFrame {
     }
 
     protected void datatable() {
-        Object[] clcis = {"Id", "Nama Pasien", "Usia", "Tempat", "Tanggal Lahir", "Jenis Kelamin", "No. Telepon", "Alamat"};
+        Object[] clcis = {"Id", "Nama Pasien","Tempat", "Tanggal Lahir", "Jenis Kelamin", "No. Telepon", "Alamat"};
         tabmode = new DefaultTableModel(null, clcis);
         tb_pasien.setModel(tabmode);
         String sql = "select * from pasien";
