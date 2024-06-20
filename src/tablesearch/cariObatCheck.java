@@ -94,6 +94,7 @@ public class cariObatCheck extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void tb_obatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_obatMouseClicked

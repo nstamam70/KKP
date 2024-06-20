@@ -92,6 +92,7 @@ public class cariObat extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void tableobatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableobatMouseClicked

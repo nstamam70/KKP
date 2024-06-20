@@ -136,6 +136,7 @@ public class FormPasien extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setText("Data Pasien");
 
+        bt_tambah.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         bt_tambah.setText("Tambah");
         bt_tambah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,6 +144,7 @@ public class FormPasien extends javax.swing.JPanel {
             }
         });
 
+        bt_hapus.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         bt_hapus.setText("Hapus");
         bt_hapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,6 +152,7 @@ public class FormPasien extends javax.swing.JPanel {
             }
         });
 
+        bt_edit.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         bt_edit.setText("Edit");
         bt_edit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -157,6 +160,7 @@ public class FormPasien extends javax.swing.JPanel {
             }
         });
 
+        bt_kembali.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         bt_kembali.setText("Kembali");
         bt_kembali.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -215,9 +219,9 @@ public class FormPasien extends javax.swing.JPanel {
                     .addComponent(bt_edit, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bt_tambah, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bt_kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(54, 54, 54)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE)
-                .addGap(86, 86, 86))
+                .addGap(128, 128, 128))
         );
 
         mainPanel.add(pn_dataPasien, "card3");
