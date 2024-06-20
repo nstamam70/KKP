@@ -82,6 +82,7 @@ public class FormObat extends javax.swing.JPanel {
         bt_tambah = new javax.swing.JButton();
         bt_hapus = new javax.swing.JButton();
         bt_kembali = new javax.swing.JButton();
+        editt = new javax.swing.JButton();
         pn_formObat = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -154,39 +155,53 @@ public class FormObat extends javax.swing.JPanel {
             }
         });
 
+        editt.setBackground(new java.awt.Color(242, 242, 242));
+        editt.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        editt.setText("Edit");
+        editt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edittActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pn_dataObatLayout = new javax.swing.GroupLayout(pn_dataObat);
         pn_dataObat.setLayout(pn_dataObatLayout);
         pn_dataObatLayout.setHorizontalGroup(
             pn_dataObatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pn_dataObatLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
                 .addGroup(pn_dataObatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pn_dataObatLayout.createSequentialGroup()
-                        .addComponent(bt_tambah, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(bt_hapus, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(bt_kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel2))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(pn_dataObatLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 804, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addGap(0, 773, Short.MAX_VALUE))
+                    .addGroup(pn_dataObatLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1)))
                 .addContainerGap())
+            .addGroup(pn_dataObatLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(bt_tambah, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bt_hapus, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(editt, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bt_kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pn_dataObatLayout.setVerticalGroup(
             pn_dataObatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_dataObatLayout.createSequentialGroup()
+            .addGroup(pn_dataObatLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addGap(34, 34, 34)
+                .addGap(80, 80, 80)
                 .addGroup(pn_dataObatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bt_tambah, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bt_hapus, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bt_kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(46, 46, 46)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
-                .addGap(241, 241, 241))
+                    .addComponent(bt_hapus, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(editt, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_tambah, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
 
         mainPanel.add(pn_dataObat, "card2");
@@ -221,7 +236,6 @@ public class FormObat extends javax.swing.JPanel {
 
         tkodeobat.setBackground(new java.awt.Color(242, 242, 242));
 
-        bback.setBackground(new java.awt.Color(242, 242, 242));
         bback.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         bback.setText("Kembali");
         bback.addActionListener(new java.awt.event.ActionListener() {
@@ -230,7 +244,6 @@ public class FormObat extends javax.swing.JPanel {
             }
         });
 
-        bsimpan.setBackground(new java.awt.Color(242, 242, 242));
         bsimpan.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         bsimpan.setText("Simpan");
         bsimpan.addActionListener(new java.awt.event.ActionListener() {
@@ -271,10 +284,10 @@ public class FormObat extends javax.swing.JPanel {
                         .addGroup(pn_formObatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pn_formObatLayout.createSequentialGroup()
                                 .addComponent(bsimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(bback)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(bt_edit1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(bt_edit1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(bback))
                             .addGroup(pn_formObatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jLabel5)
                                 .addComponent(jLabel4)
@@ -420,7 +433,7 @@ public class FormObat extends javax.swing.JPanel {
     }//GEN-LAST:event_bt_hapusActionPerformed
 
     private void bt_edit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_edit1ActionPerformed
-    try {
+        try {
             String sql = "update obat set Nama=?,Kode=?,Satuan=?,Stok=?,Harga=? where Nama=?";
             PreparedStatement stat = conn.prepareStatement(sql);
             stat.setString(1, tnamaobat.getText());
@@ -428,7 +441,7 @@ public class FormObat extends javax.swing.JPanel {
             stat.setString(3, tjenisobat.getText());
             stat.setString(4, tstokobat.getText());
             stat.setString(5, tharga.getText());
-            
+
             stat.setString(6, tnamaobat.getText());
 
             stat.executeUpdate();
@@ -442,6 +455,14 @@ public class FormObat extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_bt_edit1ActionPerformed
 
+    private void edittActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edittActionPerformed
+        mainPanel.removeAll();
+        mainPanel.add(pn_formObat);
+        mainPanel.repaint();
+        mainPanel.revalidate();
+        tnamaobat.setEnabled(false);
+    }//GEN-LAST:event_edittActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bback;
@@ -450,6 +471,7 @@ public class FormObat extends javax.swing.JPanel {
     private javax.swing.JButton bt_hapus;
     private javax.swing.JButton bt_kembali;
     private javax.swing.JButton bt_tambah;
+    private javax.swing.JButton editt;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;

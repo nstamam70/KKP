@@ -35,7 +35,6 @@ public class FormPasien extends javax.swing.JPanel {
         tnama.setEnabled(true);
         ttempat.setEnabled(true);
         ttgl.setEnabled(true);
-        tusia.setEnabled(true);
         tjenkel.setEnabled(true);
         tgoldar.setEnabled(true);
         tnotelp.setEnabled(true);
@@ -48,7 +47,6 @@ public class FormPasien extends javax.swing.JPanel {
         tnama.setText("");
         ttempat.setText("");
         ttgl.setDate(null);
-        tusia.setText("");
         tjenkel.setSelectedIndex(0);
         tgoldar.setSelectedIndex(0);
         tnotelp.setText("");
@@ -94,10 +92,10 @@ public class FormPasien extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         bt_tambah = new javax.swing.JButton();
         bt_hapus = new javax.swing.JButton();
-        bt_edit = new javax.swing.JButton();
         bt_kembali = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelpasien = new javax.swing.JTable();
+        bt_kembali2 = new javax.swing.JButton();
         pn_formPasien = new javax.swing.JPanel();
         bt_kembali1 = new javax.swing.JButton();
         bt_simpan = new javax.swing.JButton();
@@ -108,10 +106,8 @@ public class FormPasien extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         ttempat = new javax.swing.JTextField();
         ttgl = new com.toedter.calendar.JDateChooser();
-        tusia = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         tnotelp = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
@@ -119,9 +115,9 @@ public class FormPasien extends javax.swing.JPanel {
         tjenkel = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         talm = new javax.swing.JTextArea();
-        jLabel12 = new javax.swing.JLabel();
         tgoldar = new javax.swing.JComboBox<>();
         tnik = new javax.swing.JTextField();
+        bt_edit = new javax.swing.JButton();
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -152,14 +148,6 @@ public class FormPasien extends javax.swing.JPanel {
             }
         });
 
-        bt_edit.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
-        bt_edit.setText("Edit");
-        bt_edit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_editActionPerformed(evt);
-            }
-        });
-
         bt_kembali.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         bt_kembali.setText("Kembali");
         bt_kembali.addActionListener(new java.awt.event.ActionListener() {
@@ -186,6 +174,14 @@ public class FormPasien extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tabelpasien);
 
+        bt_kembali2.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        bt_kembali2.setText("Edit");
+        bt_kembali2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_kembali2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pn_dataPasienLayout = new javax.swing.GroupLayout(pn_dataPasien);
         pn_dataPasien.setLayout(pn_dataPasienLayout);
         pn_dataPasienLayout.setHorizontalGroup(
@@ -201,7 +197,7 @@ public class FormPasien extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(bt_hapus, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(bt_edit, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(bt_kembali2, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(bt_kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel1))
@@ -216,9 +212,9 @@ public class FormPasien extends javax.swing.JPanel {
                 .addGap(35, 35, 35)
                 .addGroup(pn_dataPasienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bt_hapus, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bt_edit, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bt_tambah, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bt_kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bt_kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_kembali2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE)
                 .addGap(128, 128, 128))
@@ -226,6 +222,7 @@ public class FormPasien extends javax.swing.JPanel {
 
         mainPanel.add(pn_dataPasien, "card3");
 
+        bt_kembali1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         bt_kembali1.setText("Kembali");
         bt_kembali1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -233,6 +230,7 @@ public class FormPasien extends javax.swing.JPanel {
             }
         });
 
+        bt_simpan.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         bt_simpan.setText("Simpan");
         bt_simpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -264,15 +262,6 @@ public class FormPasien extends javax.swing.JPanel {
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel7.setText("Tanggal Lahir");
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel8.setText("Usia");
-
-        tusia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tusiaActionPerformed(evt);
-            }
-        });
-
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel9.setText("No. Telepon");
 
@@ -288,13 +277,19 @@ public class FormPasien extends javax.swing.JPanel {
         talm.setRows(5);
         jScrollPane2.setViewportView(talm);
 
-        jLabel12.setText("Tahun");
-
         tgoldar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A", "B", "AB", "O" }));
 
         tnik.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tnikActionPerformed(evt);
+            }
+        });
+
+        bt_edit.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        bt_edit.setText("Edit");
+        bt_edit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_editActionPerformed(evt);
             }
         });
 
@@ -314,10 +309,7 @@ public class FormPasien extends javax.swing.JPanel {
                                     .addComponent(jLabel4)
                                     .addComponent(tnama, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel3)
-                                    .addGroup(pn_formPasienLayout.createSequentialGroup()
-                                        .addComponent(bt_simpan, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(bt_kembali1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(bt_simpan, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(tnik, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(pn_formPasienLayout.createSequentialGroup()
                                 .addGroup(pn_formPasienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -330,14 +322,7 @@ public class FormPasien extends javax.swing.JPanel {
                                         .addGap(18, 18, 18)))
                                 .addGroup(pn_formPasienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel7)
-                                    .addComponent(ttgl, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(23, 23, 23)
-                                .addGroup(pn_formPasienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(pn_formPasienLayout.createSequentialGroup()
-                                        .addComponent(tusia, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel12))))
+                                    .addComponent(ttgl, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(pn_formPasienLayout.createSequentialGroup()
                                 .addGroup(pn_formPasienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(pn_formPasienLayout.createSequentialGroup()
@@ -352,9 +337,14 @@ public class FormPasien extends javax.swing.JPanel {
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel10)
                             .addComponent(tnotelp, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9)))
+                            .addComponent(jLabel9)
+                            .addGroup(pn_formPasienLayout.createSequentialGroup()
+                                .addGap(127, 127, 127)
+                                .addComponent(bt_edit, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(bt_kembali1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jLabel2))
-                .addContainerGap(451, Short.MAX_VALUE))
+                .addContainerGap(517, Short.MAX_VALUE))
         );
         pn_formPasienLayout.setVerticalGroup(
             pn_formPasienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -364,7 +354,8 @@ public class FormPasien extends javax.swing.JPanel {
                 .addGap(31, 31, 31)
                 .addGroup(pn_formPasienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bt_simpan, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bt_kembali1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bt_kembali1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_edit, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(13, 13, 13)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -375,17 +366,12 @@ public class FormPasien extends javax.swing.JPanel {
                 .addComponent(tnama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pn_formPasienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pn_formPasienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel7)
-                        .addComponent(jLabel8))
+                    .addComponent(jLabel7)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pn_formPasienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ttgl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ttempat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pn_formPasienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(tusia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel12)))
+                    .addComponent(ttempat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
                 .addGroup(pn_formPasienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11)
@@ -445,7 +431,7 @@ public class FormPasien extends javax.swing.JPanel {
     private void bt_editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_editActionPerformed
         // TODO add your handling code here:
         try {
-            String sql = "UPDATE pasien SET NIK=?, Nama=?, TempatLahir=?, TanggalLahir=?, Usia=?, Jenkel=?, Goldar=?, NoTelp=?, Alamat=? WHERE NIK=?";
+            String sql = "UPDATE pasien SET Nik=?, Nama=?, TempatLahir=?, TanggalLahir=?,Jenkel=?, Goldar=?, NoTelp=?, Alamat=? WHERE Nik=?";
             PreparedStatement stat = conn.prepareStatement(sql);
 
             stat.setString(1, tnik.getText());
@@ -455,12 +441,11 @@ public class FormPasien extends javax.swing.JPanel {
             java.util.Date utilDate = ttgl.getDate();
             java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
             stat.setDate(4, sqlDate);
-            stat.setString(5, tusia.getText());
-            stat.setString(6, tjenkel.getSelectedItem().toString());
-            stat.setString(7, tgoldar.getSelectedItem().toString());
-            stat.setString(8, tnotelp.getText());
-            stat.setString(9, talm.getText());
-            stat.setString(10, tnik.getText());
+            stat.setString(5, tjenkel.getSelectedItem().toString());
+            stat.setString(6, tgoldar.getSelectedItem().toString());
+            stat.setString(7, tnotelp.getText());
+            stat.setString(8, talm.getText());
+            stat.setString(9, tnik.getText());
 
             stat.executeUpdate();
 
@@ -522,24 +507,22 @@ public class FormPasien extends javax.swing.JPanel {
         java.util.Date date = ttgl.getDate();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String tanggal = sdf.format(date);
-        String usia = tusia.getText();
         String jenkel = tjenkel.getSelectedItem().toString();
         String goldar = tgoldar.getSelectedItem().toString();
         String notelp = tnotelp.getText();
         String alamat = talm.getText();
 
-        String sql = "INSERT INTO pasien (Nik,Nama,TempatLahir,TanggalLahir,Usia,Jenkel,Goldar,NoTelp,Alamat ) VALUES (?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO pasien (Nik,Nama,TempatLahir,TanggalLahir,Jenkel,Goldar,NoTelp,Alamat ) VALUES (?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement stat = conn.prepareStatement(sql);
             stat.setString(1, nik);
             stat.setString(2, nama);
             stat.setString(3, tempat);
             stat.setString(4, tanggal);
-            stat.setString(5, usia);
-            stat.setString(6, jenkel);
-            stat.setString(7, goldar);
-            stat.setString(8, notelp);
-            stat.setString(9, alamat);
+            stat.setString(5, jenkel);
+            stat.setString(6, goldar);
+            stat.setString(7, notelp);
+            stat.setString(8, alamat);
 
             stat.executeUpdate();
             JOptionPane.showMessageDialog(null, "Data Berhasil Disimpan");
@@ -555,13 +538,17 @@ public class FormPasien extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_tnamaActionPerformed
 
-    private void tusiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tusiaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tusiaActionPerformed
-
     private void tnikActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tnikActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tnikActionPerformed
+
+    private void bt_kembali2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_kembali2ActionPerformed
+        mainPanel.removeAll();
+        mainPanel.add(pn_formPasien);
+        mainPanel.repaint();
+        mainPanel.revalidate();
+        tnik.setEnabled(false);
+    }//GEN-LAST:event_bt_kembali2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -569,19 +556,18 @@ public class FormPasien extends javax.swing.JPanel {
     private javax.swing.JButton bt_hapus;
     private javax.swing.JButton bt_kembali;
     private javax.swing.JButton bt_kembali1;
+    private javax.swing.JButton bt_kembali2;
     private javax.swing.JButton bt_simpan;
     private javax.swing.JButton bt_tambah;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -598,6 +584,5 @@ public class FormPasien extends javax.swing.JPanel {
     private javax.swing.JTextField tnotelp;
     private javax.swing.JTextField ttempat;
     private com.toedter.calendar.JDateChooser ttgl;
-    private javax.swing.JTextField tusia;
     // End of variables declaration//GEN-END:variables
 }

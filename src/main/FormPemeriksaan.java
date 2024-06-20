@@ -353,6 +353,7 @@ public class FormPemeriksaan extends javax.swing.JPanel {
 
         jLabel6.setText("Jenis Kelamin");
 
+        simpan.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         simpan.setText("Simpan");
         simpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -360,6 +361,7 @@ public class FormPemeriksaan extends javax.swing.JPanel {
             }
         });
 
+        kembali.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         kembali.setText("Kembali");
         kembali.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
