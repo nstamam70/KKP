@@ -81,7 +81,7 @@ public class FormPemeriksaan extends javax.swing.JPanel {
         cp.check = this;
         nama.setText(tidpas);
         idpas.setText(tnama);
-        usia.setText(tumur);
+//        usia.setText(tumur);
         jk.setText(tjk);
     }
 
@@ -93,7 +93,7 @@ public class FormPemeriksaan extends javax.swing.JPanel {
     private void aktif() {
         idpas.setEnabled(true);
         tgl.setEnabled(true);
-        usia.setEnabled(true);
+//        usia.setEnabled(true);
         jk.setEnabled(true);
         nmdokter.setEnabled(true);
         spcl.setEnabled(true);
@@ -109,7 +109,7 @@ public class FormPemeriksaan extends javax.swing.JPanel {
     private void clear() {
         idpas.setText("");
         tgl.setDate(null);
-        usia.setText("");
+//        usia.setText("");
         jk.setText("");
         nmdokter.setText("");
         spcl.setText("");
@@ -182,8 +182,6 @@ public class FormPemeriksaan extends javax.swing.JPanel {
         cari1 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         diagnosa = new javax.swing.JTextArea();
-        jLabel5 = new javax.swing.JLabel();
-        usia = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         simpan = new javax.swing.JButton();
         kembali = new javax.swing.JButton();
@@ -278,7 +276,7 @@ public class FormPemeriksaan extends javax.swing.JPanel {
                     .addComponent(bt_kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addContainerGap(137, Short.MAX_VALUE))
         );
 
         mainPanel.add(pn_dataPemeriksaan, "card2");
@@ -320,6 +318,7 @@ public class FormPemeriksaan extends javax.swing.JPanel {
 
         jLabel13.setText("Diagnosa");
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel2.setText("Input Pemeriksaan");
 
         jLabel14.setText("Resep Obat");
@@ -348,8 +347,6 @@ public class FormPemeriksaan extends javax.swing.JPanel {
         diagnosa.setColumns(20);
         diagnosa.setRows(5);
         jScrollPane3.setViewportView(diagnosa);
-
-        jLabel5.setText("Usia");
 
         jLabel6.setText("Jenis Kelamin");
 
@@ -389,10 +386,23 @@ public class FormPemeriksaan extends javax.swing.JPanel {
         pn_formPemeriksaanLayout.setHorizontalGroup(
             pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pn_formPemeriksaanLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jLabel2)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(pn_formPemeriksaanLayout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pn_formPemeriksaanLayout.createSequentialGroup()
                         .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addGroup(pn_formPemeriksaanLayout.createSequentialGroup()
+                                .addComponent(jLabel12)
+                                .addGap(287, 287, 287)
+                                .addComponent(jLabel13))
+                            .addGroup(pn_formPemeriksaanLayout.createSequentialGroup()
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel4)
                             .addComponent(jLabel7)
                             .addGroup(pn_formPemeriksaanLayout.createSequentialGroup()
@@ -400,78 +410,55 @@ public class FormPemeriksaan extends javax.swing.JPanel {
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(pn_formPemeriksaanLayout.createSequentialGroup()
-                                    .addComponent(nmdokter, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(iddok, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(nmdokter, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(iddok, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(cari2))
                                 .addGroup(pn_formPemeriksaanLayout.createSequentialGroup()
-                                    .addComponent(nama)
+                                    .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jk)
+                                        .addComponent(nama))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(idpas, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(idpas, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(cari1))
-                                .addGroup(pn_formPemeriksaanLayout.createSequentialGroup()
-                                    .addComponent(jLabel5)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(usia, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jLabel6)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jk, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(cari1))))
+                        .addGap(0, 95, Short.MAX_VALUE))
                     .addGroup(pn_formPemeriksaanLayout.createSequentialGroup()
                         .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pn_formPemeriksaanLayout.createSequentialGroup()
-                                .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(pn_formPemeriksaanLayout.createSequentialGroup()
-                                        .addGap(523, 523, 523)
-                                        .addComponent(tgl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_formPemeriksaanLayout.createSequentialGroup()
-                                        .addComponent(jLabel12)
-                                        .addGap(287, 287, 287)
-                                        .addComponent(jLabel13)
-                                        .addGap(267, 267, 267)))
-                                .addGap(14, 14, 14)
-                                .addComponent(jLabel14))
+                                .addGap(523, 523, 523)
+                                .addComponent(tgl, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(pn_formPemeriksaanLayout.createSequentialGroup()
-                                .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(pn_formPemeriksaanLayout.createSequentialGroup()
-                                        .addComponent(jLabel8)
-                                        .addGap(57, 57, 57))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_formPemeriksaanLayout.createSequentialGroup()
-                                        .addComponent(spcl, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)))
-                                .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(bb, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel10))
-                                .addGap(18, 18, 18)
-                                .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tb, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel9))
-                                .addGap(16, 16, 16)
-                                .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel11)
-                                    .addComponent(td, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(pn_formPemeriksaanLayout.createSequentialGroup()
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(7, 7, 7)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, 0)
-                                .addComponent(resep, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(resep, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(idobat, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(idobat, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cari3))
                             .addGroup(pn_formPemeriksaanLayout.createSequentialGroup()
                                 .addComponent(simpan, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(kembali)))
+                                .addComponent(kembali))
+                            .addComponent(jLabel14)
+                            .addGroup(pn_formPemeriksaanLayout.createSequentialGroup()
+                                .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pn_formPemeriksaanLayout.createSequentialGroup()
+                                        .addComponent(spcl, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(bb, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(tb, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(pn_formPemeriksaanLayout.createSequentialGroup()
+                                        .addComponent(jLabel8)
+                                        .addGap(57, 57, 57)
+                                        .addComponent(jLabel10)
+                                        .addGap(64, 64, 64)
+                                        .addComponent(jLabel9)))
+                                .addGap(16, 16, 16)
+                                .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(td))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(pn_formPemeriksaanLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jLabel2)
-                .addGap(0, 0, Short.MAX_VALUE))
         );
         pn_formPemeriksaanLayout.setVerticalGroup(
             pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -491,13 +478,11 @@ public class FormPemeriksaan extends javax.swing.JPanel {
                     .addComponent(idpas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cari1)
                     .addComponent(nama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(usia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
-                    .addComponent(jk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel6)
+                .addGap(2, 2, 2)
+                .addComponent(jk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -516,24 +501,26 @@ public class FormPemeriksaan extends javax.swing.JPanel {
                     .addComponent(bb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(td, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(resep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cari3)
+                    .addComponent(idobat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
-                    .addComponent(jLabel14)
                     .addComponent(jLabel13))
                 .addGap(0, 0, 0)
-                .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(resep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cari3)
-                        .addComponent(idobat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jScrollPane2)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pn_formPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(simpan, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         mainPanel.add(pn_formPemeriksaan, "card2");
@@ -584,7 +571,7 @@ public class FormPemeriksaan extends javax.swing.JPanel {
         cp.setResizable(false);
         nama.setEnabled(false);
         idpas.setEnabled(false);
-        usia.setEnabled(false);
+//        usia.setEnabled(false);
         jk.setEnabled(false);
     }//GEN-LAST:event_cari1ActionPerformed
 
@@ -594,9 +581,9 @@ public class FormPemeriksaan extends javax.swing.JPanel {
         String napes = nama.getText();
         java.util.Date date = tgl.getDate();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        String umur = usia.getText();
-        String jenkel = jk.getText();
         String tgl_periksa = sdf.format(date);
+//        String umur = usia.getText();
+        String jenkel = jk.getText();
         String iddokk = iddok.getText();
         String special = spcl.getText();
         String berat = bb.getText();
@@ -712,7 +699,6 @@ public class FormPemeriksaan extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -736,6 +722,5 @@ public class FormPemeriksaan extends javax.swing.JPanel {
     private javax.swing.JTextField td;
     private com.toedter.calendar.JDateChooser tgl;
     private javax.swing.JTable tpemeriksaan;
-    private javax.swing.JTextField usia;
     // End of variables declaration//GEN-END:variables
 }

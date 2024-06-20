@@ -8,6 +8,7 @@ import java.sql.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import connection.connect;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -32,19 +33,21 @@ public class FormObat extends javax.swing.JPanel {
         tjenisobat.setEnabled(true);
         tstokobat.setEnabled(true);
         tharga.setEnabled(true);
+        tanggal.setEnabled(true);
         tnamaobat.requestFocus();
     }
 
     private void clear() {
         tnamaobat.setText("");
         tkodeobat.setText("");
-        tjenisobat.setText("");
+        tjenisobat.setSelectedIndex(0);
         tstokobat.setText("");
+        tanggal.setDate(null);
         tharga.setText("");
     }
 
     protected void datatable() {
-        Object[] clcis = {"Nama Obat", "Kode Obat", "Jenis", "Stok", "Harga"};
+        Object[] clcis = {"Nama Obat", "Kode Obat", "Jenis", "Stok", "Harga","Tanggal Kadaluarsa"};
         tabmode = new DefaultTableModel(null, clcis);
         tabelobat.setModel(tabmode);
         String sql = "select * from obat";
@@ -57,8 +60,9 @@ public class FormObat extends javax.swing.JPanel {
                 String c = hasil.getString("Satuan");
                 String d = hasil.getString("Stok");
                 String e = hasil.getString("Harga");
+                String f = hasil.getString("tanggal_kdlrs");
 
-                String[] data = {a, b, c, d, e};
+                String[] data = {a, b, c, d, e, f};
                 tabmode.addRow(data);
             }
         } catch (Exception e) {
@@ -96,8 +100,10 @@ public class FormObat extends javax.swing.JPanel {
         bback = new javax.swing.JButton();
         bsimpan = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
-        tjenisobat = new javax.swing.JTextField();
         bt_edit1 = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        tanggal = new com.toedter.calendar.JDateChooser();
+        tjenisobat = new javax.swing.JComboBox<>();
 
         setLayout(new java.awt.CardLayout());
 
@@ -255,13 +261,6 @@ public class FormObat extends javax.swing.JPanel {
         jLabel8.setFont(new java.awt.Font("News701 BT", 1, 18)); // NOI18N
         jLabel8.setText("Stok");
 
-        tjenisobat.setBackground(new java.awt.Color(242, 242, 242));
-        tjenisobat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tjenisobatActionPerformed(evt);
-            }
-        });
-
         bt_edit1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         bt_edit1.setText("Edit");
         bt_edit1.addActionListener(new java.awt.event.ActionListener() {
@@ -269,6 +268,11 @@ public class FormObat extends javax.swing.JPanel {
                 bt_edit1ActionPerformed(evt);
             }
         });
+
+        jLabel9.setFont(new java.awt.Font("News701 BT", 1, 18)); // NOI18N
+        jLabel9.setText("Tanggal Kadaluarsa");
+
+        tjenisobat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1. Tablet", "2. Sirup" }));
 
         javax.swing.GroupLayout pn_formObatLayout = new javax.swing.GroupLayout(pn_formObat);
         pn_formObat.setLayout(pn_formObatLayout);
@@ -281,25 +285,26 @@ public class FormObat extends javax.swing.JPanel {
                         .addComponent(jLabel1))
                     .addGroup(pn_formObatLayout.createSequentialGroup()
                         .addGap(74, 74, 74)
-                        .addGroup(pn_formObatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pn_formObatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(pn_formObatLayout.createSequentialGroup()
                                 .addComponent(bsimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(bt_edit1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(bback))
-                            .addGroup(pn_formObatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel5)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel6)
-                                .addComponent(jLabel8)
-                                .addComponent(tharga, javax.swing.GroupLayout.DEFAULT_SIZE, 693, Short.MAX_VALUE)
-                                .addComponent(jLabel7)
-                                .addComponent(tkodeobat, javax.swing.GroupLayout.DEFAULT_SIZE, 693, Short.MAX_VALUE)
-                                .addComponent(tnamaobat)
-                                .addComponent(tjenisobat, javax.swing.GroupLayout.DEFAULT_SIZE, 693, Short.MAX_VALUE)
-                                .addComponent(tstokobat)))))
-                .addContainerGap(49, Short.MAX_VALUE))
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel8)
+                            .addComponent(tharga, javax.swing.GroupLayout.DEFAULT_SIZE, 693, Short.MAX_VALUE)
+                            .addComponent(jLabel7)
+                            .addComponent(tkodeobat, javax.swing.GroupLayout.DEFAULT_SIZE, 693, Short.MAX_VALUE)
+                            .addComponent(tnamaobat)
+                            .addComponent(tstokobat)
+                            .addComponent(jLabel9)
+                            .addComponent(tanggal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(tjenisobat, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(183, Short.MAX_VALUE))
         );
         pn_formObatLayout.setVerticalGroup(
             pn_formObatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -316,8 +321,8 @@ public class FormObat extends javax.swing.JPanel {
                 .addComponent(tkodeobat, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tjenisobat, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2)
+                .addComponent(tjenisobat, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -326,12 +331,16 @@ public class FormObat extends javax.swing.JPanel {
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tharga, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(pn_formObatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bback, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bsimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bt_edit1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         mainPanel.add(pn_formObat, "card2");
@@ -342,11 +351,14 @@ public class FormObat extends javax.swing.JPanel {
     private void bsimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bsimpanActionPerformed
         String nama = tnamaobat.getText();
         String kode = tkodeobat.getText();
-        String jenis = tjenisobat.getText();
+        String jenis = tjenisobat.getSelectedItem().toString();
         String stok = tstokobat.getText();
         String harga = tharga.getText();
+        java.util.Date date = tanggal.getDate();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String kadaluarsa = sdf.format(date);
 
-        String sql = "INSERT INTO OBAT (Nama,Kode,Satuan,Stok,Harga ) VALUES (?,?,?,?,?)";
+        String sql = "INSERT INTO OBAT (Nama,Kode,Satuan,Stok,Harga,tanggal_kdlrs ) VALUES (?,?,?,?,?,?)";
         try {
             PreparedStatement stat = conn.prepareStatement(sql);
             stat.setString(1, nama);
@@ -354,6 +366,7 @@ public class FormObat extends javax.swing.JPanel {
             stat.setString(3, jenis);
             stat.setString(4, stok);
             stat.setString(5, harga);
+            stat.setString(6, kadaluarsa);
 
             stat.executeUpdate();
             JOptionPane.showMessageDialog(null, "Data Berhasil Disimpan");
@@ -389,15 +402,13 @@ public class FormObat extends javax.swing.JPanel {
         mainPanel.revalidate();
     }//GEN-LAST:event_bt_kembaliActionPerformed
 
-    private void tjenisobatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tjenisobatActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tjenisobatActionPerformed
-
     private void bbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bbackActionPerformed
         mainPanel.removeAll();
         mainPanel.add(pn_dataObat);
         mainPanel.repaint();
         mainPanel.revalidate();
+        bsimpan.setEnabled(true);
+        tnamaobat.setEnabled(true);
     }//GEN-LAST:event_bbackActionPerformed
 
     private void tabelobatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelobatMouseClicked
@@ -410,7 +421,7 @@ public class FormObat extends javax.swing.JPanel {
 
         tnamaobat.setText(a);
         tkodeobat.setText(b);
-        tjenisobat.setText(c);
+        tjenisobat.setSelectedItem(0);
         tstokobat.setText(d);
         tharga.setText(e);
     }//GEN-LAST:event_tabelobatMouseClicked
@@ -438,7 +449,7 @@ public class FormObat extends javax.swing.JPanel {
             PreparedStatement stat = conn.prepareStatement(sql);
             stat.setString(1, tnamaobat.getText());
             stat.setString(2, tkodeobat.getText());
-            stat.setString(3, tjenisobat.getText());
+            stat.setString(3, tjenisobat.getSelectedItem().toString());
             stat.setString(4, tstokobat.getText());
             stat.setString(5, tharga.getText());
 
@@ -461,6 +472,7 @@ public class FormObat extends javax.swing.JPanel {
         mainPanel.repaint();
         mainPanel.revalidate();
         tnamaobat.setEnabled(false);
+        bsimpan.setEnabled(false);
     }//GEN-LAST:event_edittActionPerformed
 
 
@@ -479,13 +491,15 @@ public class FormObat extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPanel pn_dataObat;
     private javax.swing.JPanel pn_formObat;
     private javax.swing.JTable tabelobat;
+    private com.toedter.calendar.JDateChooser tanggal;
     private javax.swing.JTextField tharga;
-    private javax.swing.JTextField tjenisobat;
+    private javax.swing.JComboBox<String> tjenisobat;
     private javax.swing.JTextField tkodeobat;
     private javax.swing.JTextField tnamaobat;
     private javax.swing.JTextField tstokobat;

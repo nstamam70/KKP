@@ -101,7 +101,7 @@ public class cariPasienCheck extends javax.swing.JFrame {
         int tabmode = tb_pasien.getSelectedRow();
         check.tidpas = tb_pasien.getValueAt(tabmode, 1).toString();
         check.tnama = tb_pasien.getValueAt(tabmode, 0).toString();
-        check.tumur = tb_pasien.getValueAt(tabmode, 2).toString();
+//        check.tumur = tb_pasien.getValueAt(tabmode, 2).toString();
         check.tjk = tb_pasien.getValueAt(tabmode, 4).toString();
         check.pasienTerpilih();
         this.dispose();
