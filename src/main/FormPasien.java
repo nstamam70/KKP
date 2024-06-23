@@ -497,6 +497,7 @@ public class FormPasien extends javax.swing.JPanel {
         mainPanel.add(pn_dataPasien);
         mainPanel.repaint();
         mainPanel.revalidate();
+        tnik.setEnabled(true);
     }//GEN-LAST:event_bt_kembali1ActionPerformed
 
     private void bt_simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_simpanActionPerformed

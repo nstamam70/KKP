@@ -126,7 +126,7 @@ public class FormDokter extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tabeldokter);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setText("Data Dokter");
 
         btambah.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N

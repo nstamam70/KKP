@@ -122,10 +122,12 @@ public class FormKhitan extends javax.swing.JPanel {
     }
 
     protected void datatable() {
-        Object[] clcis = {"NIK", "Nama Pasien", "Tempat", "Tanggal Lahir", "No. Telepon", "Alamat", "Metode","Tanggal Pelaksanaan"};
+        Object[] clcis = {"NIK", "Nama Pasien", "Tempat", "Tanggal Lahir", "No. Telepon", "Alamat", "Metode", "Tanggal Pelaksanaan"};
         tabmode = new DefaultTableModel(null, clcis);
         tabelkhitan.setModel(tabmode);
-        String sql = "select * from pasien";
+        String sql = "SELECT pasien.Nik, pasien.Nama, pasien.TempatLahir, pasien.TanggalLahir, pasien.NoTelp, pasien.Alamat, metodekhitan.JenisKhitan, pasien.Tanggal_pelaksanaan "
+                + "FROM pasien "
+                + "JOIN metodekhitan ON pasien.KhitanId = metodekhitan.KhitanId";
         try {
             java.sql.Statement stat = conn.createStatement();
             ResultSet hasil = stat.executeQuery(sql);
@@ -136,13 +138,14 @@ public class FormKhitan extends javax.swing.JPanel {
                 String d = hasil.getString("TanggalLahir");
                 String e = hasil.getString("NoTelp");
                 String f = hasil.getString("Alamat");
-                String g = hasil.getString("KhitanId");
+                String g = hasil.getString("JenisKhitan");
                 String h = hasil.getString("Tanggal_pelaksanaan");
 
                 String[] data = {a, b, c, d, e, f, g, h};
                 tabmode.addRow(data);
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -169,7 +172,6 @@ public class FormKhitan extends javax.swing.JPanel {
         tabelkhitan = new javax.swing.JTable();
         bt_kembali = new javax.swing.JButton();
         bt_edit = new javax.swing.JButton();
-        bt_hapus = new javax.swing.JButton();
         bt_tambah = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         pn_formKhitan = new javax.swing.JPanel();
@@ -195,6 +197,7 @@ public class FormKhitan extends javax.swing.JPanel {
         tgglpelaksanaan = new com.toedter.calendar.JDateChooser();
         jLabel8 = new javax.swing.JLabel();
         tusia = new javax.swing.JTextField();
+        edit = new javax.swing.JButton();
 
         setLayout(new java.awt.CardLayout());
 
@@ -211,6 +214,11 @@ public class FormKhitan extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tabelkhitan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelkhitanMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabelkhitan);
 
         bt_kembali.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
@@ -223,9 +231,11 @@ public class FormKhitan extends javax.swing.JPanel {
 
         bt_edit.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         bt_edit.setText("Edit");
-
-        bt_hapus.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
-        bt_hapus.setText("Hapus");
+        bt_edit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_editActionPerformed(evt);
+            }
+        });
 
         bt_tambah.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         bt_tambah.setText("Tambah");
@@ -243,25 +253,19 @@ public class FormKhitan extends javax.swing.JPanel {
         pn_dataKhitanLayout.setHorizontalGroup(
             pn_dataKhitanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pn_dataKhitanLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(pn_dataKhitanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 944, Short.MAX_VALUE)
                     .addGroup(pn_dataKhitanLayout.createSequentialGroup()
                         .addGroup(pn_dataKhitanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pn_dataKhitanLayout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addComponent(jLabel1))
-                            .addGroup(pn_dataKhitanLayout.createSequentialGroup()
-                                .addContainerGap()
                                 .addComponent(bt_tambah, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(bt_hapus, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(bt_edit, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(bt_kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 442, Short.MAX_VALUE))
-                    .addGroup(pn_dataKhitanLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1)))
+                                .addComponent(bt_kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel1))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pn_dataKhitanLayout.setVerticalGroup(
@@ -271,12 +275,11 @@ public class FormKhitan extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addGap(35, 35, 35)
                 .addGroup(pn_dataKhitanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bt_hapus, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bt_edit, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bt_tambah, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bt_kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
                 .addGap(122, 122, 122))
         );
 
@@ -338,6 +341,15 @@ public class FormKhitan extends javax.swing.JPanel {
 
         jLabel8.setText("Usia");
 
+        edit.setBackground(new java.awt.Color(242, 242, 242));
+        edit.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        edit.setText("Edit");
+        edit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pn_formKhitanLayout = new javax.swing.GroupLayout(pn_formKhitan);
         pn_formKhitan.setLayout(pn_formKhitanLayout);
         pn_formKhitanLayout.setHorizontalGroup(
@@ -376,13 +388,15 @@ public class FormKhitan extends javax.swing.JPanel {
                         .addGroup(pn_formKhitanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pn_formKhitanLayout.createSequentialGroup()
                                 .addComponent(bt_simpan, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(edit, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(bt_back))
                             .addComponent(tgl_pelaksanaan)
                             .addGroup(pn_formKhitanLayout.createSequentialGroup()
                                 .addGroup(pn_formKhitanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(tgglpelaksanaan, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(pn_formKhitanLayout.createSequentialGroup()
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pn_formKhitanLayout.createSequentialGroup()
                                         .addComponent(tidme, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(tmkhitan, javax.swing.GroupLayout.PREFERRED_SIZE, 554, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -432,15 +446,15 @@ public class FormKhitan extends javax.swing.JPanel {
                     .addComponent(tmkhitan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bt_carii)
                     .addComponent(tidme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, 0)
                 .addComponent(tgl_pelaksanaan)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tgglpelaksanaan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(pn_formKhitanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bt_back, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bt_simpan, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16))
+                    .addComponent(bt_simpan, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(edit, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         mainPanel.add(pn_formKhitan, "card2");
@@ -469,10 +483,16 @@ public class FormKhitan extends javax.swing.JPanel {
         mainPanel.add(pn_dataKhitan);
         mainPanel.repaint();
         mainPanel.revalidate();
+        tnik.setEnabled(true);
+        tnama.setEnabled(true);
+        ttanggal.setEnabled(true);
+        tusia.setEnabled(true);
+        tnotelp.setEnabled(true);
+        talamat.setEnabled(true);
     }//GEN-LAST:event_bt_backActionPerformed
 
     private void bt_simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_simpanActionPerformed
-try {
+        try {
             String sql = "update pasien set Nik=?,Usia=?,KhitanId=?,Tanggal_pelaksanaan=? where Nik=?";
             PreparedStatement stat = conn.prepareStatement(sql);
             stat.setString(1, tnik.getText());
@@ -522,8 +542,66 @@ try {
     }//GEN-LAST:event_bt_cariActionPerformed
 
     private void bt_cariiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_cariiMouseClicked
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_bt_cariiMouseClicked
+
+    private void bt_editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_editActionPerformed
+        mainPanel.removeAll();
+        mainPanel.add(pn_formKhitan);
+        mainPanel.repaint();
+        mainPanel.revalidate();
+        tnik.setEnabled(false);
+        tnama.setEnabled(false);
+        ttanggal.setEnabled(false);
+        tusia.setEnabled(false);
+        tnotelp.setEnabled(false);
+        talamat.setEnabled(false);
+    }//GEN-LAST:event_bt_editActionPerformed
+
+    private void tabelkhitanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelkhitanMouseClicked
+        int clc = tabelkhitan.getSelectedRow();
+        String a = tabmode.getValueAt(clc, 0).toString();
+        String b = tabmode.getValueAt(clc, 1).toString();
+        String c = tabmode.getValueAt(clc, 2).toString();
+        String d = tabmode.getValueAt(clc, 3).toString();
+        String e = tabmode.getValueAt(clc, 4).toString();
+        String f = tabmode.getValueAt(clc, 5).toString();
+        String g = tabmode.getValueAt(clc, 6).toString();
+//        String h = tabmode.getValueAt(clc, 7).toString();
+//        String i = tabmode.getValueAt(clc, 8).toString();
+
+        tnik.setText(a);
+        tnama.setText(b);
+//        tgglpelaksanaan.setDate(null);
+        ttanggal.setText(c);
+        tusia.setText(d);
+        tnotelp.setText(e);
+        talamat.setText(f);
+        tmkhitan.setText(g);
+//        tidme.setText(h);
+    }//GEN-LAST:event_tabelkhitanMouseClicked
+
+    private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
+        try {
+            String sql = "update pasien set Nik=?,KhitanId=?,Tanggal_pelaksanaan=? where Nik=?";
+            PreparedStatement stat = conn.prepareStatement(sql);
+            stat.setString(1, tnik.getText());
+            stat.setString(2, tidme.getText());
+            java.util.Date utilDate = tgglpelaksanaan.getDate();
+            java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+            stat.setDate(3, sqlDate);
+            stat.setString(4, tnik.getText());
+
+            stat.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Data Berhasil Diubah");
+            clear();
+            tnik.requestFocus();
+            datatable();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Data Gagal Diubah" + e);
+        }
+    }//GEN-LAST:event_editActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -531,10 +609,10 @@ try {
     private javax.swing.JButton bt_cari;
     private javax.swing.JButton bt_carii;
     private javax.swing.JButton bt_edit;
-    private javax.swing.JButton bt_hapus;
     private javax.swing.JButton bt_kembali;
     private javax.swing.JButton bt_simpan;
     private javax.swing.JButton bt_tambah;
+    private javax.swing.JButton edit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;

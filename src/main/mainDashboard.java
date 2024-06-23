@@ -58,27 +58,24 @@ public class mainDashboard extends javax.swing.JFrame {
 
         Logo.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         Logo.setForeground(new java.awt.Color(255, 255, 255));
+        Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8_Hospital_50px_1.png"))); // NOI18N
         Logo.setText("Klinik Abu-Fatiyah");
 
         javax.swing.GroupLayout pn_navbarLayout = new javax.swing.GroupLayout(pn_navbar);
         pn_navbar.setLayout(pn_navbarLayout);
         pn_navbarLayout.setHorizontalGroup(
             pn_navbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 827, Short.MAX_VALUE)
-            .addGroup(pn_navbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pn_navbarLayout.createSequentialGroup()
-                    .addGap(258, 258, 258)
-                    .addComponent(Logo)
-                    .addContainerGap(258, Short.MAX_VALUE)))
+            .addGroup(pn_navbarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Logo)
+                .addContainerGap(454, Short.MAX_VALUE))
         );
         pn_navbarLayout.setVerticalGroup(
             pn_navbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 70, Short.MAX_VALUE)
-            .addGroup(pn_navbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pn_navbarLayout.createSequentialGroup()
-                    .addGap(11, 11, 11)
-                    .addComponent(Logo)
-                    .addContainerGap(11, Short.MAX_VALUE)))
+            .addGroup(pn_navbarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Logo)
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         getContentPane().add(pn_navbar, java.awt.BorderLayout.PAGE_START);
@@ -107,7 +104,6 @@ public class mainDashboard extends javax.swing.JFrame {
 
         pn_content.setBackground(new java.awt.Color(255, 255, 255));
 
-        pn_utama.setBackground(new java.awt.Color(153, 153, 153));
         pn_utama.setLayout(new java.awt.BorderLayout());
 
         javax.swing.GroupLayout pn_contentLayout = new javax.swing.GroupLayout(pn_content);

@@ -122,24 +122,30 @@ public class FormPemeriksaan extends javax.swing.JPanel {
     }
 
     protected void datatable() {
-        Object[] clcis = {"PasienId", "Tanggal", "TekananDarah", "Diagnosa", "ObatId"};
+        Object[] clcis = {"Id Pasien", "Nama Pasien", "Tanggal", "Tekanan Darah", "Diagnosa", "Id Obat", "Nama Obat"};
         tabmode = new DefaultTableModel(null, clcis);
         tpemeriksaan.setModel(tabmode);
-        String sql = "select * from pemeriksaan";
+        String sql = "SELECT pemeriksaan.PasienId, pasien.Nama AS NamaPasien, pemeriksaan.Tanggal, pemeriksaan.TekananDarah, pemeriksaan.Diagnosa, pemeriksaan.ObatId, obat.Nama AS NamaObat "
+                + "FROM pemeriksaan "
+                + "JOIN pasien ON pemeriksaan.PasienId = pasien.PasienId "
+                + "JOIN obat ON pemeriksaan.ObatId = obat.ObatId";
         try {
             java.sql.Statement stat = conn.createStatement();
             ResultSet hasil = stat.executeQuery(sql);
             while (hasil.next()) {
                 String a = hasil.getString("PasienId");
-                String b = hasil.getString("Tanggal");
-                String c = hasil.getString("TekananDarah");
-                String d = hasil.getString("Diagnosa");
-                String e = hasil.getString("ObatId");
+                String b = hasil.getString("NamaPasien");
+                String c = hasil.getString("Tanggal");
+                String d = hasil.getString("TekananDarah");
+                String e = hasil.getString("Diagnosa");
+                String f = hasil.getString("ObatId");
+                String g = hasil.getString("NamaObat");
 
-                String[] data = {a, b, c, d, e};
+                String[] data = {a, b, c, d, e, f, g};
                 tabmode.addRow(data);
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -249,34 +255,33 @@ public class FormPemeriksaan extends javax.swing.JPanel {
         pn_dataPemeriksaanLayout.setHorizontalGroup(
             pn_dataPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pn_dataPemeriksaanLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(pn_dataPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(pn_dataPemeriksaanLayout.createSequentialGroup()
-                        .addComponent(tambah, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bt_hapus, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bt_kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(630, Short.MAX_VALUE))
-            .addGroup(pn_dataPemeriksaanLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addGroup(pn_dataPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1021, Short.MAX_VALUE)
+                    .addGroup(pn_dataPemeriksaanLayout.createSequentialGroup()
+                        .addGroup(pn_dataPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(pn_dataPemeriksaanLayout.createSequentialGroup()
+                                .addComponent(tambah, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(bt_hapus, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(bt_kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pn_dataPemeriksaanLayout.setVerticalGroup(
             pn_dataPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pn_dataPemeriksaanLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
                 .addComponent(jLabel1)
-                .addGap(49, 49, 49)
+                .addGap(33, 33, 33)
                 .addGroup(pn_dataPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tambah, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bt_hapus, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bt_kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(137, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE)
+                .addGap(179, 179, 179))
         );
 
         mainPanel.add(pn_dataPemeriksaan, "card2");
