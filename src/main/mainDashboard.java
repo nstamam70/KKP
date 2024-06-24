@@ -178,6 +178,7 @@ public class mainDashboard extends javax.swing.JFrame {
     private void execute() {
         //Icon Menu
         ImageIcon iconDashboard = new ImageIcon(getClass().getResource("/assets/home.png"));
+        ImageIcon iconPrint = new ImageIcon(getClass().getResource("/assets/print.png"));
         ImageIcon iconKhitan = new ImageIcon(getClass().getResource("/assets/cut.png"));
         ImageIcon iconMaster = new ImageIcon(getClass().getResource("/assets/Data.png"));
         ImageIcon iconObat = new ImageIcon(getClass().getResource("/assets/Pill.png"));
@@ -253,8 +254,18 @@ public class mainDashboard extends javax.swing.JFrame {
                 pn_utama.revalidate();
             }
         });
+        
+        MenuItem menuPrint = new MenuItem(iconPrint, false, null, "Print", new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                pn_utama.removeAll();
+                pn_utama.add(new FormPrint());
+                pn_utama.repaint();
+                pn_utama.revalidate();
+            }
+        });
 
-        addMenu(menuDashboard, menuData, menuPemeriksaan, menuObat, menuKhitan, menuPembayaran);
+        addMenu(menuDashboard, menuData, menuPemeriksaan, menuObat, menuKhitan, menuPembayaran,menuPrint);
     }
 
     private void addMenu(MenuItem... menu) {

@@ -411,7 +411,6 @@ public class FormPasien extends javax.swing.JPanel {
     }//GEN-LAST:event_bt_tambahActionPerformed
 
     private void bt_hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_hapusActionPerformed
-        // TODO add your handling code here:
         int ok = JOptionPane.showConfirmDialog(null, "hapus", "Konfirmasi Dialog", JOptionPane.YES_NO_CANCEL_OPTION);
         if (ok == 0) {
             String sql = "delete from pasien where Nama='" + tnama.getText() + "'";
