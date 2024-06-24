@@ -3,13 +3,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package main;
+import connection.connect;
+import java.io.File;
+import java.sql.Connection;
+import java.util.HashMap;
+import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
  * @author USER
  */
 public class FormPrint extends javax.swing.JPanel {
-
+ private Connection conn = new connect().connect();
     /**
      * Creates new form FormPrint
      */
@@ -38,12 +48,17 @@ public class FormPrint extends javax.swing.JPanel {
         mainPanel.setLayout(new java.awt.CardLayout());
 
         print_pembayaran.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        print_pembayaran.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8_Payment_History_60px.png"))); // NOI18N
-        print_pembayaran.setText("Pembayaran");
+        print_pembayaran.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8_health_checkup_60px.png"))); // NOI18N
+        print_pembayaran.setText("Pemeriksaan");
+        print_pembayaran.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                print_pembayaranActionPerformed(evt);
+            }
+        });
 
         print_pemeriksaan.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        print_pemeriksaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8_health_checkup_60px.png"))); // NOI18N
-        print_pemeriksaan.setText("Pemeriksaan");
+        print_pemeriksaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8_Payment_History_60px.png"))); // NOI18N
+        print_pemeriksaan.setText("Pembayaran");
         print_pemeriksaan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 print_pemeriksaanActionPerformed(evt);
@@ -88,7 +103,7 @@ public class FormPrint extends javax.swing.JPanel {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 985, Short.MAX_VALUE)
+            .addGap(0, 863, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,7 +117,24 @@ public class FormPrint extends javax.swing.JPanel {
 
     private void print_pemeriksaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_print_pemeriksaanActionPerformed
         // TODO add your handling code here:
+            try {
+            String namaFile = "src/report/LaporanPembayaran.jasper";
+            Connection conn = new connect().connect();
+            HashMap<String, Object> parameter = new HashMap<>();
+            File report_file = new File(namaFile);
+            JasperReport jasperReport = (JasperReport) JRLoader.loadObject(report_file);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameter, conn);
+            JasperViewer.viewReport(jasperPrint, false);
+            JasperViewer.setDefaultLookAndFeelDecorated(true);
+        } catch (Exception e) {
+       
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
     }//GEN-LAST:event_print_pemeriksaanActionPerformed
+
+    private void print_pembayaranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_print_pembayaranActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_print_pembayaranActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

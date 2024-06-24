@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a3ec119c-98e1-454e-aa72-9afae4a94415">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT 
+    pembayaran.Pembayaranid,
+    pembayaran.Tanggal,
+    pembayaran.NamaAdmin,
+    pembayaran.TotalBeli,
+    pembayaran.TotalHarga,
+    pembayaran.Bayar,
+    pembayaran.Kembalian,
+    pasien.Pasienid,
+    pasien.Nik,
+    pasien.Nama AS NamaPasien,
+    pasien.TempatLahir,
+    pasien.TanggalLahir,
+    pasien.Jenkel,
+    pasien.Goldar,
+    pasien.NoTelp,
+    pasien.Alamat,
+    obat.Obatid,
+    obat.Nama AS NamaObat,
+    obat.Kode,
+    obat.Satuan,
+    obat.Kadaluarsa,
+    obat.Stok,
+    obat.Harga
+FROM 
+    pembayaran
+INNER JOIN 
+    pasien ON pembayaran.Pasienid = pasien.Pasienid
+INNER JOIN 
+    obat ON pembayaran.Obatid = obat.Obatid;]]>
+	</queryString>
+	<field name="Pembayaranid" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NamaPasien" class="java.lang.String"/>
+	<field name="NamaObat" class="java.lang.String"/>
+	<field name="NamaAdmin" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="TotalBeli" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="TotalHarga" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Bayar" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Kembalian" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Tanggal" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="rowNumber" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[1]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="260" y="31" width="274" height="36" uuid="f3938273-5f71-46f1-93f9-d19ae5af6aa0"/>
+				<textElement>
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LAPORAN PENJUALAN]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="89" height="20" forecolor="#FFFFFF" backcolor="#333333" uuid="067cbfe2-e0f3-4e5c-8a71-0b45d443486c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="89" y="0" width="89" height="20" forecolor="#FFFFFF" backcolor="#333333" uuid="bc69c232-93a3-4c09-92fd-6b9980642266"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Nama Pasien]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="178" y="0" width="89" height="20" forecolor="#FFFFFF" backcolor="#333333" uuid="53a36489-80a4-4f21-8e1c-47d33c1c228a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Nama Obat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="267" y="0" width="89" height="20" forecolor="#FFFFFF" backcolor="#333333" uuid="a9737502-7fd4-4745-a5e6-7be80c426fd1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Nama Admin]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="356" y="0" width="89" height="20" forecolor="#FFFFFF" backcolor="#333333" uuid="17349954-3a17-4bf8-bbdc-2e9ae255bb76"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Total Beli]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="445" y="0" width="89" height="20" forecolor="#FFFFFF" backcolor="#333333" uuid="2765c6bc-c84c-4ff6-b8e3-14d1efc88e8c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Total Harga]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="534" y="0" width="89" height="20" forecolor="#FFFFFF" backcolor="#333333" uuid="4a3d8402-feff-467e-af6f-4da51e768bd2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Bayar]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="623" y="0" width="89" height="20" forecolor="#FFFFFF" backcolor="#333333" uuid="da64ac73-6f87-496a-98ca-1c490c1e13f8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Kembalian]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="712" y="0" width="89" height="20" forecolor="#FFFFFF" backcolor="#333333" uuid="7b164ed6-d16b-47c6-a2f8-e265010f74f8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Tanggal]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="25" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="89" height="20" uuid="50617e83-c7ad-4f6c-9c09-15c63926d3b1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{rowNumber}.toString()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="89" y="0" width="89" height="20" uuid="2d77328b-5f60-4c58-808d-492ac1f6f23a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{NamaPasien}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="178" y="0" width="89" height="20" uuid="4c654c8e-d7c4-4810-b5d8-9a5f4b9960ea"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{NamaObat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="267" y="0" width="89" height="20" uuid="eaae0d7a-f3e7-49d8-8da7-6dcb97431d3a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{NamaAdmin}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="356" y="0" width="89" height="20" uuid="b5b1f894-6d10-4a53-a44f-7f9b4b831528"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{TotalBeli}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="445" y="0" width="89" height="20" uuid="06cb1072-4031-4af0-8182-77c3aec34f70"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{TotalHarga}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="534" y="0" width="89" height="20" uuid="ae2fbbd3-bcd2-4f85-8f71-da451f3a4976"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{Bayar}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="623" y="0" width="89" height="20" uuid="1249a4f0-68a8-45a7-8e12-1bf1253c4940"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{Kembalian}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="712" y="0" width="89" height="20" uuid="3e34e382-341b-4ebf-867d-0260fb653313"/>
+				<textFieldExpression><![CDATA[$F{Tanggal}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

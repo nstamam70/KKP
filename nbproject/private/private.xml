@@ -2,6 +2,21 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/D:/Codingan/kkp/KKP/src/main/FormDokter.java</file>
+            <file>file:/D:/Codingan/kkp/KKP/src/main/background.java</file>
+            <file>file:/D:/Codingan/kkp/KKP/src/main/content_bg.java</file>
+            <file>file:/D:/Codingan/kkp/KKP/src/main/FormKhitan.java</file>
+            <file>file:/D:/Codingan/kkp/KKP/src/main/login.java</file>
+            <file>file:/D:/Codingan/kkp/KKP/src/main/mainDashboard.java</file>
+            <file>file:/D:/Codingan/kkp/KKP/src/main/FormPemeriksaan.java</file>
+            <file>file:/D:/Codingan/kkp/KKP/src/report/LaporanPembayaran.jrxml</file>
+            <file>file:/D:/Codingan/kkp/KKP/src/main/FormObat.java</file>
+            <file>file:/D:/Codingan/kkp/KKP/src/main/FormPrint.java</file>
+            <file>file:/D:/Codingan/kkp/KKP/src/main/FormPembayaran.java</file>
+            <file>file:/D:/Codingan/kkp/KKP/src/main/FormPasien.java</file>
+            <file>file:/D:/Codingan/kkp/KKP/src/main/ViewDashboard.java</file>
+            <file>file:/D:/Codingan/kkp/KKP/src/main/MenuItem.java</file>
+        </group>
     </open-files>
 </project-private>
