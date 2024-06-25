@@ -76,25 +76,25 @@ public class FormPrint extends javax.swing.JPanel {
             .addGroup(pn_menuPrintLayout.createSequentialGroup()
                 .addGroup(pn_menuPrintLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pn_menuPrintLayout.createSequentialGroup()
-                        .addGap(109, 109, 109)
-                        .addComponent(print_pemeriksaan, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(print_pembayaran, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pn_menuPrintLayout.createSequentialGroup()
                         .addGap(386, 386, 386)
-                        .addComponent(jLabel1)))
-                .addContainerGap())
+                        .addComponent(jLabel1))
+                    .addGroup(pn_menuPrintLayout.createSequentialGroup()
+                        .addGap(87, 87, 87)
+                        .addComponent(print_pembayaran, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(print_pemeriksaan, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(39, 39, 39))
         );
         pn_menuPrintLayout.setVerticalGroup(
             pn_menuPrintLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pn_menuPrintLayout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pn_menuPrintLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(print_pemeriksaan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(print_pembayaran, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(255, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(pn_menuPrintLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(print_pembayaran, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(print_pemeriksaan, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 63, Short.MAX_VALUE))
         );
 
         mainPanel.add(pn_menuPrint, "card2");
@@ -107,7 +107,7 @@ public class FormPrint extends javax.swing.JPanel {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 492, Short.MAX_VALUE)
+            .addGap(0, 306, Short.MAX_VALUE)
         );
 
         mainPanel.add(jPanel2, "card3");
@@ -134,6 +134,19 @@ public class FormPrint extends javax.swing.JPanel {
 
     private void print_pembayaranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_print_pembayaranActionPerformed
         // TODO add your handling code here:
+         try {
+            String namaFile = "src/report/Pemeriksaan.jasper";
+            Connection conn = new connect().connect();
+            HashMap<String, Object> parameter = new HashMap<>();
+            File report_file = new File(namaFile);
+            JasperReport jasperReport = (JasperReport) JRLoader.loadObject(report_file);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameter, conn);
+            JasperViewer.viewReport(jasperPrint, false);
+            JasperViewer.setDefaultLookAndFeelDecorated(true);
+        } catch (Exception e) {
+       
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
     }//GEN-LAST:event_print_pembayaranActionPerformed
 
 

@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="aa6ffe6c-082d-4709-90fa-72fca7bd43b3">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT 
+    pemeriksaan.Pemeriksaanid,
+    pemeriksaan.Tb,
+    pemeriksaan.Bb,
+    pemeriksaan.Diagnosa,
+    pemeriksaan.keluhan,
+    pemeriksaan.TekananDarah,
+    pemeriksaan.Tanggal,
+    pasien.Pasienid,
+    pasien.Nik,
+    pasien.Nama AS NamaPasien,
+    pasien.TempatLahir,
+    pasien.TanggalLahir,
+    pasien.Jenkel,
+    pasien.Goldar,
+    pasien.NoTelp,
+    pasien.Alamat,
+    dokter.Dokterid,
+    dokter.Nama AS NamaDokter,
+    dokter.Spesialis,
+    dokter.NoTelp AS NoTelpDokter,
+    dokter.Alamat AS AlamatDokter,
+    obat.Obatid,
+    obat.Nama AS NamaObat,
+    obat.Kode,
+    obat.Satuan,
+    obat.Kadaluarsa,
+    obat.Stok,
+    obat.Harga
+FROM 
+    pemeriksaan
+INNER JOIN 
+    pasien ON pemeriksaan.Pasienid = pasien.Pasienid
+INNER JOIN 
+    dokter ON pemeriksaan.IdDokter = dokter.Dokterid
+INNER JOIN 
+    obat ON pemeriksaan.Obatid = obat.Obatid;]]>
+	</queryString>
+	<field name="Tanggal" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NamaPasien" class="java.lang.String"/>
+	<field name="Jenkel" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Goldar" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="keluhan" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="TekananDarah" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Diagnosa" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Bb" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Tb" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NamaDokter" class="java.lang.String"/>
+	<field name="NamaObat" class="java.lang.String"/>
+	<field name="Spesialis" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="rowNumber" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[1]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="279" y="21" width="256" height="31" uuid="ba625a95-750f-4f94-964d-65d76e809454"/>
+				<textElement>
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Laporan Pemeriksaan]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="51" splitType="Stretch">
+			<staticText>
+				<reportElement x="594" y="0" width="66" height="20" uuid="5a0f50cf-5ed7-4acd-b6b4-13a77e918096"/>
+				<text><![CDATA[Tanggal]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="660" y="0" width="66" height="20" uuid="8894d50b-e9a8-4caf-bf58-8be407a54bf0"/>
+				<textFieldExpression><![CDATA[$F{Tanggal}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="125" y="3" width="66" height="20" forecolor="#FFFFFF" backcolor="#333333" uuid="0618d684-3249-4aa3-b6e5-c9dc2617a619"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Nama Pasien]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="191" y="3" width="66" height="20" forecolor="#FFFFFF" backcolor="#333333" uuid="40d137cd-7a60-4df2-be9e-f0e38a7565b8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Jenis Kelamin]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="257" y="3" width="99" height="20" forecolor="#FFFFFF" backcolor="#333333" uuid="9edd3844-a3c0-4e44-b563-b1cb7ba3133b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Golongan Darah]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="356" y="3" width="66" height="20" forecolor="#FFFFFF" backcolor="#333333" uuid="1cea1269-3f7d-43df-97f2-fdf2bd8a44e0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Keluhan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="422" y="3" width="66" height="20" forecolor="#FFFFFF" backcolor="#333333" uuid="30b8b1fc-06ae-45b2-a9bd-d0190dfeed8c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Tekanan Darah]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="488" y="3" width="66" height="20" forecolor="#FFFFFF" backcolor="#333333" uuid="01556531-9117-4dfe-b2af-fd5dfb59c0b9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Diagnosa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="554" y="3" width="66" height="20" forecolor="#FFFFFF" backcolor="#333333" uuid="4e3a3e0f-e46e-4852-b116-211e1d853bbc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Nama Dokter]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="686" y="3" width="66" height="20" forecolor="#FFFFFF" backcolor="#333333" uuid="b960174b-086c-4af8-b38f-eb966fb99a60"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Resep]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="620" y="3" width="66" height="20" forecolor="#FFFFFF" backcolor="#333333" uuid="21d8877d-2794-4b56-86e2-eb540cc5d5c6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Spesialis]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="59" y="3" width="66" height="20" forecolor="#FFFFFF" backcolor="#333333" uuid="2e5b9d61-2e0a-494c-bae3-3859973a1499"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[No]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="125" y="3" width="66" height="20" uuid="f3040839-497f-4adb-b9b2-2bf31888fbc1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{NamaPasien}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="191" y="3" width="66" height="20" uuid="6399c166-e94e-4fca-98ca-11a591f4a5cc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{Jenkel}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="257" y="3" width="99" height="20" uuid="acd8394e-1786-4a22-aab7-a9c6dca270fc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{Goldar}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="356" y="3" width="66" height="20" uuid="35ee28aa-fd45-4eb7-8aec-26b912518d4c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{keluhan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="422" y="3" width="66" height="20" uuid="d6727914-5828-4a74-a168-20dbe5dbb3ec"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{TekananDarah}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="488" y="3" width="66" height="20" uuid="af477992-2453-4dd9-9e32-ae49719f12fd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{Diagnosa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="554" y="3" width="66" height="20" uuid="69f1a778-5235-4099-afff-0b445791c46f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{NamaDokter}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="686" y="3" width="66" height="20" uuid="20721a88-3e8a-4f91-a8b7-8c9f2aa26cd7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{NamaObat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="620" y="3" width="66" height="20" uuid="31034775-26f9-4daa-bb4b-b04966f09153"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{Spesialis}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="59" y="3" width="66" height="20" uuid="42143060-a9cb-4476-980e-133048bf8ca0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{rowNumber}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
