@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="aa6ffe6c-082d-4709-90fa-72fca7bd43b3">
 	<property name="ireport.zoom" value="1.464100000000004"/>
-	<property name="ireport.x" value="41"/>
+	<property name="ireport.x" value="324"/>
 	<property name="ireport.y" value="0"/>
 	<queryString language="SQL">
 		<![CDATA[SELECT 
@@ -79,13 +79,25 @@ INNER JOIN
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch">
+		<band height="116" splitType="Stretch">
 			<staticText>
-				<reportElement x="298" y="0" width="256" height="31" uuid="ba625a95-750f-4f94-964d-65d76e809454"/>
-				<textElement>
-					<font size="24" isBold="true"/>
+				<reportElement x="293" y="0" width="223" height="23" uuid="ba625a95-750f-4f94-964d-65d76e809454"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="18" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Laporan Pemeriksaan]]></text>
+				<text><![CDATA[Klinik Abu Fatiyah]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="351" y="68" width="129" height="30" uuid="680e16cd-b3b0-4c4a-9189-7b57205db585"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[Hasil Pemeriksaan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="342" y="43" width="146" height="20" uuid="d22e8c3d-c99b-44da-ae7b-f6ed0b6209af"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Cipayung, Jakarta Timur  12450]]></text>
 			</staticText>
 		</band>
 	</title>

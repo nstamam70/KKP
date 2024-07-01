@@ -4,6 +4,7 @@
  */
 package main;
 
+import print.FormPrint;
 import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,6 +13,10 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import print.PrintObat;
+import print.PrintPasien;
+import print.PrintPembayaran;
+import print.PrintPemeriksaan;
 
 /**
  *
@@ -179,6 +184,10 @@ public class mainDashboard extends javax.swing.JFrame {
         //Icon Menu
         ImageIcon iconDashboard = new ImageIcon(getClass().getResource("/assets/home.png"));
         ImageIcon iconPrint = new ImageIcon(getClass().getResource("/assets/print.png"));
+        ImageIcon iconPrint1 = new ImageIcon(getClass().getResource("/assets/phill.png"));
+        ImageIcon iconPrint2 = new ImageIcon(getClass().getResource("/assets/patientt.png"));
+        ImageIcon iconPrint3 = new ImageIcon(getClass().getResource("/assets/paymentt.png"));
+        ImageIcon iconPrint4 = new ImageIcon(getClass().getResource("/assets/print.png"));
         ImageIcon iconKhitan = new ImageIcon(getClass().getResource("/assets/cut.png"));
         ImageIcon iconMaster = new ImageIcon(getClass().getResource("/assets/Data.png"));
         ImageIcon iconObat = new ImageIcon(getClass().getResource("/assets/Pill.png"));
@@ -206,6 +215,42 @@ public class mainDashboard extends javax.swing.JFrame {
                 pn_utama.revalidate();
             }
         });
+         MenuItem Print1 = new MenuItem(null, true, iconPrint2, "Pasien", new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                pn_utama.removeAll();
+                pn_utama.add(new PrintPasien());
+                pn_utama.repaint();
+                pn_utama.revalidate();
+            }
+        });
+        MenuItem Print2 = new MenuItem(null, true, iconPrint1, "Obat", new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                pn_utama.removeAll();
+                pn_utama.add(new PrintObat());
+                pn_utama.repaint();
+                pn_utama.revalidate();
+            }
+        });
+         MenuItem Print3 = new MenuItem(null, true, iconPemeriksaan, "Pemeriksaan", new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                pn_utama.removeAll();
+                pn_utama.add(new PrintPemeriksaan());
+                pn_utama.repaint();
+                pn_utama.revalidate();
+            }
+        });
+        MenuItem Print4 = new MenuItem(null, true, iconPrint3, "Pembayaran", new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                pn_utama.removeAll();
+                pn_utama.add(new PrintPembayaran());
+                pn_utama.repaint();
+                pn_utama.revalidate();
+            }
+        });
 
         //Menu Utama
         MenuItem menuDashboard = new MenuItem(iconDashboard, false, null, "Dashboard", new ActionListener() {
@@ -218,6 +263,7 @@ public class mainDashboard extends javax.swing.JFrame {
             }
         });
         MenuItem menuData = new MenuItem(iconMaster, false, null, "Data", null, Data1, Data2);
+        MenuItem menuPrint = new MenuItem(iconPrint, false, null, "Print", null, Print1, Print2,Print3,Print4);
         MenuItem menuPemeriksaan = new MenuItem(iconPemeriksaan, false, null, "Pemeriksaan", new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -255,15 +301,6 @@ public class mainDashboard extends javax.swing.JFrame {
             }
         });
         
-        MenuItem menuPrint = new MenuItem(iconPrint, false, null, "Print", new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                pn_utama.removeAll();
-                pn_utama.add(new FormPrint());
-                pn_utama.repaint();
-                pn_utama.revalidate();
-            }
-        });
 
         addMenu(menuDashboard, menuData, menuPemeriksaan, menuObat, menuKhitan, menuPembayaran,menuPrint);
     }

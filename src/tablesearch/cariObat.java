@@ -96,12 +96,12 @@ public class cariObat extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tableobatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableobatMouseClicked
-        // TODO add your handling code here:
-         int tabmode = tableobat.getSelectedRow();
-        payment.tobat = tableobat.getValueAt(tabmode, 0).toString();
-        payment.thargaobat = tableobat.getValueAt(tabmode, 1).toString();
-        payment.obatTerpilih();
-        this.dispose();
+//        // TODO add your handling code here:
+//         int tabmode = tableobat.getSelectedRow();
+//        payment.tobat = tableobat.getValueAt(tabmode, 0).toString();
+//        payment.thargaobat = tableobat.getValueAt(tabmode, 1).toString();
+//        payment.obatTerpilih();
+//        this.dispose();
     }//GEN-LAST:event_tableobatMouseClicked
 
     /**
