@@ -127,7 +127,6 @@ public class FormPrint extends javax.swing.JPanel {
             JasperViewer.viewReport(jasperPrint, false);
             JasperViewer.setDefaultLookAndFeelDecorated(true);
         } catch (Exception e) {
-       
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }//GEN-LAST:event_print_pemeriksaanActionPerformed
@@ -144,7 +143,6 @@ public class FormPrint extends javax.swing.JPanel {
             JasperViewer.viewReport(jasperPrint, false);
             JasperViewer.setDefaultLookAndFeelDecorated(true);
         } catch (Exception e) {
-       
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }//GEN-LAST:event_print_pembayaranActionPerformed

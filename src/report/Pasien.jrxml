@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4cf82321-89de-424f-b25e-fc20d6b32dc0">
+	<property name="ireport.zoom" value="1.771561000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="32"/>
+	<queryString language="SQL">
+		<![CDATA[select * from pasien]]>
+	</queryString>
+	<field name="PasienId" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Nik" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Nama" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="TempatLahir" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="TanggalLahir" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Jenkel" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NoTelp" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Goldar" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Alamat" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="KhitanId" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Usia" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Tanggal_pelaksanaan" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="rowNumber" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[1]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="286" y="20" width="264" height="37" uuid="f0045b01-5bbf-4af6-b7ba-2b25b54ff4ab"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Laporan Data Pasien]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="57" splitType="Stretch">
+			<staticText>
+				<reportElement x="601" y="0" width="100" height="20" uuid="cade78d5-a4af-4147-a969-5d93a5e1772e"/>
+				<text><![CDATA[Tanggal]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="702" y="0" width="100" height="20" uuid="4f784e11-d36a-4a1b-a867-87464b668f14"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="89" height="20" uuid="64630505-fed7-4c22-a03f-7c1a42e8d490"/>
+				<text><![CDATA[No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="178" y="0" width="89" height="20" uuid="1b30906d-5857-4dd6-b512-3083cc39276d"/>
+				<text><![CDATA[Nama]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="267" y="0" width="89" height="20" uuid="26bb4940-c27a-448c-872c-e6af9ee241c8"/>
+				<text><![CDATA[Tempat Lahir]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="356" y="0" width="89" height="20" uuid="8463b443-af42-4867-ae38-02b8c60aaba1"/>
+				<text><![CDATA[Tanggal Lahir]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="534" y="0" width="89" height="20" uuid="8d21ef13-b955-412c-b17e-b07add76e485"/>
+				<text><![CDATA[No Telepon]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="623" y="0" width="89" height="20" uuid="ac6a7fd0-bc73-41f4-8b4b-6289c3ac5e63"/>
+				<text><![CDATA[Golongan Darah]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="712" y="0" width="89" height="20" uuid="de3a3bee-74a3-479e-a780-2b894cd40d54"/>
+				<text><![CDATA[Alamat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="445" y="0" width="89" height="20" uuid="4981c4db-4a4c-43ba-8841-8596962f5b04"/>
+				<text><![CDATA[Jenis Kelamin]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="89" y="0" width="89" height="20" uuid="437d2935-1798-4c03-9065-85b7f31a6f64"/>
+				<text><![CDATA[NIK]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement x="178" y="3" width="89" height="20" uuid="21146897-0b27-4992-855a-c964a60f5173"/>
+				<textFieldExpression><![CDATA[$F{Nama}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="267" y="3" width="89" height="20" uuid="e0a1f5f0-1aba-42bd-b2e1-db9d62dfe102"/>
+				<textFieldExpression><![CDATA[$F{TempatLahir}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="445" y="3" width="89" height="20" uuid="9995eae3-ce54-448d-94ae-80cc6e77118e"/>
+				<textFieldExpression><![CDATA[$F{Jenkel}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="356" y="3" width="89" height="20" uuid="f7c5529f-8bf7-4440-943f-f3db977a1b26"/>
+				<textFieldExpression><![CDATA[$F{TanggalLahir}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="534" y="3" width="89" height="20" uuid="31325f8c-66d7-4079-a5db-522b14142ccb"/>
+				<textFieldExpression><![CDATA[$F{NoTelp}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="623" y="3" width="89" height="20" uuid="59bcddc0-8280-45e4-8fd6-f6926440b382"/>
+				<textFieldExpression><![CDATA[$F{Goldar}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="712" y="3" width="89" height="20" uuid="ad89b404-3f94-444e-a520-7f690ec68373"/>
+				<textFieldExpression><![CDATA[$F{Alamat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="89" y="3" width="89" height="20" uuid="2a5b54de-d7f1-40a2-95b2-f392829bf9dd"/>
+				<textFieldExpression><![CDATA[$F{Nik}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="3" width="89" height="20" uuid="9472ca2d-fdfa-4057-abb1-bc3aaf11c674"/>
+				<textFieldExpression><![CDATA[$V{rowNumber}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

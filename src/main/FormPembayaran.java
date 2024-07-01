@@ -72,7 +72,7 @@ public class FormPembayaran extends javax.swing.JPanel {
         tnamapasien.setText("");
         tanggal.setDate(null);
         tresep.setText("");
-        tpilihobat.setText("");
+//        tpilihobat.setText("");
         tnamaadmin.setSelectedItem("");
         ttotalbeli.setText("");
         ttotalharga.setText("");
@@ -172,13 +172,13 @@ public class FormPembayaran extends javax.swing.JPanel {
         tresep.setText(tresepobat);
     }
 
-    public void obatTerpilih() {
-        cariObat co = new cariObat();
-        co.payment = this;
-        tpilihobat.setText(tobat);
-        ttotalharga.setText(thargaobat);
-        updateTotalHarga();
-    }
+//    public void obatTerpilih() {
+//        cariObat co = new cariObat();
+//        co.payment = this;
+//        tpilihobat.setText(tobat);
+//        ttotalharga.setText(thargaobat);
+//        updateTotalHarga();
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -203,13 +203,10 @@ public class FormPembayaran extends javax.swing.JPanel {
         tnamapasien = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         tresep = new javax.swing.JTextField();
-        tpilihobat = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
         tuangbayar = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         tuangkembali = new javax.swing.JTextField();
-        btn_obat = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         ttotalbeli = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -218,7 +215,6 @@ public class FormPembayaran extends javax.swing.JPanel {
         bt_back = new javax.swing.JButton();
         bt_simpan = new javax.swing.JButton();
         btn_pasien = new javax.swing.JButton();
-        btn_resep = new javax.swing.JButton();
         tanggal = new com.toedter.calendar.JDateChooser();
         jLabel11 = new javax.swing.JLabel();
         tnamaadmin = new javax.swing.JComboBox<>();
@@ -318,9 +314,6 @@ public class FormPembayaran extends javax.swing.JPanel {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setText("Resep Obat Dari Dokter");
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel5.setText("Pilih Obat");
-
         tuangbayar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tuangbayarActionPerformed(evt);
@@ -332,14 +325,6 @@ public class FormPembayaran extends javax.swing.JPanel {
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel7.setText("Uang Kembali");
-
-        btn_obat.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btn_obat.setText("Cari");
-        btn_obat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_obatActionPerformed(evt);
-            }
-        });
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel8.setText("Nama Admin");
@@ -374,14 +359,6 @@ public class FormPembayaran extends javax.swing.JPanel {
             }
         });
 
-        btn_resep.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btn_resep.setText("Cari");
-        btn_resep.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_resepActionPerformed(evt);
-            }
-        });
-
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel11.setText("Tanggal");
 
@@ -410,16 +387,13 @@ public class FormPembayaran extends javax.swing.JPanel {
                                         .addComponent(jLabel11))
                                     .addGroup(pn_formPembayaranLayout.createSequentialGroup()
                                         .addGap(18, 18, 18)
-                                        .addGroup(pn_formPembayaranLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(btn_resep, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(btn_pasien, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(btn_pasien, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(pn_formPembayaranLayout.createSequentialGroup()
                                         .addGap(113, 113, 113)
                                         .addComponent(tanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(pn_formPembayaranLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jLabel2)
                                 .addComponent(jLabel4)
-                                .addComponent(jLabel5)
                                 .addComponent(jLabel6)
                                 .addComponent(jLabel7)
                                 .addComponent(tuangkembali, javax.swing.GroupLayout.PREFERRED_SIZE, 668, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -434,11 +408,7 @@ public class FormPembayaran extends javax.swing.JPanel {
                                             .addGap(18, 18, 18)))
                                     .addGroup(pn_formPembayaranLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel10)
-                                        .addComponent(ttotalharga)))
-                                .addGroup(pn_formPembayaranLayout.createSequentialGroup()
-                                    .addComponent(tpilihobat, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(btn_obat, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                                        .addComponent(ttotalharga))))
                             .addComponent(tuangbayar, javax.swing.GroupLayout.PREFERRED_SIZE, 668, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(pn_formPembayaranLayout.createSequentialGroup()
                                 .addComponent(bt_simpan, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -467,16 +437,8 @@ public class FormPembayaran extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pn_formPembayaranLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tresep, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_resep))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pn_formPembayaranLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_obat)
-                    .addComponent(tpilihobat, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tresep, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tnamaadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -502,7 +464,7 @@ public class FormPembayaran extends javax.swing.JPanel {
                 .addGroup(pn_formPembayaranLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bt_simpan, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bt_back, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 14, Short.MAX_VALUE))
         );
 
         mainPanel.add(pn_formPembayaran, "card2");
@@ -542,7 +504,7 @@ public class FormPembayaran extends javax.swing.JPanel {
         String resep = tresep.getText();
         java.util.Date date = tanggal.getDate();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        String obat = tpilihobat.getText();
+//        String obat = tpilihobat.getText();
         String admin = tnamaadmin.getSelectedItem().toString();
         String tanggalPembayaran = sdf.format(date);
         String beli = ttotalbeli.getText();
@@ -572,7 +534,7 @@ public class FormPembayaran extends javax.swing.JPanel {
         int obatId = -1;
         try {
             PreparedStatement pstobat = conn.prepareStatement(queryObatId);
-            pstobat.setString(1, obat);
+//            pstobat.setString(1, obat);
             ResultSet rsobat = pstobat.executeQuery();
 
             if (rsobat.next()) {
@@ -622,25 +584,6 @@ public class FormPembayaran extends javax.swing.JPanel {
         tnamapasien.setEnabled(false);
     }//GEN-LAST:event_btn_pasienActionPerformed
 
-    private void btn_resepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_resepActionPerformed
-        // TODO add your handling code here:
-        cariResep cr = new cariResep();
-        cr.payment = this;
-        cr.setVisible(true);
-        cr.setResizable(false);
-        tresep.setEnabled(false);
-    }//GEN-LAST:event_btn_resepActionPerformed
-
-    private void btn_obatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_obatActionPerformed
-        // TODO add your handling code here:
-        cariObat co = new cariObat();
-        co.payment = this;
-        co.setVisible(true);
-        co.setResizable(false);
-        tpilihobat.setEnabled(false);
-        ttotalharga.setEnabled(false);
-    }//GEN-LAST:event_btn_obatActionPerformed
-
     private void tablepembayaranMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablepembayaranMouseClicked
         // TODO add your handling code here:
         int row = tablepembayaran.getSelectedRow();
@@ -650,7 +593,7 @@ public class FormPembayaran extends javax.swing.JPanel {
         String totalHarga = tabmode.getValueAt(row, 3).toString();
 
         tnamapasien.setText(namaPasien);
-        tpilihobat.setText(namaObat);
+//        tpilihobat.setText(namaObat);
         ttotalbeli.setText(totalBeli);
         ttotalharga.setText(totalHarga);
     }//GEN-LAST:event_tablepembayaranMouseClicked
@@ -664,9 +607,7 @@ public class FormPembayaran extends javax.swing.JPanel {
     private javax.swing.JButton bt_back;
     private javax.swing.JButton bt_hapus;
     private javax.swing.JButton bt_simpan;
-    private javax.swing.JButton btn_obat;
     private javax.swing.JButton btn_pasien;
-    private javax.swing.JButton btn_resep;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -675,7 +616,6 @@ public class FormPembayaran extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -688,7 +628,6 @@ public class FormPembayaran extends javax.swing.JPanel {
     private com.toedter.calendar.JDateChooser tanggal;
     private javax.swing.JComboBox<String> tnamaadmin;
     private javax.swing.JTextField tnamapasien;
-    private javax.swing.JTextField tpilihobat;
     private javax.swing.JTextField tresep;
     private javax.swing.JTextField ttotalbeli;
     private javax.swing.JTextField ttotalharga;

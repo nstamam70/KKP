@@ -175,10 +175,7 @@
                                           </Group>
                                           <Group type="102" attributes="0">
                                               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="btn_resep" min="-2" pref="100" max="-2" attributes="0"/>
-                                                  <Component id="btn_pasien" min="-2" pref="100" max="-2" attributes="0"/>
-                                              </Group>
+                                              <Component id="btn_pasien" min="-2" pref="100" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
@@ -189,7 +186,6 @@
                                   <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                                       <Component id="tuangkembali" alignment="0" min="-2" pref="668" max="-2" attributes="0"/>
@@ -209,11 +205,6 @@
                                               <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                                               <Component id="ttotalharga" max="32767" attributes="0"/>
                                           </Group>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="tpilihobat" min="-2" pref="560" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="btn_obat" pref="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Component id="tuangbayar" alignment="0" min="-2" pref="668" max="-2" attributes="0"/>
@@ -254,18 +245,8 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="tresep" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
-                          <Component id="btn_resep" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="btn_obat" min="-2" max="-2" attributes="0"/>
-                          <Component id="tpilihobat" min="-2" pref="41" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="tresep" min="-2" pref="41" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="tnamaadmin" min="-2" pref="48" max="-2" attributes="0"/>
@@ -296,7 +277,7 @@
                           <Component id="bt_simpan" alignment="3" min="-2" pref="57" max="-2" attributes="0"/>
                           <Component id="bt_back" alignment="3" min="-2" pref="57" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="14" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -330,16 +311,6 @@
             </Component>
             <Component class="javax.swing.JTextField" name="tresep">
             </Component>
-            <Component class="javax.swing.JTextField" name="tpilihobat">
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel5">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="18" style="1"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Pilih Obat"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JTextField" name="tuangbayar">
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tuangbayarActionPerformed"/>
@@ -362,17 +333,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="tuangkembali">
-            </Component>
-            <Component class="javax.swing.JButton" name="btn_obat">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="18" style="1"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Cari"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_obatActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel8">
               <Properties>
@@ -433,17 +393,6 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_pasienActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="btn_resep">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="18" style="1"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Cari"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_resepActionPerformed"/>
               </Events>
             </Component>
             <Component class="com.toedter.calendar.JDateChooser" name="tanggal">

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="aa6ffe6c-082d-4709-90fa-72fca7bd43b3">
-	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.zoom" value="1.464100000000004"/>
+	<property name="ireport.x" value="41"/>
 	<property name="ireport.y" value="0"/>
 	<queryString language="SQL">
 		<![CDATA[SELECT 
@@ -81,7 +81,7 @@ INNER JOIN
 	<title>
 		<band height="79" splitType="Stretch">
 			<staticText>
-				<reportElement x="279" y="21" width="256" height="31" uuid="ba625a95-750f-4f94-964d-65d76e809454"/>
+				<reportElement x="298" y="0" width="256" height="31" uuid="ba625a95-750f-4f94-964d-65d76e809454"/>
 				<textElement>
 					<font size="24" isBold="true"/>
 				</textElement>
@@ -95,9 +95,9 @@ INNER JOIN
 				<reportElement x="594" y="0" width="66" height="20" uuid="5a0f50cf-5ed7-4acd-b6b4-13a77e918096"/>
 				<text><![CDATA[Tanggal]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="660" y="0" width="66" height="20" uuid="8894d50b-e9a8-4caf-bf58-8be407a54bf0"/>
-				<textFieldExpression><![CDATA[$F{Tanggal}]]></textFieldExpression>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="660" y="0" width="100" height="20" uuid="0c1e80bd-c81e-4b12-8e43-cbb2cbbf2605"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageHeader>
@@ -156,7 +156,7 @@ INNER JOIN
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="24" splitType="Stretch">
+		<band height="27" splitType="Stretch">
 			<textField>
 				<reportElement x="125" y="3" width="66" height="20" uuid="f3040839-497f-4adb-b9b2-2bf31888fbc1"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
