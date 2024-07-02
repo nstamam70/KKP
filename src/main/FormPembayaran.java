@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
-import tablesearch.cariResep;
+
 import tablesearch.cariPasien;
 import tablesearch.cariObat;
 
@@ -164,14 +164,15 @@ public class FormPembayaran extends javax.swing.JPanel {
         cariPasien cp = new cariPasien();
         cp.payment = this;
         tnamapasien.setText(tnama);
+        tresep.setText(tobat);
+        ttotalharga.setText(thargaobat);
     }
 
-    public void resepTerpilih() {
-        cariResep cr = new cariResep();
-        cr.payment = this;
-        tresep.setText(tresepobat);
-    }
-
+//    public void resepTerpilih() {
+//        cariResep cr = new cariResep();
+//        cr.payment = this;
+//       
+//    }
 //    public void obatTerpilih() {
 //        cariObat co = new cariObat();
 //        co.payment = this;
@@ -179,7 +180,6 @@ public class FormPembayaran extends javax.swing.JPanel {
 //        ttotalharga.setText(thargaobat);
 //        updateTotalHarga();
 //    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -504,13 +504,17 @@ public class FormPembayaran extends javax.swing.JPanel {
         String resep = tresep.getText();
         java.util.Date date = tanggal.getDate();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//        String obat = tpilihobat.getText();
         String admin = tnamaadmin.getSelectedItem().toString();
         String tanggalPembayaran = sdf.format(date);
         String beli = ttotalbeli.getText();
         String harga = ttotalharga.getText();
         String bayar = tuangbayar.getText();
         String kembali = tuangkembali.getText();
+
+        if (nama.isEmpty() || resep.isEmpty() || date == null || admin.isEmpty() || beli.isEmpty() || harga.isEmpty() || bayar.isEmpty() || kembali.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Semua field harus diisi.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
         String queryPasienId = "SELECT PasienId FROM pasien WHERE Nama = ?";
         int pasienId = -1;
@@ -530,11 +534,11 @@ public class FormPembayaran extends javax.swing.JPanel {
             return;
         }
 
-        String queryObatId = "SELECT ObatId FROM obat WHERE Nama= ?";
+        String queryObatId = "SELECT ObatId FROM obat WHERE Nama = ?";
         int obatId = -1;
         try {
             PreparedStatement pstobat = conn.prepareStatement(queryObatId);
-//            pstobat.setString(1, obat);
+            pstobat.setString(1, resep);
             ResultSet rsobat = pstobat.executeQuery();
 
             if (rsobat.next()) {
@@ -582,24 +586,25 @@ public class FormPembayaran extends javax.swing.JPanel {
         cp.setVisible(true);
         cp.setResizable(false);
         tnamapasien.setEnabled(false);
+        tresep.setEditable(false);
     }//GEN-LAST:event_btn_pasienActionPerformed
 
     private void tablepembayaranMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablepembayaranMouseClicked
         // TODO add your handling code here:
-        int row = tablepembayaran.getSelectedRow();
-        String namaPasien = tabmode.getValueAt(row, 0).toString();
-        String namaObat = tabmode.getValueAt(row, 1).toString();
-        String totalBeli = tabmode.getValueAt(row, 2).toString();
-        String totalHarga = tabmode.getValueAt(row, 3).toString();
-
-        tnamapasien.setText(namaPasien);
-//        tpilihobat.setText(namaObat);
-        ttotalbeli.setText(totalBeli);
-        ttotalharga.setText(totalHarga);
+//        int row = tablepembayaran.getSelectedRow();
+//        String namaPasien = tabmode.getValueAt(row, 0).toString();
+//        String namaObat = tabmode.getValueAt(row, 1).toString();
+//        String totalBeli = tabmode.getValueAt(row, 2).toString();
+//        String totalHarga = tabmode.getValueAt(row, 3).toString();
+//
+//        tnamapasien.setText(namaPasien);
+////        tpilihobat.setText(namaObat);
+//        ttotalbeli.setText(totalBeli);
+//        ttotalharga.setText(totalHarga);
     }//GEN-LAST:event_tablepembayaranMouseClicked
 
     private void bt_hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_hapusActionPerformed
-      
+
     }//GEN-LAST:event_bt_hapusActionPerformed
 
 

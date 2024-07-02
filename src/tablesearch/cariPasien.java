@@ -8,6 +8,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import javax.swing.table.DefaultTableModel;
 import connection.connect;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import main.FormPembayaran;
 import main.FormPemeriksaan;
 
@@ -31,25 +33,31 @@ public class cariPasien extends javax.swing.JFrame {
     }
 
     protected void datatable() {
-        Object[] clcis = {"Nama Pasien", "Tempat", "Tanggal Lahir", "Jenis Kelamin", "No. Telepon", "Alamat"};
+        Object[] clcis = { "Id Pasien", "Nama Pasien", "Tanggal", "Tekanan Darah", "Diagnosa", "Id Obat", "Nama Obat", "Harga Obat" };
         tabmode = new DefaultTableModel(null, clcis);
         tb_pasien.setModel(tabmode);
-        String sql = "select * from pasien";
+        String sql = "SELECT pemeriksaan.PasienId, pasien.Nama AS NamaPasien, pemeriksaan.Tanggal, pemeriksaan.TekananDarah, pemeriksaan.Diagnosa, pemeriksaan.ObatId, obat.Nama AS NamaObat, obat.Harga AS HargaObat "
+                + "FROM pemeriksaan "
+                + "JOIN pasien ON pemeriksaan.PasienId = pasien.PasienId "
+                + "JOIN obat ON pemeriksaan.ObatId = obat.ObatId";
         try {
             java.sql.Statement stat = conn.createStatement();
             ResultSet hasil = stat.executeQuery(sql);
             while (hasil.next()) {
-                String a = hasil.getString("Nama");
-                String b = hasil.getString("TempatLahir");
-                String c = hasil.getString("TanggalLahir");
-                String d = hasil.getString("Jenkel");
-                String e = hasil.getString("NoTelp");
-                String f = hasil.getString("Alamat");
+                String a = hasil.getString("PasienId");
+                String b = hasil.getString("NamaPasien");
+                String c = hasil.getString("Tanggal");
+                String d = hasil.getString("TekananDarah");
+                String e = hasil.getString("Diagnosa");
+                String f = hasil.getString("ObatId");
+                String g = hasil.getString("NamaObat");
+                String h = hasil.getString("HargaObat");
 
-                String[] data = {a, b, c, d, e, f};
+                String[] data = { a, b, c, d, e, f, g, h };
                 tabmode.addRow(data);
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -101,8 +109,10 @@ public class cariPasien extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tb_pasienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_pasienMouseClicked
-        int tabmode = tb_pasien.getSelectedRow();
-        payment.tnama = tb_pasien.getValueAt(tabmode, 0).toString();
+       int tabmode = tb_pasien.getSelectedRow();
+        payment.tnama = tb_pasien.getValueAt(tabmode, 1).toString();
+        payment.tobat = tb_pasien.getValueAt(tabmode, 6).toString();
+         payment.thargaobat = tb_pasien.getValueAt(tabmode, 7).toString();
         payment.pasienTerpilih();
         this.dispose();
     }//GEN-LAST:event_tb_pasienMouseClicked

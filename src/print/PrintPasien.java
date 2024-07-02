@@ -5,9 +5,17 @@
 package print;
 
 import connection.connect;
+import java.io.File;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.util.HashMap;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -93,20 +101,26 @@ public class PrintPasien extends javax.swing.JPanel {
 
         bt_print.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/print.png"))); // NOI18N
         bt_print.setText("PRINT");
+        bt_print.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_printActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout DataPasienLayout = new javax.swing.GroupLayout(DataPasien);
         DataPasien.setLayout(DataPasienLayout);
         DataPasienLayout.setHorizontalGroup(
             DataPasienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 875, Short.MAX_VALUE)
             .addGroup(DataPasienLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 875, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DataPasienLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(bt_print, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
+                .addGroup(DataPasienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(DataPasienLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DataPasienLayout.createSequentialGroup()
+                        .addComponent(bt_print, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(25, 25, 25))))
         );
         DataPasienLayout.setVerticalGroup(
             DataPasienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,6 +142,22 @@ public class PrintPasien extends javax.swing.JPanel {
     private void tabelpasienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelpasienMouseClicked
 
     }//GEN-LAST:event_tabelpasienMouseClicked
+
+    private void bt_printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_printActionPerformed
+        // TODO add your handling code here:
+           try {
+            String namaFile = "src/report/Pasien.jasper";
+            Connection conn = new connect().connect();
+            HashMap<String, Object> parameter = new HashMap<>();
+            File report_file = new File(namaFile);
+            JasperReport jasperReport = (JasperReport) JRLoader.loadObject(report_file);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameter, conn);
+            JasperViewer.viewReport(jasperPrint, false);
+            JasperViewer.setDefaultLookAndFeelDecorated(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }//GEN-LAST:event_bt_printActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

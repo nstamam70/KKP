@@ -4,7 +4,7 @@
  */
 package main;
 
-import print.FormPrint;
+
 import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,7 +13,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import print.PrintObat;
+import print.PrintDokter;
 import print.PrintPasien;
 import print.PrintPembayaran;
 import print.PrintPemeriksaan;
@@ -224,11 +224,11 @@ public class mainDashboard extends javax.swing.JFrame {
                 pn_utama.revalidate();
             }
         });
-        MenuItem Print2 = new MenuItem(null, true, iconPrint1, "Obat", new ActionListener() {
+        MenuItem Print2 = new MenuItem(null, true, iconPrint1, "Dokter", new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 pn_utama.removeAll();
-                pn_utama.add(new PrintObat());
+                pn_utama.add(new PrintDokter());
                 pn_utama.repaint();
                 pn_utama.revalidate();
             }

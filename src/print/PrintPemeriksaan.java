@@ -31,36 +31,36 @@ public class PrintPemeriksaan extends javax.swing.JPanel {
      */
     public PrintPemeriksaan() {
         initComponents();
-        datatable();
+//        datatable();
     }
 
-    protected void datatable() {
-        Object[] clcis = {"Id Pasien", "Nama Pasien", "Tanggal", "Tekanan Darah", "Diagnosa", "Id Obat", "Nama Obat"};
-        tabmode = new DefaultTableModel(null, clcis);
-        tpemeriksaan.setModel(tabmode);
-        String sql = "SELECT pemeriksaan.PasienId, pasien.Nama AS NamaPasien, pemeriksaan.Tanggal, pemeriksaan.TekananDarah, pemeriksaan.Diagnosa, pemeriksaan.ObatId, obat.Nama AS NamaObat "
-                + "FROM pemeriksaan "
-                + "JOIN pasien ON pemeriksaan.PasienId = pasien.PasienId "
-                + "JOIN obat ON pemeriksaan.ObatId = obat.ObatId";
-        try {
-            java.sql.Statement stat = conn.createStatement();
-            ResultSet hasil = stat.executeQuery(sql);
-            while (hasil.next()) {
-                String a = hasil.getString("PasienId");
-                String b = hasil.getString("NamaPasien");
-                String c = hasil.getString("Tanggal");
-                String d = hasil.getString("TekananDarah");
-                String e = hasil.getString("Diagnosa");
-                String f = hasil.getString("ObatId");
-                String g = hasil.getString("NamaObat");
-
-                String[] data = {a, b, c, d, e, f, g};
-                tabmode.addRow(data);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+//    protected void datatable() {
+//        Object[] clcis = {"Id Pasien", "Nama Pasien", "Tanggal", "Tekanan Darah", "Diagnosa", "Id Obat", "Nama Obat"};
+//        tabmode = new DefaultTableModel(null, clcis);
+//        tpemeriksaan.setModel(tabmode);
+//        String sql = "SELECT pemeriksaan.PasienId, pasien.Nama AS NamaPasien, pemeriksaan.Tanggal, pemeriksaan.TekananDarah, pemeriksaan.Diagnosa, pemeriksaan.ObatId, obat.Nama AS NamaObat "
+//                + "FROM pemeriksaan "
+//                + "JOIN pasien ON pemeriksaan.PasienId = pasien.PasienId "
+//                + "JOIN obat ON pemeriksaan.ObatId = obat.ObatId";
+//        try {
+//            java.sql.Statement stat = conn.createStatement();
+//            ResultSet hasil = stat.executeQuery(sql);
+//            while (hasil.next()) {
+//                String a = hasil.getString("PasienId");
+//                String b = hasil.getString("NamaPasien");
+//                String c = hasil.getString("Tanggal");
+//                String d = hasil.getString("TekananDarah");
+//                String e = hasil.getString("Diagnosa");
+//                String f = hasil.getString("ObatId");
+//                String g = hasil.getString("NamaObat");
+//
+//                String[] data = {a, b, c, d, e, f, g};
+//                tabmode.addRow(data);
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -154,7 +154,7 @@ public class PrintPemeriksaan extends javax.swing.JPanel {
     }//GEN-LAST:event_tpemeriksaanMouseClicked
 
     private void bt_printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_printActionPerformed
-     try {
+       try {
             String namaFile = "src/report/Pemeriksaan.jasper";
             Connection conn = new connect().connect();
             HashMap<String, Object> parameter = new HashMap<>();
