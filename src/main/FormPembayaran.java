@@ -113,7 +113,7 @@ public class FormPembayaran extends javax.swing.JPanel {
         }
     }
 
-    public String tnama, tresepobat, tobat, thargaobat;
+ public String tnama, tresepobat, tobat, thargaobat;
 
     public String getNamaPas() {
         return tnama;

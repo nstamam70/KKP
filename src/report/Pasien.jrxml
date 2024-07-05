@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4cf82321-89de-424f-b25e-fc20d6b32dc0">
-	<property name="ireport.zoom" value="1.771561000000001"/>
+	<property name="ireport.zoom" value="1.1000000000000005"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="32"/>
+	<property name="ireport.y" value="0"/>
 	<queryString language="SQL">
 		<![CDATA[select * from pasien]]>
 	</queryString>
@@ -49,13 +49,24 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch">
+		<band height="118" splitType="Stretch">
 			<staticText>
-				<reportElement x="286" y="20" width="264" height="37" uuid="f0045b01-5bbf-4af6-b7ba-2b25b54ff4ab"/>
+				<reportElement x="294" y="15" width="221" height="35" uuid="503e50ba-b9d7-49e9-9a65-13a26aeb8810"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="24" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Laporan Data Pasien]]></text>
+				<text><![CDATA[Klinik Abu Fatiyah]]></text>
+			</staticText>
+			<image>
+				<reportElement x="143" y="0" width="100" height="100" uuid="721fa938-39a0-4e1f-9862-5fb01fef045c"/>
+				<imageExpression><![CDATA["D:\\Codingan\\kkp\\KKP\\src\\assets\\Logo-Klinik.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="243" y="65" width="342" height="53" uuid="64ace4a7-9019-4c9e-a7b2-997a6b4021e7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Gg. Wadas I No.60-61, RT.11/RW.2, Ceger, Kec. Cipayung, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13820]]></text>
 			</staticText>
 		</band>
 	</title>
@@ -69,10 +80,17 @@
 				<reportElement x="702" y="0" width="100" height="20" uuid="4f784e11-d36a-4a1b-a867-87464b668f14"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="270" y="0" width="264" height="37" uuid="f0045b01-5bbf-4af6-b7ba-2b25b54ff4ab"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Laporan Data Pasien]]></text>
+			</staticText>
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="21" splitType="Stretch">
+		<band height="22" splitType="Stretch">
 			<staticText>
 				<reportElement x="0" y="0" width="89" height="20" uuid="64630505-fed7-4c22-a03f-7c1a42e8d490"/>
 				<text><![CDATA[No]]></text>
@@ -86,7 +104,7 @@
 				<text><![CDATA[Tempat Lahir]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="356" y="0" width="89" height="20" uuid="8463b443-af42-4867-ae38-02b8c60aaba1"/>
+				<reportElement x="356" y="2" width="89" height="20" uuid="8463b443-af42-4867-ae38-02b8c60aaba1"/>
 				<text><![CDATA[Tanggal Lahir]]></text>
 			</staticText>
 			<staticText>
