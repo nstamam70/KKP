@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f769c90c-d215-491e-86f3-a99c17a4d287">
-	<property name="ireport.zoom" value="3.4522712143931042"/>
-	<property name="ireport.x" value="151"/>
+	<property name="ireport.zoom" value="1.1000000000000008"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
@@ -65,10 +65,6 @@
 				</textElement>
 				<text><![CDATA[Klinik Abu Fatiyah]]></text>
 			</staticText>
-			<image>
-				<reportElement x="80" y="11" width="139" height="104" uuid="6ab75705-8e46-49c1-abde-0aa1723bb5eb"/>
-				<imageExpression><![CDATA["D:\\Nur Sayid Tamam\\code\\Netbeans\\Apk-Klinik\\main\\main\\src\\assets\\Logo-Klinik.jpg"]]></imageExpression>
-			</image>
 		</band>
 	</title>
 	<pageHeader>
