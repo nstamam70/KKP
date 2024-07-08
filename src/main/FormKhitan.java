@@ -221,7 +221,8 @@ public class FormKhitan extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tabelkhitan);
 
-        bt_kembali.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        bt_kembali.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        bt_kembali.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8_delete_30px.png"))); // NOI18N
         bt_kembali.setText("Kembali");
         bt_kembali.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -229,7 +230,8 @@ public class FormKhitan extends javax.swing.JPanel {
             }
         });
 
-        bt_edit.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        bt_edit.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        bt_edit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8_edit_text_file_30px.png"))); // NOI18N
         bt_edit.setText("Edit");
         bt_edit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -237,7 +239,8 @@ public class FormKhitan extends javax.swing.JPanel {
             }
         });
 
-        bt_tambah.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        bt_tambah.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        bt_tambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8_Plus_+_30px.png"))); // NOI18N
         bt_tambah.setText("Tambah");
         bt_tambah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -258,13 +261,13 @@ public class FormKhitan extends javax.swing.JPanel {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 944, Short.MAX_VALUE)
                     .addGroup(pn_dataKhitanLayout.createSequentialGroup()
                         .addGroup(pn_dataKhitanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
                             .addGroup(pn_dataKhitanLayout.createSequentialGroup()
-                                .addComponent(bt_tambah, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(bt_edit, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(bt_kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel1))
+                                .addComponent(bt_tambah)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(bt_edit, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(bt_kembali)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -273,14 +276,14 @@ public class FormKhitan extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_dataKhitanLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(35, 35, 35)
+                .addGap(26, 26, 26)
                 .addGroup(pn_dataKhitanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bt_edit, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bt_tambah, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bt_kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
-                .addGap(122, 122, 122))
+                    .addComponent(bt_kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_tambah, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_edit, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
+                .addGap(168, 168, 168))
         );
 
         mainPanel.add(pn_dataKhitan, "card2");
@@ -476,6 +479,7 @@ public class FormKhitan extends javax.swing.JPanel {
         mainPanel.add(pn_formKhitan);
         mainPanel.repaint();
         mainPanel.revalidate();
+        edit.setVisible(false);
     }//GEN-LAST:event_bt_tambahActionPerformed
 
     private void bt_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_backActionPerformed
@@ -489,6 +493,8 @@ public class FormKhitan extends javax.swing.JPanel {
         tusia.setEnabled(true);
         tnotelp.setEnabled(true);
         talamat.setEnabled(true);
+        edit.setVisible(true);
+        bt_simpan.setVisible(true);
     }//GEN-LAST:event_bt_backActionPerformed
 
     private void bt_simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_simpanActionPerformed
@@ -556,6 +562,7 @@ public class FormKhitan extends javax.swing.JPanel {
         tusia.setEnabled(false);
         tnotelp.setEnabled(false);
         talamat.setEnabled(false);
+        bt_simpan.setVisible(false);
     }//GEN-LAST:event_bt_editActionPerformed
 
     private void tabelkhitanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelkhitanMouseClicked

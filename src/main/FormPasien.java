@@ -132,23 +132,29 @@ public class FormPasien extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setText("Data Pasien");
 
-        bt_tambah.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        bt_tambah.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        bt_tambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8_Plus_+_30px.png"))); // NOI18N
         bt_tambah.setText("Tambah");
+        bt_tambah.setMaximumSize(new java.awt.Dimension(173, 42));
+        bt_tambah.setMinimumSize(new java.awt.Dimension(173, 42));
         bt_tambah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_tambahActionPerformed(evt);
             }
         });
 
-        bt_hapus.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        bt_hapus.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        bt_hapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8_delete_30px.png"))); // NOI18N
         bt_hapus.setText("Hapus");
+        bt_hapus.setMaximumSize(new java.awt.Dimension(173, 42));
         bt_hapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_hapusActionPerformed(evt);
             }
         });
 
-        bt_kembali.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        bt_kembali.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        bt_kembali.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8_Back_To_30px_1.png"))); // NOI18N
         bt_kembali.setText("Kembali");
         bt_kembali.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -174,7 +180,8 @@ public class FormPasien extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tabelpasien);
 
-        bt_kembali2.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        bt_kembali2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        bt_kembali2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8_edit_text_file_30px.png"))); // NOI18N
         bt_kembali2.setText("Edit");
         bt_kembali2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,19 +196,19 @@ public class FormPasien extends javax.swing.JPanel {
             .addGroup(pn_dataPasienLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pn_dataPasienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 944, Short.MAX_VALUE)
                     .addGroup(pn_dataPasienLayout.createSequentialGroup()
                         .addGroup(pn_dataPasienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
                             .addGroup(pn_dataPasienLayout.createSequentialGroup()
-                                .addComponent(bt_tambah, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(bt_tambah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(bt_hapus, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(bt_hapus, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(bt_kembali2, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(bt_kembali2, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(bt_kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel1))
-                        .addGap(0, 442, Short.MAX_VALUE)))
+                                .addComponent(bt_kembali)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pn_dataPasienLayout.setVerticalGroup(
@@ -211,13 +218,13 @@ public class FormPasien extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addGap(35, 35, 35)
                 .addGroup(pn_dataPasienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bt_hapus, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bt_tambah, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bt_kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bt_kembali2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE)
-                .addGap(128, 128, 128))
+                    .addComponent(bt_tambah, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_hapus, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_kembali2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                .addGap(139, 139, 139))
         );
 
         mainPanel.add(pn_dataPasien, "card3");

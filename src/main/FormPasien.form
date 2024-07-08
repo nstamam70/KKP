@@ -45,21 +45,21 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane1" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" pref="944" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="bt_tambah" min="-2" pref="121" max="-2" attributes="0"/>
+                                      <Component id="bt_tambah" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="bt_hapus" min="-2" pref="121" max="-2" attributes="0"/>
+                                      <Component id="bt_hapus" min="-2" pref="164" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="bt_kembali2" min="-2" pref="121" max="-2" attributes="0"/>
+                                      <Component id="bt_kembali2" min="-2" pref="168" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="bt_kembali" min="-2" pref="121" max="-2" attributes="0"/>
+                                      <Component id="bt_kembali" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="0" pref="442" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -73,14 +73,14 @@
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="bt_hapus" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
-                          <Component id="bt_tambah" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
-                          <Component id="bt_kembali" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
-                          <Component id="bt_kembali2" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
+                          <Component id="bt_tambah" alignment="3" min="-2" pref="83" max="-2" attributes="0"/>
+                          <Component id="bt_hapus" alignment="3" min="-2" pref="83" max="-2" attributes="0"/>
+                          <Component id="bt_kembali2" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
+                          <Component id="bt_kembali" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" pref="352" max="32767" attributes="0"/>
-                      <EmptySpace min="-2" pref="128" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" pref="300" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="139" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -97,9 +97,18 @@
             <Component class="javax.swing.JButton" name="bt_tambah">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI Semibold" size="18" style="0"/>
+                  <Font name="Segoe UI" size="24" style="1"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/assets/icons8_Plus_+_30px.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Tambah"/>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[173, 42]"/>
+                </Property>
+                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[173, 42]"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_tambahActionPerformed"/>
@@ -108,9 +117,15 @@
             <Component class="javax.swing.JButton" name="bt_hapus">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI Semibold" size="18" style="0"/>
+                  <Font name="Segoe UI" size="24" style="1"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/assets/icons8_delete_30px.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Hapus"/>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[173, 42]"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_hapusActionPerformed"/>
@@ -119,7 +134,10 @@
             <Component class="javax.swing.JButton" name="bt_kembali">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI Semibold" size="18" style="0"/>
+                  <Font name="Segoe UI" size="24" style="1"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/assets/icons8_Back_To_30px_1.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Kembali"/>
               </Properties>
@@ -154,7 +172,10 @@
             <Component class="javax.swing.JButton" name="bt_kembali2">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI Semibold" size="18" style="0"/>
+                  <Font name="Segoe UI" size="24" style="1"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/assets/icons8_edit_text_file_30px.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Edit"/>
               </Properties>

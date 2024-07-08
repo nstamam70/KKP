@@ -78,7 +78,7 @@ public class PrintDokter extends javax.swing.JPanel {
         mainPanel.setLayout(new java.awt.CardLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel1.setText("DATA OBAT");
+        jLabel1.setText("DATA DOKTER");
 
         tabelobat.setBackground(new java.awt.Color(242, 242, 242));
         tabelobat.setModel(new javax.swing.table.DefaultTableModel(
@@ -116,7 +116,7 @@ public class PrintDokter extends javax.swing.JPanel {
                 .addGroup(DataObatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(DataObatLayout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addContainerGap(665, Short.MAX_VALUE))
+                        .addContainerGap(620, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DataObatLayout.createSequentialGroup()
                         .addComponent(bt_print, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))

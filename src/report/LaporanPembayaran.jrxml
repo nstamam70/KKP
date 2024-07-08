@@ -65,7 +65,7 @@ INNER JOIN
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch">
+		<band height="184" splitType="Stretch">
 			<staticText>
 				<reportElement x="260" y="31" width="274" height="36" uuid="f3938273-5f71-46f1-93f9-d19ae5af6aa0"/>
 				<textElement>
@@ -73,6 +73,10 @@ INNER JOIN
 				</textElement>
 				<text><![CDATA[LAPORAN PENJUALAN]]></text>
 			</staticText>
+			<image>
+				<reportElement x="116" y="67" width="100" height="100" uuid="c7c17a67-6682-415e-ba15-6b3fd00ae9cb"/>
+				<imageExpression><![CDATA["D:\\Nur Sayid Tamam\\code\\Netbeans\\Apk-Klinik\\main\\main\\src\\assets\\bgr.jpg"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>

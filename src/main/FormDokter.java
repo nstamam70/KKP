@@ -129,7 +129,8 @@ public class FormDokter extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setText("Data Dokter");
 
-        btambah.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        btambah.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8_Plus_+_30px.png"))); // NOI18N
         btambah.setText("Tambah");
         btambah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,7 +138,8 @@ public class FormDokter extends javax.swing.JPanel {
             }
         });
 
-        bhapus.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        bhapus.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        bhapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8_delete_30px.png"))); // NOI18N
         bhapus.setText("Hapus");
         bhapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,7 +147,8 @@ public class FormDokter extends javax.swing.JPanel {
             }
         });
 
-        bkembali.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        bkembali.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        bkembali.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8_Back_To_30px_1.png"))); // NOI18N
         bkembali.setText("Kembali");
         bkembali.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,38 +165,42 @@ public class FormDokter extends javax.swing.JPanel {
                 .addGroup(pn_dataDokterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 944, Short.MAX_VALUE)
                     .addGroup(pn_dataDokterLayout.createSequentialGroup()
-                        .addGroup(pn_dataDokterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pn_dataDokterLayout.createSequentialGroup()
-                                .addComponent(btambah, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(bhapus, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(bkembali, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btambah, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bhapus, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bkembali, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(pn_dataDokterLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pn_dataDokterLayout.setVerticalGroup(
             pn_dataDokterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_dataDokterLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(28, 28, 28)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addGap(18, 18, 18)
                 .addGroup(pn_dataDokterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bhapus, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btambah, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bkembali, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bhapus, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btambah, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pn_dataDokterLayout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(bkembali, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(159, Short.MAX_VALUE))
+                .addContainerGap(240, Short.MAX_VALUE))
         );
 
         mainPanel.add(pn_dataDokter, "card2");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
         jLabel3.setText("Tambah Data Dokter");
 
-        bt_simpan.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        bt_simpan.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        bt_simpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8_save_30px.png"))); // NOI18N
         bt_simpan.setText("Simpan");
         bt_simpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -201,7 +208,8 @@ public class FormDokter extends javax.swing.JPanel {
             }
         });
 
-        bt_kembali2.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        bt_kembali2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        bt_kembali2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8_Back_To_30px_1.png"))); // NOI18N
         bt_kembali2.setText("Kembali");
         bt_kembali2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -209,7 +217,7 @@ public class FormDokter extends javax.swing.JPanel {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel4.setText("Nama Dokter");
 
         tnotelp.addActionListener(new java.awt.event.ActionListener() {
@@ -218,13 +226,13 @@ public class FormDokter extends javax.swing.JPanel {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel6.setText("Spesialis");
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel7.setText("No. Telepon");
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel8.setText("Alamat");
 
         talamat.setColumns(20);
@@ -236,55 +244,57 @@ public class FormDokter extends javax.swing.JPanel {
         pn_formDokterLayout.setHorizontalGroup(
             pn_formDokterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pn_formDokterLayout.createSequentialGroup()
+                .addGap(56, 56, 56)
                 .addGroup(pn_formDokterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
                     .addGroup(pn_formDokterLayout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addGroup(pn_formDokterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(tnotelp, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tspesialis, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(pn_formDokterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(tdokter, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pn_formDokterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(pn_formDokterLayout.createSequentialGroup()
-                                    .addComponent(bt_simpan)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(bt_kembali2))
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(pn_formDokterLayout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(jLabel3)))
-                .addContainerGap(465, Short.MAX_VALUE))
+                        .addGap(21, 21, 21)
+                        .addGroup(pn_formDokterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pn_formDokterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(tspesialis, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tnotelp, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tdokter, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pn_formDokterLayout.createSequentialGroup()
+                                .addComponent(bt_simpan, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(bt_kembali2)))))
+                .addContainerGap(126, Short.MAX_VALUE))
         );
         pn_formDokterLayout.setVerticalGroup(
             pn_formDokterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_formDokterLayout.createSequentialGroup()
-                .addGap(12, 12, 12)
+            .addGroup(pn_formDokterLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
                 .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tdokter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tspesialis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tnotelp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(29, 29, 29)
                 .addGroup(pn_formDokterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bt_simpan, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bt_kembali2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(55, Short.MAX_VALUE))
+                    .addComponent(jLabel4)
+                    .addComponent(tdokter, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43)
+                .addGroup(pn_formDokterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(tspesialis, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pn_formDokterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pn_formDokterLayout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(jLabel7)
+                        .addGap(53, 53, 53)
+                        .addComponent(jLabel8))
+                    .addGroup(pn_formDokterLayout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(tnotelp, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(31, 31, 31)
+                .addGroup(pn_formDokterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bt_kembali2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_simpan, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
 
         mainPanel.add(pn_formDokter, "card2");
