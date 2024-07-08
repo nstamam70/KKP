@@ -70,7 +70,7 @@
 	<pageHeader>
 		<band height="71" splitType="Stretch">
 			<staticText>
-				<reportElement x="256" y="15" width="245" height="34" uuid="44f308ca-39c8-4508-baa8-971ef27c0395"/>
+				<reportElement x="269" y="12" width="245" height="34" uuid="44f308ca-39c8-4508-baa8-971ef27c0395"/>
 				<textElement>
 					<font size="24" isBold="true"/>
 				</textElement>
@@ -140,14 +140,29 @@
 		<band height="98" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch">
-			<textField>
-				<reportElement x="16" y="34" width="100" height="20" uuid="b1701a46-4c47-45b0-b0cc-8728d363163b"/>
-				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
-			</textField>
+		<band height="122" splitType="Stretch">
+			<staticText>
+				<reportElement x="677" y="0" width="100" height="20" uuid="39474ca6-2aa4-48b4-addb-490fc64bf92f"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Kepala Klinik]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="652" y="102" width="150" height="20" uuid="79974060-5188-4681-8832-ecbcdd482cb8"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dr. Rafli Hidayah Sena ]]></text>
+			</staticText>
 		</band>
 	</pageFooter>
 	<summary>
-		<band height="42" splitType="Stretch"/>
+		<band height="42" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="22" width="100" height="20" uuid="b1701a46-4c47-45b0-b0cc-8728d363163b"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
 	</summary>
 </jasperReport>

@@ -28,20 +28,32 @@ public class ViewDashboard extends javax.swing.JPanel {
 
         mainPanel = new javax.swing.JPanel();
         pn_Dashboard = new javax.swing.JPanel();
+        background11 = new main.background1();
 
         setLayout(new java.awt.CardLayout());
 
         mainPanel.setLayout(new java.awt.CardLayout());
 
+        javax.swing.GroupLayout background11Layout = new javax.swing.GroupLayout(background11);
+        background11.setLayout(background11Layout);
+        background11Layout.setHorizontalGroup(
+            background11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 979, Short.MAX_VALUE)
+        );
+        background11Layout.setVerticalGroup(
+            background11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 785, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout pn_DashboardLayout = new javax.swing.GroupLayout(pn_Dashboard);
         pn_Dashboard.setLayout(pn_DashboardLayout);
         pn_DashboardLayout.setHorizontalGroup(
             pn_DashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 956, Short.MAX_VALUE)
+            .addComponent(background11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pn_DashboardLayout.setVerticalGroup(
             pn_DashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 590, Short.MAX_VALUE)
+            .addComponent(background11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         mainPanel.add(pn_Dashboard, "card2");
@@ -51,6 +63,7 @@ public class ViewDashboard extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private main.background1 background11;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPanel pn_Dashboard;
     // End of variables declaration//GEN-END:variables

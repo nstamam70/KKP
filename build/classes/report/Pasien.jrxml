@@ -51,18 +51,14 @@
 	<title>
 		<band height="118" splitType="Stretch">
 			<staticText>
-				<reportElement x="294" y="15" width="221" height="35" uuid="503e50ba-b9d7-49e9-9a65-13a26aeb8810"/>
+				<reportElement x="296" y="0" width="221" height="35" uuid="503e50ba-b9d7-49e9-9a65-13a26aeb8810"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="24" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Klinik Abu Fatiyah]]></text>
 			</staticText>
-			<image>
-				<reportElement x="143" y="0" width="100" height="100" uuid="721fa938-39a0-4e1f-9862-5fb01fef045c"/>
-				<imageExpression><![CDATA["D:\\Codingan\\kkp\\KKP\\src\\assets\\Logo-Klinik.jpg"]]></imageExpression>
-			</image>
 			<staticText>
-				<reportElement x="243" y="65" width="342" height="53" uuid="64ace4a7-9019-4c9e-a7b2-997a6b4021e7"/>
+				<reportElement x="238" y="46" width="342" height="53" uuid="64ace4a7-9019-4c9e-a7b2-997a6b4021e7"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="14"/>
 				</textElement>
@@ -173,7 +169,22 @@
 		<band height="45" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch"/>
+		<band height="134" splitType="Stretch">
+			<staticText>
+				<reportElement x="650" y="102" width="150" height="20" uuid="56397e66-772b-489d-a8a8-3ecaabdafddf"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dr. Rafli Hidayah Sena ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="675" y="0" width="100" height="20" uuid="c0cc540d-68f3-4f68-9eb9-6fd3cab9216d"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Kepala Klinik]]></text>
+			</staticText>
+		</band>
 	</pageFooter>
 	<summary>
 		<band height="42" splitType="Stretch"/>

@@ -102,7 +102,7 @@ public class FormKhitan extends javax.swing.JPanel {
         tnama.setEnabled(true);
         tgglpelaksanaan.setEnabled(true);
         ttanggal.setEnabled(true);
-        tusia.setEnabled(true);
+//        tusia.setEnabled(true);
         tnotelp.setEnabled(true);
         talamat.setEnabled(true);
         tmkhitan.setEnabled(true);
@@ -114,7 +114,7 @@ public class FormKhitan extends javax.swing.JPanel {
         tnama.setText("");
         tgglpelaksanaan.setDate(null);
         ttanggal.setText("");
-        tusia.setText("");
+//        tusia.setText("");
         tnotelp.setText("");
         talamat.setText("");
         tmkhitan.setText("");
@@ -195,8 +195,6 @@ public class FormKhitan extends javax.swing.JPanel {
         tidme = new javax.swing.JTextField();
         tgl_pelaksanaan = new javax.swing.JLabel();
         tgglpelaksanaan = new com.toedter.calendar.JDateChooser();
-        jLabel8 = new javax.swing.JLabel();
-        tusia = new javax.swing.JTextField();
         edit = new javax.swing.JButton();
 
         setLayout(new java.awt.CardLayout());
@@ -258,16 +256,16 @@ public class FormKhitan extends javax.swing.JPanel {
             .addGroup(pn_dataKhitanLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pn_dataKhitanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 944, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1010, Short.MAX_VALUE)
                     .addGroup(pn_dataKhitanLayout.createSequentialGroup()
                         .addGroup(pn_dataKhitanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
                             .addGroup(pn_dataKhitanLayout.createSequentialGroup()
                                 .addComponent(bt_tambah)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(bt_edit, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(bt_kembali)))
+                                .addComponent(bt_kembali))
+                            .addComponent(jLabel1))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -282,7 +280,7 @@ public class FormKhitan extends javax.swing.JPanel {
                     .addComponent(bt_tambah, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bt_edit, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
                 .addGap(168, 168, 168))
         );
 
@@ -291,8 +289,11 @@ public class FormKhitan extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel2.setText("Tambah Data Khitan");
 
-        jLabel3.setText("Nik");
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel3.setText("NIK");
 
+        bt_cari.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        bt_cari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8_search_30px.png"))); // NOI18N
         bt_cari.setText("Cari");
         bt_cari.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -300,18 +301,24 @@ public class FormKhitan extends javax.swing.JPanel {
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel4.setText("Nama");
 
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel6.setText("Tanggal Lahir");
 
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel9.setText("No Telepon");
 
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel10.setText("Alamat");
 
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel12.setText("Metode Khitan");
 
         bt_back.setBackground(new java.awt.Color(242, 242, 242));
-        bt_back.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        bt_back.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        bt_back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8_Back_To_30px_1.png"))); // NOI18N
         bt_back.setText("Kembali");
         bt_back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -320,7 +327,8 @@ public class FormKhitan extends javax.swing.JPanel {
         });
 
         bt_simpan.setBackground(new java.awt.Color(242, 242, 242));
-        bt_simpan.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        bt_simpan.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        bt_simpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8_save_30px.png"))); // NOI18N
         bt_simpan.setText("Simpan");
         bt_simpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -328,6 +336,8 @@ public class FormKhitan extends javax.swing.JPanel {
             }
         });
 
+        bt_carii.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        bt_carii.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8_search_30px.png"))); // NOI18N
         bt_carii.setText("Cari");
         bt_carii.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -340,12 +350,14 @@ public class FormKhitan extends javax.swing.JPanel {
             }
         });
 
+        tgl_pelaksanaan.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         tgl_pelaksanaan.setText("Tanggal Pelaksanaan");
 
-        jLabel8.setText("Usia");
+        tgglpelaksanaan.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
 
         edit.setBackground(new java.awt.Color(242, 242, 242));
-        edit.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        edit.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        edit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8_edit_text_file_30px.png"))); // NOI18N
         edit.setText("Edit");
         edit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -358,106 +370,102 @@ public class FormKhitan extends javax.swing.JPanel {
         pn_formKhitanLayout.setHorizontalGroup(
             pn_formKhitanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pn_formKhitanLayout.createSequentialGroup()
-                .addGroup(pn_formKhitanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGap(20, 20, 20)
+                .addGroup(pn_formKhitanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pn_formKhitanLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
+                        .addComponent(jLabel2)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(pn_formKhitanLayout.createSequentialGroup()
                         .addGroup(pn_formKhitanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_formKhitanLayout.createSequentialGroup()
-                                .addComponent(tnik)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(bt_cari))
                             .addGroup(pn_formKhitanLayout.createSequentialGroup()
-                                .addGroup(pn_formKhitanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jLabel10)
-                                    .addComponent(jLabel12)
-                                    .addComponent(tnama, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(tnotelp, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGap(2, 2, 2)
+                                .addComponent(tgl_pelaksanaan))
+                            .addGroup(pn_formKhitanLayout.createSequentialGroup()
+                                .addGroup(pn_formKhitanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_formKhitanLayout.createSequentialGroup()
+                                        .addComponent(jLabel12)
+                                        .addGap(116, 116, 116))
                                     .addGroup(pn_formKhitanLayout.createSequentialGroup()
                                         .addGroup(pn_formKhitanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel3)
+                                            .addComponent(jLabel4)
                                             .addComponent(jLabel6)
-                                            .addComponent(ttanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(jLabel9)
+                                            .addComponent(jLabel10))
+                                        .addGap(134, 134, 134)))
+                                .addGroup(pn_formKhitanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ttanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tnotelp, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_formKhitanLayout.createSequentialGroup()
+                                        .addGroup(pn_formKhitanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(tgglpelaksanaan, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(tnik)
+                                            .addComponent(tnama, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(talamat, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(pn_formKhitanLayout.createSequentialGroup()
+                                                .addComponent(tidme, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(tmkhitan, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(pn_formKhitanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel8)
-                                            .addComponent(tusia)))
-                                    .addComponent(talamat, javax.swing.GroupLayout.PREFERRED_SIZE, 638, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(pn_formKhitanLayout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addGroup(pn_formKhitanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pn_formKhitanLayout.createSequentialGroup()
-                                .addComponent(bt_simpan, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(edit, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(bt_back))
-                            .addComponent(tgl_pelaksanaan)
-                            .addGroup(pn_formKhitanLayout.createSequentialGroup()
-                                .addGroup(pn_formKhitanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(tgglpelaksanaan, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pn_formKhitanLayout.createSequentialGroup()
-                                        .addComponent(tidme, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(tmkhitan, javax.swing.GroupLayout.PREFERRED_SIZE, 554, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(bt_carii)))))
-                .addContainerGap(184, Short.MAX_VALUE))
+                                            .addComponent(bt_carii, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(bt_cari, javax.swing.GroupLayout.Alignment.TRAILING))))))
+                        .addContainerGap())))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_formKhitanLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bt_simpan)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(edit, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bt_back)
+                .addContainerGap())
         );
         pn_formKhitanLayout.setVerticalGroup(
             pn_formKhitanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pn_formKhitanLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addGap(19, 19, 19)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pn_formKhitanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tnik, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bt_cari))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pn_formKhitanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pn_formKhitanLayout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(jLabel3)
+                        .addGap(15, 15, 15))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_formKhitanLayout.createSequentialGroup()
+                        .addGroup(pn_formKhitanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tnik, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bt_cari, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)))
                 .addGroup(pn_formKhitanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(pn_formKhitanLayout.createSequentialGroup()
-                        .addComponent(tnama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(pn_formKhitanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(ttanggal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(pn_formKhitanLayout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(41, 41, 41))))
-                    .addComponent(tusia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pn_formKhitanLayout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addGap(41, 41, 41)))
-                .addGap(6, 6, 6)
-                .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tnotelp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(talamat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(tnama, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(23, 23, 23)
+                .addGroup(pn_formKhitanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel6)
+                    .addComponent(ttanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addGroup(pn_formKhitanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(tnotelp, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
+                .addGap(36, 36, 36)
+                .addGroup(pn_formKhitanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(talamat, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
+                .addGap(32, 32, 32)
                 .addGroup(pn_formKhitanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tmkhitan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bt_carii)
-                    .addComponent(tidme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addComponent(tgl_pelaksanaan)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tgglpelaksanaan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel12)
+                    .addComponent(tidme, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tmkhitan, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_carii, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41)
+                .addGroup(pn_formKhitanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tgl_pelaksanaan)
+                    .addComponent(tgglpelaksanaan, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
                 .addGroup(pn_formKhitanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bt_back, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bt_simpan, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(edit, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(19, Short.MAX_VALUE))
+                    .addComponent(edit, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_simpan, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         mainPanel.add(pn_formKhitan, "card2");
@@ -467,7 +475,7 @@ public class FormKhitan extends javax.swing.JPanel {
 
     private void bt_kembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_kembaliActionPerformed
         mainPanel.removeAll();
-        mainPanel.add(new content_bg());
+        mainPanel.add(new ViewDashboard());
         mainPanel.repaint();
         mainPanel.revalidate();
     }//GEN-LAST:event_bt_kembaliActionPerformed
@@ -490,7 +498,7 @@ public class FormKhitan extends javax.swing.JPanel {
         tnik.setEnabled(true);
         tnama.setEnabled(true);
         ttanggal.setEnabled(true);
-        tusia.setEnabled(true);
+//        tusia.setEnabled(true);
         tnotelp.setEnabled(true);
         talamat.setEnabled(true);
         edit.setVisible(true);
@@ -502,12 +510,12 @@ public class FormKhitan extends javax.swing.JPanel {
             String sql = "update pasien set Nik=?,Usia=?,KhitanId=?,Tanggal_pelaksanaan=? where Nik=?";
             PreparedStatement stat = conn.prepareStatement(sql);
             stat.setString(1, tnik.getText());
-            stat.setString(2, tusia.getText());
-            stat.setString(3, tidme.getText());
+//            stat.setString(2, tusia.getText());
+            stat.setString(2, tidme.getText());
             java.util.Date utilDate = tgglpelaksanaan.getDate();
             java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-            stat.setDate(4, sqlDate);
-            stat.setString(5, tnik.getText());
+            stat.setDate(3, sqlDate);
+            stat.setString(4, tnik.getText());
 
             stat.executeUpdate();
             JOptionPane.showMessageDialog(null, "Data Berhasil Diubah");
@@ -559,7 +567,7 @@ public class FormKhitan extends javax.swing.JPanel {
         tnik.setEnabled(false);
         tnama.setEnabled(false);
         ttanggal.setEnabled(false);
-        tusia.setEnabled(false);
+//        tusia.setEnabled(false);
         tnotelp.setEnabled(false);
         talamat.setEnabled(false);
         bt_simpan.setVisible(false);
@@ -573,7 +581,7 @@ public class FormKhitan extends javax.swing.JPanel {
         String d = tabmode.getValueAt(clc, 3).toString();
         String e = tabmode.getValueAt(clc, 4).toString();
         String f = tabmode.getValueAt(clc, 5).toString();
-        String g = tabmode.getValueAt(clc, 6).toString();
+//        String g = tabmode.getValueAt(clc, 6).toString();
 //        String h = tabmode.getValueAt(clc, 7).toString();
 //        String i = tabmode.getValueAt(clc, 8).toString();
 
@@ -581,10 +589,10 @@ public class FormKhitan extends javax.swing.JPanel {
         tnama.setText(b);
 //        tgglpelaksanaan.setDate(null);
         ttanggal.setText(c);
-        tusia.setText(d);
-        tnotelp.setText(e);
-        talamat.setText(f);
-        tmkhitan.setText(g);
+//        tusia.setText(d);
+        tnotelp.setText(d);
+        talamat.setText(e);
+        tmkhitan.setText(f);
 //        tidme.setText(h);
     }//GEN-LAST:event_tabelkhitanMouseClicked
 
@@ -627,7 +635,6 @@ public class FormKhitan extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel mainPanel;
@@ -643,6 +650,5 @@ public class FormKhitan extends javax.swing.JPanel {
     private javax.swing.JTextField tnik;
     private javax.swing.JTextField tnotelp;
     private javax.swing.JTextField ttanggal;
-    private javax.swing.JTextField tusia;
     // End of variables declaration//GEN-END:variables
 }
