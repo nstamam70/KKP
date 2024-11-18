@@ -1,168 +1,181 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f769c90c-d215-491e-86f3-a99c17a4d287">
-	<property name="ireport.zoom" value="1.1000000000000008"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
-	<style name="table">
-		<box>
-			<pen lineWidth="1.0" lineColor="#000000"/>
-		</box>
-	</style>
-	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
-		<box>
-			<pen lineWidth="0.5" lineColor="#000000"/>
-		</box>
-	</style>
-	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
-		<box>
-			<pen lineWidth="0.5" lineColor="#000000"/>
-		</box>
-	</style>
-	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
-		<box>
-			<pen lineWidth="0.5" lineColor="#000000"/>
-		</box>
-	</style>
-	<subDataset name="Table Dataset 1" uuid="a94bc83c-9b22-4635-80a8-49d6ec1e57c4"/>
-	<queryString language="SQL">
+    <parameter name="logoPath" class="java.lang.String"/>	
+    <property name="ireport.zoom" value="1.0"/>
+    <property name="ireport.x" value="0"/>
+    <property name="ireport.y" value="104"/>
+    <style name="table">
+        <box>
+            <pen lineWidth="1.0" lineColor="#000000"/>
+        </box>
+    </style>
+    <style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+        <box>
+            <pen lineWidth="0.5" lineColor="#000000"/>
+        </box>
+    </style>
+    <style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+        <box>
+            <pen lineWidth="0.5" lineColor="#000000"/>
+        </box>
+    </style>
+    <style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+        <box>
+            <pen lineWidth="0.5" lineColor="#000000"/>
+        </box>
+    </style>
+    <subDataset name="Table Dataset 1" uuid="a94bc83c-9b22-4635-80a8-49d6ec1e57c4"/>
+    <queryString language="SQL">
 		<![CDATA[select * from dokter]]>
-	</queryString>
-	<field name="DokterId" class="java.lang.Integer">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="Nama" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="Spesialis" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="NoTelp" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="Alamat" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<variable name="rowNumber" class="java.lang.Integer" calculation="Count">
-		<variableExpression><![CDATA[1]]></variableExpression>
-	</variable>
-	<variable name="variable1" class="java.lang.String"/>
-	<background>
-		<band splitType="Stretch"/>
-	</background>
-	<title>
-		<band height="115" splitType="Stretch">
-			<staticText>
-				<reportElement x="237" y="69" width="324" height="46" uuid="f63ba6cd-9714-4900-a44b-2cbd293969b5"/>
-				<textElement textAlignment="Center">
-					<font size="14"/>
-				</textElement>
-				<text><![CDATA[Gg. Wadas I No.60-61, RT.11/RW.2, Ceger, Kec. Cipayung, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13820]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="280" y="23" width="221" height="35" uuid="d0807f70-c0c6-4d56-96ec-ce3ae43e8a11"/>
-				<textElement>
-					<font size="24" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Klinik Abu Fatiyah]]></text>
-			</staticText>
-		</band>
-	</title>
-	<pageHeader>
-		<band height="71" splitType="Stretch">
-			<staticText>
-				<reportElement x="269" y="12" width="245" height="34" uuid="44f308ca-39c8-4508-baa8-971ef27c0395"/>
-				<textElement>
-					<font size="24" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Laporan Data Dokter]]></text>
-			</staticText>
-		</band>
-	</pageHeader>
-	<columnHeader>
-		<band height="20" splitType="Stretch">
-			<staticText>
-				<reportElement mode="Opaque" x="69" y="0" width="27" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="6d87e107-e6ac-4ef7-b0de-2db71bb37e17"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[No]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Opaque" x="96" y="0" width="160" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="af0d6aca-2bca-4cc4-87f4-7cc22dca98b8"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Nama Dokter]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Opaque" x="256" y="0" width="160" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="3a1a1389-ac11-44ff-9e1f-18c27de0d70e"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Spesialis]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Opaque" x="416" y="0" width="160" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="92858b21-33e5-4cf0-8767-6d17280eccd6"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[NoTelepon]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Opaque" x="576" y="0" width="160" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="115b87bf-fa26-4e75-a66f-dc11b33c9e70"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Alamat]]></text>
-			</staticText>
-		</band>
-	</columnHeader>
-	<detail>
-		<band height="20" splitType="Stretch">
-			<textField>
-				<reportElement x="96" y="0" width="160" height="20" uuid="2ea0666b-0434-4891-8958-e84c724c7c89"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{Nama}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="256" y="0" width="160" height="20" uuid="246702d7-412e-4027-8efa-cf5c594b1443"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{Spesialis}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="416" y="0" width="160" height="20" uuid="cf90be6b-a378-4dfb-9450-8952fd129c66"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{NoTelp}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="576" y="0" width="160" height="20" uuid="4a0b959a-71b2-4cdc-9b1b-a8de53655e67"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{Alamat}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="69" y="0" width="27" height="20" uuid="f3d160ca-3f46-4009-83e9-c818a2c2d46b"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$V{rowNumber}]]></textFieldExpression>
-			</textField>
-		</band>
-	</detail>
-	<columnFooter>
-		<band height="98" splitType="Stretch"/>
-	</columnFooter>
-	<pageFooter>
-		<band height="122" splitType="Stretch">
-			<staticText>
-				<reportElement x="677" y="0" width="100" height="20" uuid="39474ca6-2aa4-48b4-addb-490fc64bf92f"/>
-				<textElement>
-					<font size="14" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Kepala Klinik]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="652" y="102" width="150" height="20" uuid="79974060-5188-4681-8832-ecbcdd482cb8"/>
-				<textElement>
-					<font size="14" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Dr. Rafli Hidayah Sena ]]></text>
-			</staticText>
-		</band>
-	</pageFooter>
-	<summary>
-		<band height="42" splitType="Stretch">
-			<textField>
-				<reportElement x="0" y="22" width="100" height="20" uuid="b1701a46-4c47-45b0-b0cc-8728d363163b"/>
-				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
-			</textField>
-		</band>
-	</summary>
+    </queryString>
+    <field name="DokterId" class="java.lang.Integer">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="Nama" class="java.lang.String">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="Spesialis" class="java.lang.String">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="NoTelp" class="java.lang.String">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="Alamat" class="java.lang.String">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <variable name="rowNumber" class="java.lang.Integer" calculation="Count">
+        <variableExpression><![CDATA[1]]></variableExpression>
+    </variable>
+    <variable name="variable1" class="java.lang.String"/>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="115" splitType="Stretch">
+            <staticText>
+                <reportElement x="237" y="69" width="324" height="46" uuid="f63ba6cd-9714-4900-a44b-2cbd293969b5"/>
+                <textElement textAlignment="Center">
+                    <font size="14"/>
+                </textElement>
+                <text><![CDATA[Gg. Wadas I No.60-61, RT.11/RW.2, Ceger, Kec. Cipayung, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13820]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="280" y="23" width="221" height="35" uuid="d0807f70-c0c6-4d56-96ec-ce3ae43e8a11"/>
+                <textElement>
+                    <font size="24" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Klinik Abu Fatiyah]]></text>
+            </staticText>
+            <image>
+                <reportElement x="0" y="0" width="100" height="50" uuid="your-unique-uuid"/>
+                <imageExpression><![CDATA[$P{logoPath}]]></imageExpression>
+            </image>
+        </band>
+    </title>
+    <pageHeader>
+        <band height="71" splitType="Stretch">
+            <staticText>
+                <reportElement x="269" y="12" width="245" height="34" uuid="44f308ca-39c8-4508-baa8-971ef27c0395"/>
+                <textElement>
+                    <font size="24" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Laporan Data Dokter]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="576" y="46" width="52" height="20" uuid="fede0521-8a7d-4aee-93be-fcbab7cda83c"/>
+                <text><![CDATA[Tanggal :]]></text>
+            </staticText>
+            <textField pattern="dd-MMM-yy">
+                <reportElement x="628" y="46" width="100" height="20" uuid="c51f5f70-a43e-4a93-8f94-4efe2c860a0e"/>
+                <textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+            </textField>
+        </band>
+    </pageHeader>
+    <columnHeader>
+        <band height="20" splitType="Stretch">
+            <staticText>
+                <reportElement mode="Opaque" x="69" y="0" width="27" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="6d87e107-e6ac-4ef7-b0de-2db71bb37e17"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                <text><![CDATA[No]]></text>
+            </staticText>
+            <staticText>
+                <reportElement mode="Opaque" x="96" y="0" width="160" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="af0d6aca-2bca-4cc4-87f4-7cc22dca98b8"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                <text><![CDATA[Nama Dokter]]></text>
+            </staticText>
+            <staticText>
+                <reportElement mode="Opaque" x="256" y="0" width="160" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="3a1a1389-ac11-44ff-9e1f-18c27de0d70e"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                <text><![CDATA[Spesialis]]></text>
+            </staticText>
+            <staticText>
+                <reportElement mode="Opaque" x="416" y="0" width="160" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="92858b21-33e5-4cf0-8767-6d17280eccd6"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                <text><![CDATA[NoTelepon]]></text>
+            </staticText>
+            <staticText>
+                <reportElement mode="Opaque" x="576" y="0" width="160" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="115b87bf-fa26-4e75-a66f-dc11b33c9e70"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                <text><![CDATA[Alamat]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="20" splitType="Stretch">
+            <textField>
+                <reportElement x="96" y="0" width="160" height="20" uuid="2ea0666b-0434-4891-8958-e84c724c7c89"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$F{Nama}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="256" y="0" width="160" height="20" uuid="246702d7-412e-4027-8efa-cf5c594b1443"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$F{Spesialis}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="416" y="0" width="160" height="20" uuid="cf90be6b-a378-4dfb-9450-8952fd129c66"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$F{NoTelp}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="576" y="0" width="160" height="20" uuid="4a0b959a-71b2-4cdc-9b1b-a8de53655e67"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$F{Alamat}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="69" y="0" width="27" height="20" uuid="f3d160ca-3f46-4009-83e9-c818a2c2d46b"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$V{rowNumber}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+    <columnFooter>
+        <band height="98" splitType="Stretch"/>
+    </columnFooter>
+    <pageFooter>
+        <band height="122" splitType="Stretch">
+            <staticText>
+                <reportElement x="670" y="0" width="100" height="20" uuid="39474ca6-2aa4-48b4-addb-490fc64bf92f"/>
+                <textElement>
+                    <font size="14" isBold="false"/>
+                </textElement>
+                <text><![CDATA[Kepala Klinik]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="652" y="102" width="150" height="20" uuid="79974060-5188-4681-8832-ecbcdd482cb8"/>
+                <textElement>
+                    <font size="14" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Rafli Hidayah Sena ]]></text>
+            </staticText>
+        </band>
+    </pageFooter>
+    <summary>
+        <band height="42" splitType="Stretch">
+            <textField>
+                <reportElement x="0" y="22" width="100" height="20" uuid="b1701a46-4c47-45b0-b0cc-8728d363163b"/>
+                <textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+            </textField>
+        </band>
+    </summary>
 </jasperReport>

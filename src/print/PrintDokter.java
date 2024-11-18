@@ -35,22 +35,20 @@ public class PrintDokter extends javax.swing.JPanel {
     }
 
     protected void datatable() {
-        Object[] clcis = {"Nama Obat", "Kode Obat", "Jenis", "Stok", "Harga", "Tanggal Kadaluarsa"};
+        Object[] clcis = {"Nama Dokter", "Spesialis", "No.Telepon", "Alamat"};
         tabmode = new DefaultTableModel(null, clcis);
         tabelobat.setModel(tabmode);
-        String sql = "select * from obat";
+        String sql = "select * from dokter";
         try {
             java.sql.Statement stat = conn.createStatement();
             ResultSet hasil = stat.executeQuery(sql);
             while (hasil.next()) {
                 String a = hasil.getString("Nama");
-                String b = hasil.getString("Kode");
-                String c = hasil.getString("Satuan");
-                String d = hasil.getString("Stok");
-                String e = "Rp." + hasil.getString("Harga");
-                String f = hasil.getString("Kadaluarsa");
+                String b = hasil.getString("Spesialis");
+                String c = hasil.getString("NoTelp");
+                String d = hasil.getString("Alamat");
 
-                String[] data = {a, b, c, d, e, f};
+                String[] data = {a, b, c, d};
                 tabmode.addRow(data);
             }
         } catch (Exception e) {
@@ -152,10 +150,12 @@ public class PrintDokter extends javax.swing.JPanel {
 
     private void bt_printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_printActionPerformed
         // TODO add your handling code here:
-           try {
+        try {
             String namaFile = "src/report/Dokter.jasper";
             Connection conn = new connect().connect();
             HashMap<String, Object> parameter = new HashMap<>();
+            parameter.put("logoPath", "src/images/logo.png"); // Path ke gambar
+
             File report_file = new File(namaFile);
             JasperReport jasperReport = (JasperReport) JRLoader.loadObject(report_file);
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameter, conn);
@@ -164,6 +164,7 @@ public class PrintDokter extends javax.swing.JPanel {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
+
     }//GEN-LAST:event_bt_printActionPerformed
 
 

@@ -65,7 +65,7 @@ INNER JOIN
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="184" splitType="Stretch">
+		<band height="179" splitType="Stretch">
 			<staticText>
 				<reportElement x="237" y="55" width="324" height="46" uuid="03ff0e57-e0b1-403d-8428-60001c4432a6"/>
 				<textElement textAlignment="Center">
@@ -80,16 +80,28 @@ INNER JOIN
 				</textElement>
 				<text><![CDATA[Klinik Abu Fatiyah]]></text>
 			</staticText>
+			<image>
+				<reportElement x="89" y="10" width="100" height="100" uuid="17571dd4-3bea-49d6-8691-9298e3cc2623"/>
+				<imageExpression><![CDATA["D:\\Codingan\\kkp\\KKP\\src\\assets\\Logo-Klinik.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="623" y="159" width="49" height="20" uuid="9a24a239-1dde-461e-9dfe-c099de1cdfdc"/>
+				<text><![CDATA[Tanggal :]]></text>
+			</staticText>
+			<textField pattern="dd-MMM-yy">
+				<reportElement x="672" y="159" width="100" height="20" uuid="da5a63ad-a69a-45ef-9090-834c5631bd65"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<pageHeader>
 		<band height="54" splitType="Stretch">
 			<staticText>
-				<reportElement x="260" y="0" width="274" height="36" uuid="f3938273-5f71-46f1-93f9-d19ae5af6aa0"/>
+				<reportElement x="260" y="0" width="314" height="36" uuid="f3938273-5f71-46f1-93f9-d19ae5af6aa0"/>
 				<textElement>
 					<font size="24" isBold="true"/>
 				</textElement>
-				<text><![CDATA[LAPORAN PENJUALAN]]></text>
+				<text><![CDATA[LAPORAN PEMBAYARAN]]></text>
 			</staticText>
 		</band>
 	</pageHeader>

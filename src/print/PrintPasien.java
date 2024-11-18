@@ -145,10 +145,12 @@ public class PrintPasien extends javax.swing.JPanel {
 
     private void bt_printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_printActionPerformed
         // TODO add your handling code here:
-           try {
+        try {
             String namaFile = "src/report/Pasien.jasper";
             Connection conn = new connect().connect();
             HashMap<String, Object> parameter = new HashMap<>();
+            parameter.put("logoPath", "src/images/logo.png");// Path ke gambar
+
             File report_file = new File(namaFile);
             JasperReport jasperReport = (JasperReport) JRLoader.loadObject(report_file);
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameter, conn);
